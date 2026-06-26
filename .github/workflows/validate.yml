@@ -1,0 +1,52 @@
+name: Comic Pipeline Validate
+
+on:
+  push:
+    paths:
+      - '0*_v3.0.md'
+      - 'validate_pipeline.py'
+      - 'validators/**'
+      - 'utils/**'
+      - 'test_fixtures/**'
+  pull_request:
+    paths:
+      - '0*_v3.0.md'
+      - 'validate_pipeline.py'
+      - 'validators/**'
+      - 'utils/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate sample stories
+        run: |
+          echo "=== 修真界网约车 ==="
+          python validate_pipeline.py test_fixtures/sample_run/story.txt test_fixtures/sample_run/director.txt test_fixtures/sample_run/art.txt test_fixtures/sample_run/cine.txt
+          echo ""
+          echo "=== 星际监狱心理医生 ==="
+          python validate_pipeline.py test_fixtures/prison_story/story.txt test_fixtures/prison_story/director.txt test_fixtures/prison_story/art.txt test_fixtures/prison_story/cine.txt
+
+      - name: JSON output check
+        run: |
+          python validate_pipeline.py --json test_fixtures/prison_story/story.txt test_fixtures/prison_story/director.txt test_fixtures/prison_story/art.txt test_fixtures/prison_story/cine.txt > report.json
+          python -c "import json; d=json.load(open('report.json')); assert d['summary']['fatal']==0, f'Fatal: {d[\"summary\"][\"fatal\"]}'; print(f'JSON OK: {d[\"summary\"][\"pass_rate\"]}%')"
+
+      - name: Prompt file integrity
+        run: |
+          for f in 01_故事创作_v3.0.md 02_导演漫改_v3.0.md 03_美术资产_v3.0.md 04_分镜生成_v3.0.md; do
+            checks=$(grep -c '□ ' "$f" || true)
+            echo "$f: $checks checks"
+            if [ "$checks" -lt 10 ]; then
+              echo "ERROR: $f has fewer than 10 checks!"
+              exit 1
+            fi
+          done
+          echo "All prompt files have sufficient checks."

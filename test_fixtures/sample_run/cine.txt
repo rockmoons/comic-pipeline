@@ -1,0 +1,395 @@
+# 分镜师 输出
+
+CG国漫风格。
+
+## 🎭 素材对应表
+
+### 演员
+
+| 引用编号 | 素材类型 | 对应素材 | 视觉关键词 |
+|---------|---------|---------|-----------|
+| @图片1 | 演员 | 陈默 | 28岁精悍男，寸头黑短发，国字脸剑眉，左眉3cm斜疤，深灰机能夹克，小麦色皮肤，冷静锐利眼神 |
+| @图片2 | 演员 | 李师兄 | 22岁瘦削男，灰道袍松散低马尾，瓜子脸三角眼，鼻塌唇歪，傲慢俯视表情 |
+| @图片3 | 演员 | 灰袍弟子二 | 约20岁矮小男，灰道袍松散马尾刘海遮额，圆脸圆眼，苍白慌张表情 |
+| @图片4 | 演员 | 白发长老 | 外表60岁高瘦男，月白丝袍白色高马尾，长脸丹凤眼，白眉垂至颧骨，从容深邃 |
+
+### 场景
+
+| 引用编号 | 素材类型 | 对应素材 | 视觉关键词 |
+|---------|---------|---------|-----------|
+| @图片5 | 场景 | 雷暴天空-云层深处 | 暗黑云层漩涡翻滚，紫色闪电网状交织 |
+| @图片6 | 场景 | 雷暴天空-闪电劈落区 | 水桶粗闪电垂直劈下，亮白中心紫蓝光晕 |
+| @图片7 | 场景 | 青云宗山门外-石碑正面全景 | 悬浮花岗岩石碑，金色古篆发光，碎石掩体 |
+| @图片8 | 场景 | 青云宗山门外-石碑顶端俯瞰 | 石碑顶面风蚀纹路，垂直落差俯瞰 |
+| @图片9 | 场景 | 青云宗山门外-停车区 | 平整荒野空地，干燥泥土碎石地面 |
+| @图片10 | 场景 | 青云宗山门外-石堆掩体区 | 半人高碎石块掩体，明暗交错月光斑块 |
+| @图片11 | 场景 | 青云宗山门外-荒野远景双月 | 广袤荒野远景，冷白圆月+淡紫弯月同框 |
+| @图片12 | 场景 | 青云宗山门外-石碑底座近距离 | 厚重花岗岩底座，锋利石棱 |
+| @图片13 | 场景 | 青云宗山门入口-正面全景 | 青石山壁夹道，古篆符文淡金灵光 |
+| @图片14 | 场景 | 青云宗山门入口-通道中景 | 青石板路青苔，山雾丁达尔光柱 |
+| @图片15 | 场景 | 青云宗山门入口-松林灵气特写 | 古松针叶夜露冷白微光，灵气光点散景 |
+| @图片16 | 场景 | 青云宗山门入口-内侧俯瞰 | 高空俯瞰通道全景 |
+| @图片17-20 | — | 留白（空单元格） | — |
+
+### 道具
+
+| 引用编号 | 素材类型 | 对应素材 | 视觉关键词 |
+|---------|---------|---------|-----------|
+| @图片21 | 道具 | 电动车（惊雷） | 深海蓝Model 3轿车，金色灵气纹路，LED矩阵大灯 |
+| @图片22 | 道具 | 火球符 | 黄色粗纤维符纸，朱砂粗犷符文 |
+| @图片23 | 道具 | 灵石 | 半透明晶体，内部云雾灵气流动 |
+| @图片24 | 道具 | 飞剑 | 锻铁剑身锤纹，微弱淡白灵光 |
+
+---
+
+## 🎥 视频提示词
+
+### P01 雷暴吞噬
+
+**时长**：5s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 雷暴吞噬 (wide shot·tilt-up)。
+Camera: tilt-up，wide shot establishing，deep depth of field f/11。
+Subject: @图片6 雷暴天空，暗黑积雨云剧烈漩涡翻滚，云层深处紫色闪电网状交织噼啪作响，一道水桶粗闪电从云心垂直劈向画面下方形成亮白光柱，周围空气因电离产生淡紫色冲击波纹向外扩散。
+Narrative: setup。
+Mood: dark。
+
+禁止文字、字幕、LOGO、水印。
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog
+```
+
+### P02 初醒见碑
+
+**时长**：5s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 5s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 初醒见碑 (close-up·dolly-out)。
+Camera: dolly-out，从 medium close-up 拉至 medium shot，deep depth of field f/11。
+Subject: @图片1陈默趴在干燥泥土碎石地面猛然睁开眼，左眉旧疤在额前碎发下若隐若现，下意识伸手摸向身前虚空——抓了个空。缓慢抬头，画面后拉露出悬浮半空的@图片7巨大花岗岩石碑，碑面三个金色古篆"青云宗"自体发光。
+Intent: 主角苏醒第一反应。
+Mood: tension。
+
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+```
+
+### P03 车身之变
+
+**时长**：4s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 4s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 车身之变 (medium shot·dolly-in)。
+Camera: dolly-in 缓慢推进，medium shot → close-up detail。
+Subject: @图片21电动车停在@图片9荒野平地上，车身外壳焦黑痕迹像退潮般从表面一寸寸褪去，露出崭新的深海蓝漆面。车漆在冷白月光下泛金属微光，表面流淌极细淡金色灵气纹路如液态金属脉动。
+Intent: 展示电动车在灵气环境中的自我修复。
+Mood: mystery。
+
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting
+```
+
+### P04_A 中控符文
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 中控符文 (close-up·static)。
+Camera: static，extreme close-up macro view，shallow depth of field f/2.8。
+Subject: @图片21电动车中控大屏特写，屏幕亮起，一行金色符文如液态金属缓缓流动——"雷灵根适配完成，储能状态：17%"，符文边缘泛淡蓝色电光脉冲式闪烁。
+Intent: 揭示车辆已获得灵根适配。
+Mood: mystery。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P04_B 妖物喝问
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 妖物喝问 (medium shot·low-angle)。
+Camera: low-angle tilt-up，medium shot → medium close-up，medium depth of field f/5.6。
+Subject: @图片2李师兄站在@图片7石碑顶端，灰色道袍袍角被山风猎猎翻飞，手里捏着一道发光的@图片22火球符，居高临下俯视下方，眼神贪婪兼警惕。
+Dialogue Cue: @音频2（李师兄）凶狠地说："妖物！此铁盒从天而降，砸坏了山门阵法！你——你是何方妖孽？"
+Narrative: conflict。
+Intent: 敌意建立 + 冲突触发。
+Mood: tension。
+
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting
+```
+
+### P05 火球袭来
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 火球袭来 (medium shot·static)。
+Camera: static，medium shot，shallow depth of field f/2.8。
+Subject: @图片1陈默在@图片7石碑前空地上，一道橙红色火球从画面上方呼啸砸来，火球拖着尾焰照亮陈默的脸——暖色火光打在他冷峻表情上形成半张脸冷暖光影分割，瞳孔急剧收缩，身体本能向一侧偏转。
+Narrative: conflict。
+Intent: 死亡威胁降临的瞬间反应。
+Mood: fear。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P06 翻滚闪避
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 翻滚闪避 (long shot·tracking)。
+Camera: tracking 全景跟踪，long shot full body。
+Subject: @图片1陈默从@图片21电动车座上翻滚而下，火球擦过车顶在身后@图片9地面炸开一片焦黑泥土飞溅，单膝点地稳住身形，左手在腰间摸空，右手抓起地上碎石在掌心掂了掂重量。
+Intent: 特种兵战术闪避动作展示。
+Mood: tension。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P07 Z字冲锋
+
+**时长**：4s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 4s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: Z字冲锋 (long shot·side-tracking)。
+Camera: side-tracking 侧跟，long shot full body，deep depth of field f/11。
+Subject: @图片1陈默不退反进Z字形跑位穿过@图片10石堆掩体区，身后第二道火球接连炸开碎石打在背上浑然不顾，三秒内冲到@图片7石碑底座前，腿部肌肉绷紧跃起。
+Intent: 近身战术碾压远程火力的关键动作。
+Mood: anger。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P08_A 抓踝拉拽
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 抓踝拉拽 (medium shot·low-angle)。
+Camera: low-angle 仰拍，medium shot → medium close-up。
+Subject: @图片1陈默从@图片7石碑底座前跃起，右手精准抓住@图片2李师兄的灰色道袍脚踝，五指扣紧布料，手臂青筋暴起，猛地向下拉拽——整个动作干脆利落。
+Narrative: climax。
+Intent: 近身擒拿的爆发力瞬间。
+Mood: anger。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P08_B 摔石磕晕
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 摔石磕晕 (close-up·overhead)。
+Camera: overhead 俯拍，close-up detail shot，shallow depth of field f/2.8。
+Subject: @图片2李师兄从画面上方摔落在@图片12石碑底座花岗岩平台上，后脑勺重重磕在锋利石棱边缘，眼神瞬间涣散嘴微张，闷哼一声晕了过去。手指松开，@图片22火球符从掌心滑落——在触地前被一只手从侧面抄起。
+Intent: 第一个反派被制服的关键转场。
+Mood: dark。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P09 抄符对峙
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 抄符对峙 (medium close-up·low-angle)。
+Camera: low-angle 仰拍，medium close-up chest up，medium depth of field f/5.6。
+Subject: @图片1陈默抄起@图片22火球符掌心被烫得发红眉头不皱，抬头看向画面上方。蹲下身从@图片2李师兄腰间解下储物袋倒出一堆零碎，挑出一块发光的@图片23灵石拿在手里——灵石内部云雾状灵气缓慢流动泛淡蓝微光。
+Mood: tension。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P10 空中对话
+
+**时长**：4s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 4s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 空中对话 (medium shot·low-angle)。
+Camera: low-angle 仰拍，medium shot，medium depth of field f/5.6。
+Subject: @图片3灰袍弟子二脚踩@图片24飞剑浮在@图片7石碑前半空中，飞剑泛极微弱淡白灵光，弟子低头看见@图片2李师兄躺在地上一动不动，脸色刷地惨白嘴唇颤抖。
+Dialogue Cue: @音频3（灰袍弟子二）惊恐地结巴："你——你对李师兄做了什么？！"
+Narrative: conflict。
+Intent: 恐惧建立 + 力量对比逆转。
+Mood: fear。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P11 逆光威慑
+
+**时长**：4s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 4s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 逆光威慑 (medium shot→long shot·static)。
+Camera: static，medium shot → long shot，deep depth of field f/11。
+Subject: @图片1陈默站起身用最平静的声音说完话。身后@图片21电动车突然自动启动——LED矩阵大灯射出两道冷白色高亮光束，光束恰好把@图片1陈默整个人笼罩在一个逆光剪影里：精悍黑色人影轮廓，左眉旧疤在逆光中泛冷光。半空中@图片3灰袍弟子二瞳孔收缩，在逆光中看不清陈默的表情，转身御剑加速逃跑。
+Dialogue Cue: @音频1（陈默）冷酷地说："下来。不然下一个就是你。"
+Narrative: climax。
+Intent: 利用车灯制造威慑——不战而屈人之兵。
+Mood: dark。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P12 敌逃灵石
+
+**时长**：4s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 4s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 敌逃灵石 (medium shot→close-up·follow)。
+Camera: follow 跟，medium shot → close-up detail。
+Subject: @图片3灰袍弟子二御剑逃远后，@图片1陈默松了一口气，转身走向@图片21电动车。低头看中控屏幕——金色符文更新"战斗模式待激活，需要灵石充能。"陈默将手中@图片23灵石拍进充电口，车身一震大灯由冷白转为淡金色，屏幕显示"储能34%。导航系统初始化中……定位：东荒·青云山脉。"
+Dialogue Cue: @音频1（陈默）无奈地自言自语："你也太会给自己加戏了。"
+Intent: 车辆充能升级 + 导航定位建立。
+Mood: bright。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P13 双月荒野
+
+**时长**：3s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 3s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 双月荒野 (wide shot·tilt-up)。
+Camera: tilt-up 缓慢上摇，wide shot establishing → 天空。
+Subject: @图片1陈默站在@图片11荒野上背对镜头，身后是自动修复的@图片21电动车，脚下是昏迷的修真弟子。深吸一口气，缓缓抬头望天——画面上摇露出@图片11两轮异色月亮：冷白圆月与淡紫弯月同框悬于夜空，冷白+淡紫混合月光铺满广袤荒野，远处青黑山脉轮廓若隐若现，空气中稀疏淡金灵气光点缓慢漂移。
+Narrative: reveal。
+Intent: 空镜氛围镜头——建立异界宏大空间感与主角的孤独。
+Mood: mystery。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P14 青莲长老
+
+**时长**：5s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 5s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 青莲出场 (medium shot·dolly-in)。
+Camera: dolly-in 缓慢推进，medium shot → medium close-up，medium depth of field f/5.6。
+Subject: 山门方向传来脚步声，@图片4白发长老踏虚空从@图片7石碑左侧走入画面中央，每一步脚下生出一朵半透明青色莲花绽放后消散为灵气光点飘散，月白色丝绸宽袖道袍随风轻拂，腰间淡青玉扣腰带随步伐微动。长老目光依次扫过@图片21电动车、地上@图片2李师兄、@图片1陈默手中的@图片23灵石。沉默三秒，嘴角浮现笑意。
+Intent: 引路人出场——视觉华丽与深不可测。
+Mood: mystery。
+
+[3-5s] Shot 2: 对话交锋 (two-shot medium close-up)。
+Camera: static，medium close-up two-shot，shallow depth of field f/2.8。
+Subject: @图片4白发长老与@图片1陈默面对面立于@图片7石碑前。长老目光沉稳深邃，陈默微愣后回头看阵法残骸再看向中控屏幕最后迎上长老目光。
+
+Dialogue Cue: @音频4（白发长老）沉稳地说："能修好阵法吗？"
+Dialogue Cue: @音频1（陈默）深吸一口气说："……能。"
+Dialogue Cue: @音频4（白发长老）平静而不容置疑地说："那就跟我来。修好了，你是我青云宗外门杂役。修不好——"
+Dialogue Cue: @音频4（白发长老）轻描淡写地说："你跟他一样躺着。"
+Narrative: resolution。
+Intent: 建立契约——主角获得生存机会但附带条件。
+Mood: tension。
+
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+```
+
+### P15 驶入山门
+
+**时长**：6s
+**提示词**：
+```
+Style: CG国漫风格画风，电影级光影。
+Duration: 6s。
+@图片（上个视频末帧截图）为首帧。
+
+[0-6s] Shot 1: 驶入山门 (long shot·dolly-out)。
+Camera: dolly-out 缓慢后拉，long shot → wide shot establishing，deep depth of field f/11。
+Subject: @图片1陈默把@图片23灵石塞进口袋，拍了拍@图片21电动车前盖。中控屏幕弹出"路径规划完毕。目的地：东荒·青云宗·山门阵眼。预计消耗灵石：4枚。"电动车无声启动，深海蓝车身跟随@图片4白发长老驶入@图片13青云宗山门入口——两座青石山壁夹出的通道，山壁古篆符文散发淡金灵光，山雾弥漫通道，雾中悬浮淡金灵气光点缓慢漂移，两侧茂密青松林树冠暗绿。冷白+淡紫月光打在前挡风玻璃上映出一片冷色调辉光。车尾灯在雾中拖出两道红色残影——画面缓慢后拉，电动车越来越小没入@图片13通道深处消失。
+Intent: 终场定镜——现代闯入者驶入异界秩序的仪式感。
+Mood: mystery。
+
+End Frame: 电动车尾灯红色残影消失在通道深处山雾中，通道恢复静谧。
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致，保持 @图片4 角色面部特征、体型、服饰与参考图完全一致，保持 @图片21 道具外观与参考图完全一致，保持场景风格与参考图统一。
+禁止文字、字幕、LOGO、水印。
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog
+```
+
+## ⚡ 下一步操作指南
+
+阶段A：生成参考图
+1. 用美术指导S2方案生成4位演员定妆照。
+2. 用美术指导S3方案生成场景宫格图。
+
+阶段B：拆分与命名
+4. 将宫格图按格裁剪为独立图片。
+5. 按素材对应表的@编号重命名所有文件。
+
+阶段C：生成视频片段
+6. 打开即梦/无线画布，上传所有参考图。
+7. 生成首段视频 P01 → 将生成的视频上传为 @视频1
+8. 循环至最后一段 P15
+
+阶段D：后期合成
+9. 拼接生成的视频片段。
+10. 导入美术指导S6台词本配套的 SRT 字幕与配音文件。
+11. 完成渲染与成品输出。

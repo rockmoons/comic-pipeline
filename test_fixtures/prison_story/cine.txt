@@ -1,0 +1,102 @@
+# 分镜师 - 星际监狱 第1章
+CG国漫风格。
+
+## 🎭 素材对应表
+| @编号 | 类型 | 素材 | 视觉关键词 |
+|------|------|------|-----------|
+| @图片1 | 演员 | 林深 | 32岁清瘦男，寸头短发，丹凤眼鼻梁高挺，白色囚服，左腕镣铐疤痕 |
+| @图片2 | 演员 | 虫族战士 | 三米高巨型虫族，六条复肢骨刺，暗褐甲壳，暗红复眼 |
+| @图片3 | 演员 | 虚空种 | 暗紫半透明胶状球体，内部微光流动如星云 |
+| @图片4 | 演员 | 典狱长 | 45岁魁梧男，灰白短发，左眼机械义眼暗红，黑色军装 |
+| @图片5 | 场景 | 记忆剥离室-舱门区 | 白色冷光舱门，暗灰金属壁 |
+| @图片7 | 场景 | K区走廊-全景 | 能量屏障冷蓝光，冷绿荧光灯，灰色金属地面 |
+| @图片10 | 场景 | K区走廊-林深隔间 | 走廊末端隔间，能量屏障正对走廊 |
+| @图片13 | 场景 | 监控室-全景 | 暗色空间，弧形监控屏冷白光 |
+| @图片14 | 场景 | 监控室-终端近景 | 终端蓝光屏，档案界面 |
+| @图片21 | 道具 | 电子镣铐 | 黑色金属环带，蓝色LED条 |
+| @图片22 | 道具 | 能量屏障 | 透明冷蓝光幕，电流纹路 |
+| @图片23 | 道具 | 神经麻痹枪 | 黑色哑光短枪，蓝脉冲口 |
+| @图片24 | 道具 | 监控终端 | 黑色金属操作台，弧形蓝屏 |
+
+## 🎥 视频提示词
+
+### P01 出舱评估
+**时长**：5s
+Style: CG国漫风格画风，电影级光影。Duration: 5s。
+[0-5s] Shot 1: 出舱评估 (close-up→medium shot·static)。Camera: static，medium close-up → medium shot，shallow depth of field f/2.8。Subject: @图片1林深从记忆剥离舱走出，白色冷光从舱内涌出照亮他清瘦的脸——寸头短发在冷光下泛微光，左腕@图片21电子镣铐淡白旧疤痕清晰可见。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting
+
+### P02 K区走廊
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+Style: CG国漫风格画风，电影级光影。Duration: 5s。
+[0-5s] Shot 1: K区走廊 (long shot·tracking)。Camera: tracking 全景跟踪，long shot full body，deep depth of field f/11。Subject: @图片1林深被两名黑衣狱警押送穿过@图片7深渊监狱K区走廊——两侧透明@图片22能量屏障泛冷蓝光，头顶冷绿荧光灯排成线延伸向深处，灰色金属地面有磨损痕迹。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_A 虫族战士
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 虫族战士 (medium shot·dolly-in)。Camera: dolly-in 缓慢推进，medium shot → medium close-up。Subject: @图片2虫族战士在隔间内——三米高巨型人形虫族，暗褐色甲壳泛生物光泽，暗红色复眼，六条复肢末端骨刺随撞击节奏震颤，正在用头撞击@图片22能量屏障——每撞一下屏障泛起冷蓝色波纹。Mood: fear。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_B 虚空种
+**时长**：2s
+@图片（上个视频末帧截图）为首帧。
+[0-2s] Shot 1: 虚空种 (close-up·static)。Camera: static，close-up detail shot。Subject: @图片3虚空种在右侧隔间内——暗紫色半透明胶状球体悬浮旋转，内部无数微光缓慢流动如被困住的星云，表面泛起涟漪。Mood: mystery。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P04_A 推入隔间
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 推入隔间 (medium shot·static)。Camera: static，medium shot。Subject: @图片1林深被狱警推进@图片10走廊末端隔间，@图片22能量屏障在他身后降下关闭。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P04_B 盘腿观察
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 盘腿观察 (medium shot→medium close-up·dolly-in)。Camera: dolly-in 缓慢推进，透过@图片22能量屏障冷蓝光幕拍摄。Subject: @图片1林深盘腿坐在隔间中央，双手放膝盖，目光平稳扫视屏障外的混乱，冷蓝光在他脸上形成半面光影分割——像一个在办公室里准备接诊的医生。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P05 警报响起
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 警报响起 (wide shot·tilt-up)。Camera: tilt-up 低角度仰拍，wide shot establishing。Subject: @图片7走廊天花板——红色警报灯旋转闪烁将灰色走廊染成赤红，走廊尽头@图片22能量屏障如玻璃般炸成无数发光冷蓝碎片。Mood: fear。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P06 虫族冲出
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 虫族冲出 (long shot·side-tracking)。Camera: side-tracking 侧跟，long shot full body。Subject: @图片2虫族战士从隔间冲出——六条复肢在灰色金属地面刮出刺眼火花，直接撞碎虚空种隔间的@图片22能量屏障。@图片3虚空种发出心理攻击尖啸，所有狱警同时痛苦捂头惨叫。Mood: fear。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P07 狱警反击
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 狱警反击 (medium shot·static)。Camera: static，medium shot。Subject: 狱警们端起@图片23神经麻痹枪开火——蓝色电流脉冲打在@图片2虫族甲壳上仅溅起火花。虫族反手一挥，三名狱警被击飞撞在@图片22能量屏障上晕厥。远处更多屏障接连碎裂。Mood: fear。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P08 林深站起
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 林深站起 (medium close-up·static)。Camera: static，medium close-up chest up，透过@图片22能量屏障冷蓝光幕拍摄。Subject: @图片1林深缓缓起身走到屏障前站定——冷蓝光在他脸上形成阴阳分割，眼神平静像在观察一个需要诊断的病例。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P09_A 开口说话
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 开口说话 (two-shot medium shot·static)。Camera: static，two-shot medium shot，@图片1林深面部清晰聚焦，@图片2虫族战士轮廓在背景微虚化。Subject: @图片1林深用平稳低沉的音调对着@图片2虫族战士说话。Dialogue Cue: @音频1（林深）平稳低沉地说："你叫卡尔拉格，对吧？虫巢战争时期的第三军团先锋。七十二场战斗，全胜。每一场战斗后你都会独自回到虫巢边缘待上六个小时——你在等什么？"Narrative: conflict→reveal。Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P09_B 虫族僵住
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 虫族僵住 (close-up·static)。Camera: static，close-up detail shot，shallow depth of field f/2.8。Subject: @图片2虫族战士从攻击状态瞬间僵住——六条复肢悬在半空如被按下暂停键，胸腔暴怒轰鸣转为短促不规则的抽搐（像哽咽），暗褐色甲壳微微颤抖，暗红复眼微微扩张。Mood: surprise。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P10 揭示真相
+**时长**：6s
+@图片（上个视频末帧截图）为首帧。
+[0-6s] Shot 1: 揭示真相 (medium shot→medium close-up·dolly-in)。Camera: dolly-in 缓慢推进，@图片1林深面部清晰聚焦，背景虚化。Subject: @图片1林深继续说语气像在解释常识。Dialogue Cue: @音频1（林深）平静地说："心理学上这叫未完成依恋。虫族的神经结构和人类不同，但情感机制是趋同进化的。你每次战斗其实都是在自杀式冲锋——你不想赢，只是想被杀死，因为活着让你觉得愧疚。"Narrative: reveal→climax。Mood: sadness。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P11 候诊室
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 候诊室 (long shot·dolly-out)。Camera: dolly-out 缓慢后拉，从@图片1林深近景拉远到@图片7走廊全景。Subject: 画面后拉——走廊不再是战场。@图片2虫族战士安静蹲在走廊中央像被驯服的巨兽，@图片3虚空种贴近林深隔间屏障像好奇的孩子。Dialogue Cue: @音频1（林深）微笑说："因为我是心理医生。这也是为什么我不会成为你的第七十三个对手——我想成为你的第一个病人。"Mood: peace。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P12 监控室
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 监控室 (medium shot→close-up·dolly-in)。Camera: dolly-in 缓慢推进，medium shot → close-up，shallow depth of field f/2.8。Subject: @图片4典狱长坐在@图片13监控室中央——咖啡杯停在半空，他盯着@图片24监控终端屏幕上的K区走廊画面。暗色空间里数十块监控屏幕的冷白光从他面前打来，左眼机械义眼泛暗红微光。Mood: mystery。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P13 改写评估
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 改写评估 (extreme close-up·static)。Camera: static，extreme close-up detail shot，shallow depth of field f/2.8。Subject: @图片24监控终端屏幕特写——蓝光从屏幕打在典狱长脸上，屏幕显示档案备注：「建议极度隔离。此人最危险的武器不是任何已知技术——是他会让你主动告诉他你最深的秘密，然后为此感谢他。」@图片4典狱长手指悬停键盘上方整整五秒后开始打字。画面定格：备注栏新增——「威胁等级重新评估：无法评估。」End Frame: 终端屏幕上"无法评估"四个字在蓝光中静止。禁止文字、字幕、LOGO、水印。(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting

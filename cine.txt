@@ -1,0 +1,98 @@
+# 分镜师 - 修真界奶茶店 第1章
+CG国漫风格。
+
+素材对应表：
+@图片1 演员 陆小满 | 24岁女，马尾辫圆脸杏仁眼，粉色围裙
+@图片2 演员 杂役阿福 | 约18岁男，灰色道袍大一号瘦小雀斑
+@图片3 演员 丹霞掌门 | 约50岁男，白发束冠红色道袍金边长须
+@图片4 场景 丹霞宗食堂-全景 | 暖黄灶火斜射阳光木桌
+@图片5 场景 丹霞宗食堂-灶台区 | 灶台近景茶叶罐牛奶壶
+@圖片21 道具 搅拌器 | 不锈钢手持搅拌器
+@圖片22 道具 聚灵散碗 | 黑色粗陶碗
+@圖片23 道具 珍珠聚灵茶杯 | 透明玻璃杯淡金灵雾奶盖
+
+### P01 穿越醒来
+**时长**：5s
+Style: CG国漫风格画风，电影级光影。Duration: 5s。
+[0-5s] Shot 1: 穿越醒来 (close-up→medium shot·static)。Camera: static，close-up → medium shot。
+Subject: @图片21搅拌器不锈钢表面映出@图片1陆小满茫然的脸。她睁开眼，面前是@图片4丹霞宗食堂全景——暖黄灶火在墙角跳动，斜射阳光切出明暗光柱。Mood: surprise。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P02 聚灵散的真相
+**时长**：6s
+@图片（上个视频末帧截图）为首帧。
+[0-6s] Shot 1: 聚灵散真相 (two-shot medium shot·static)。Camera: static，two-shot medium shot。
+Subject: @图片2杂役(阿福)递过来一碗黑糊糊的@图片22聚灵散。@图片1陆小满闻了一下差点吐了。"你们每天就喝这个？"
+Dialogue Cue: @音频1（陆小满）难以置信地问："你们每天就喝这个？"
+Dialogue Cue: @音频2（杂役阿福）无奈地说："筑基之前只能喝聚灵散。我已经喝了三年了。"
+Mood: surprise。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_A 发现食材
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 发现食材 (medium shot·follow)。Camera: follow 跟，medium shot。
+Subject: @图片1陆小满快步走到@图片5灶台前，打开油纸包闻到清冽茶香，手指划过茶叶罐牛奶壶木薯粉袋——眼睛亮了，穿越后第一次露出笑容。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_B 系紧围裙
+**时长**：2s
+@图片（上个视频末帧截图）为首帧。
+[0-2s] Shot 1: 系紧围裙 (medium shot·static)。Camera: static，medium shot。
+Subject: @图片1陆小满系紧粉色围裙，手握@图片21搅拌器。@图片2杂役(阿福)困惑退后两步。
+Dialogue Cue: @音频1（陆小满）干脆地说："让开。"
+Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P04 灵火炒茶
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 灵火炒茶 (close-up·static)。Camera: static，close-up detail shot。
+Subject: @图片1陆小满在@图片5灶台前手炒茶叶。灵火淡金色随她手腕节奏跳动，茶叶从暗绿变成泛金光翠绿——每片像被镀了极薄金箔。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P05 奶盖诞生
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 奶盖诞生 (close-up·static)。Camera: static，close-up detail shot。
+Subject: @图片21搅拌器在杯中高速旋转。牛奶变成绵密灵雾奶盖，乳白泡沫蒸腾淡金灵雾，暖黄灶火映照下冷暖光影交织。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P06 珍珠成型
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 珍珠成型 (close-up·static)。Camera: static，close-up detail shot。
+Subject: 珍珠在灵泉水里从浑浊白变半透明——每颗内部淡金灵气旋缓慢转动像微型星系。逆光下边缘泛冷白高光，中心温润暖金。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P07 第一口
+**时长**：6s
+@图片（上个视频末帧截图）为首帧。
+[0-6s] Shot 1: 第一口 (two-shot medium close-up·static)。Camera: static，two-shot medium close-up。
+Subject: @图片23珍珠聚灵茶杯——三层分明像艺术品：底层泛金光茶汤，中层半透明珍珠，顶层蒸腾灵雾奶盖。@图片1陆小满推到@图片2杂役(阿福)面前。杂役闭眼喝下——眼睛瞬间瞪大，手指发光淡金灵光从指尖溢出画细小光弧。
+Dialogue Cue: @音频1（陆小满）自信地说："这叫珍珠聚灵茶。喝。"
+Mood: surprise。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P08 突破
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 突破 (medium→wide shot·follow→static)。Camera: follow跟→static，medium shot→wide shot。
+Subject: @图片2杂役(阿福)连滚带爬冲出食堂，盘腿坐在@图片7院子里。淡金色灵气柱冲天而起——整个丹霞宗都能看到。练气九层→筑基。周围修士惊呼围观。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P09 掌门驾到
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 掌门驾到 (wide→medium shot·tilt-down→static)。Camera: tilt-down仰拍→平拍，wide→medium shot。
+Subject: @图片3丹霞掌门从天而降落在@图片4食堂门口，激起一阵气浪，红色道袍金边在夕阳下熠熠生辉。他看着@图片1陆小满和@图片21搅拌器沉默很久。"你这杯茶——多少灵石一杯？"
+Dialogue Cue: @音频3（丹霞掌门）沉稳地问："你这杯茶——多少灵石一杯？"
+Mood: mystery。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P10 定价
+**时长**：6s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 定价 (medium close-up·static)。Camera: static，medium close-up chest up。
+Subject: @图片1陆小满微笑面对掌门。门外已围了几十个弟子。"开业特惠——第一杯免费。第二杯起，五枚灵石。"切：食堂外三千弟子排长队，暖黄夕阳洒在人群，每人手中@图片23珍珠聚灵茶杯在逆光中泛淡金灵雾。
+Dialogue Cue: @音频1（陆小满）微笑自信地说："开业特惠——第一杯免费。第二杯起，五枚灵石。"
+Narrative: resolution。Mood: bright。
+End Frame: 陆小满微笑特写，身后夕阳下三千弟子排队喝茶。
+禁止文字、字幕、LOGO、水印。
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting

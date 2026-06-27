@@ -285,8 +285,8 @@ def timecode_to_seconds(tc: str) -> float:
 def extract_image_ranges(text: str) -> dict:
     """Extract @图片 range boundaries from @编号体系总览 table.
     Returns dict with 'actor_end', 'scene_start', 'scene_end', 'prop_start'.
-    Defaults to (4, 5, 20, 21) if table not found."""
-    defaults = {'actor_end': 4, 'scene_start': 5, 'scene_end': 20, 'prop_start': 21}
+    v4.0: actors take 2 @图片 each (S2a + S2b). Defaults assume 3 actors."""
+    defaults = {'actor_end': 6, 'scene_start': 7, 'scene_end': 22, 'prop_start': 23}
     section = _find_table_section(text, '@编号体系总览')
     if not section:
         return defaults

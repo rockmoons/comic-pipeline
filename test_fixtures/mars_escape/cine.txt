@@ -1,0 +1,239 @@
+## 🎭 素材对应表
+
+| 引用编号 | 素材类型 | 角色ID/场景ID | 对应素材 | 视觉关键词 |
+|---------|---------|-------------|---------|-----------|
+| @图片1 | 演员 | CHAR_01_苏焰 | 苏焰 | 28岁女战士，深黑寸头，左眉骨电弧疤，琥珀瞳，178cm精悍体型 |
+| @图片2 | 演员 | CHAR_02_变异螳螂蝎 | 变异螳螂蝎 | 3米高，暗褐甲壳，六条节肢，环形齿口器，淡紫生物荧光 |
+| @图片4 | 场景 | SCENE_01_火星科考站医疗舱 | 火星科考站医疗舱 | 星际工业金属，暗红应急光，全息蓝屏，被撕滑门 |
+| @图片7 | 场景 | SCENE_02_科考站地下走廊 | 科考站地下走廊 | 干粉弥漫，照片墙，赤红光观察窗，闸门 |
+| @图片10 | 道具 | PROP_01_钛合金支架 | 钛合金支架 | 半臂长钛合金管，锯齿断口，磨砂涂层 |
+| @图片11 | 道具 | PROP_02_储物柜门板 | 储物柜门板(临时盾牌) | 合金板60cm×40cm，爪击凹痕 |
+
+## P01 血色苏醒
+**时长**：5s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 苏醒睁眼 (extreme close-up face shot)。
+Camera: fixed, extreme close-up, f/1.4 shallow depth of field。
+Subject: @图片1苏焰 eyes snap open in dim red emergency light, amber pupils rapidly contract, sweat on forehead, left eyebrow scar visible。
+Narrative: setup。
+Intent: 主角苏醒定调紧张。
+Mood: fear。
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P02 死亡警报
+**时长**：4s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 4s。
+
+[0-4s] Shot 1: 警报屏幕 (close-up to medium shot)。
+Camera: slow dolly-out, close-up to medium shot, f/5.6。
+Subject: @图片1苏焰 gaze shifts to holographic display, 43 red alert messages on blue screen, crimson light reflecting in @图片1苏焰 amber eyes。
+Narrative: reveal。
+Intent: 展示处境。
+Mood: tension。
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P03 声音入侵
+**时长**：5s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 警觉转向 (close-up profile)。
+Camera: fixed, close-up profile, f/2.8。
+Subject: @图片1苏焰 head snaps toward sealed door, side profile frozen in rigid alertness, red light carving shadows across @图片1苏焰 jawline。
+Dialogue Cue: @音频1（苏焰）低声："操。"
+Narrative: conflict。
+Intent: 引入怪兽。
+Mood: fear。
+Audio SFX: wet-dragging-approaching, heavy-breathing
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P04 拔针离床
+**时长**：4s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 4s。
+
+[0-4s] Shot 1: 翻滚下床 (medium shot tracking)。
+Camera: tracking, medium shot, f/5.6。
+Subject: @图片1苏焰 rips out IV tube, rolls off bed, bare foot on cold metal floor, @图片1苏焰 face contorts with rib pain。
+Narrative: conflict。
+Intent: 逃生动作。
+Mood: tension。
+Audio SFX: iv-tube-tearing, barefoot-metal-thud
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P05 求生装备
+**时长**：4s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 4s。
+
+[0-4s] Shot 1: 捡起武器 (near shot low angle)。
+Camera: fixed low-angle, near shot, f/2.8。
+Subject: @图片1苏焰 grabs @图片11储物柜门板 as shield, picks up @图片10钛合金支架, bruise visible through torn vest。
+Narrative: setup。
+Intent: 武装准备。
+Mood: tension。
+Audio SFX: metal-scraping, tool-grabbing
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P06 门被撕开
+**时长**：6s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 6s。
+
+[0-6s] Shot 1: 利爪撕裂 (close-up dolly-in to medium shot)。
+Camera: slow dolly-in, close-up to medium, f/5.6。
+Subject: @图片4场景 door pried open, three massive dark-purple claws push through, bioluminescent glow at joints, claws grip door edge and tear alloy door apart, @图片1苏焰 braces behind @图片11 in foreground。
+Narrative: climax。
+Intent: 怪兽现身。
+Mood: fear。
+Audio SFX: metal-tearing-shriek, door-frame-straining
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致，保持场景风格与参考图统一。
+
+## P07 怪兽全貌
+**时长**：7s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 7s。
+
+[0-7s] Shot 1: 怪物全貌 (wide shot slow tilt-up)。
+Camera: slow tilt-up, wide shot, f/11 deep focus。
+Subject: @图片2变异螳螂蝎 revealed through torn doorway, three meters tall, six limbs spread, dark-brown carapace seams oozing purple bioluminescence, circular mouth opens with ringed teeth。
+Narrative: reveal。
+Intent: 全貌恐惧。
+Mood: fear。
+Audio SFX: subsonic-vibration, wet-mouth-opening
+保持@图片2场景风格与参考图统一。
+
+## P08 盾牌撞击
+**时长**：4s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 4s。
+
+[0-4s] Shot 1: 盾击反击 (medium shot tracking)。
+Camera: tracking, medium shot, f/5.6。
+Subject: @图片1苏焰 charges forward, slams @图片11储物柜门板 against claw, @图片1苏焰 leaps backward with rebound, snatching @图片10钛合金支架。
+Narrative: conflict。
+Intent: 首次战斗接触。
+Mood: anger。
+Audio SFX: shield-thud-impact, footsteps-backward
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P09 感知追踪
+**时长**：6s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 6s。
+
+[0-6s] Shot 1: 触须与洞察 (close-up切换 to near shot)。
+Camera: truck-left, close-up to medium close-up, f/2.8。
+Subject: monster head rotates slowly, dozens of tentacles unfolding like sea anemone smelling air vibrations. @图片1苏焰 amber pupils contract into slits, @图片1苏焰 eyes lock onto waving tentacles。
+Dialogue Cue: @音频1（苏焰）冷静："没眼睛。靠震动找目标。"
+Narrative: reveal。
+Intent: 看穿弱点。
+Mood: mystery。
+Audio SFX: tentacle-bio-friction, creature-sniffing
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P10 声东击西
+**时长**：6s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 6s。
+
+[0-6s] Shot 1: 砸屏智取 (medium close-up tracking)。
+Camera: tracking, medium close-up, f/5.6。
+Subject: @图片1苏焰 smashes @图片10钛合金支架 into holographic display, blue electric arc illuminates @图片1苏焰 left face, scar etched sharp by rim light, glass shards scatter. Monster head jerks toward sound, mouth opens wider。
+Narrative: climax。
+Intent: 声东击西。
+Mood: anger。
+Audio SFX: screen-explosion, glass-shards-scattering
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P11 滑铲逃生
+**时长**：5s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 滑铲穿越 (low-angle tracking)。
+Camera: tracking, low-angle, f/2.8。
+Subject: @图片1苏焰 drops body low, slides across metal floor beneath creature limbs, @图片1苏焰 face contorts with rib pain but jaw clenched, slow motion through electric fire。
+Narrative: climax。
+Intent: 绝境逃生。
+Mood: anger。
+Audio SFX: body-sliding-metal, muffled-groan
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P12 干粉迷雾
+**时长**：5s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 干粉淹没 (wide shot)。
+Camera: fixed, wide shot, f/11 deep focus。
+Subject: @图片1苏焰 exits medical bay at @图片7场景, smashes fire button, dry powder erupts flooding corridor white, @图片1苏焰 silhouette shrinks into mist。
+Narrative: resolution。
+Intent: 智取逃脱。
+Mood: tension。
+Audio SFX: fire-suppression-release, monster-disoriented-growl
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P13 血色脚印
+**时长**：7s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 7s。
+
+[0-7s] Shot 1: 走廊奔跑与照片 (wide tracking to close-up pan)。
+Camera: tracking behind, wide shot to slow pan-left close-up, f/8 to f/2.8。
+Subject: @图片1苏焰 runs barefoot through @图片7场景 fog, bloodied footprints behind, corridor walls crew group photos flickering in emergency light, smiling faces glowing eerily warm in red light。
+Narrative: setup。
+Mood: melancholy。
+Audio SFX: barefoot-running-metal, emergency-light-humming
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P14 闸门锁死
+**时长**：5s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 5s。
+
+[0-5s] Shot 1: 锁死喘息 (medium shot)。
+Camera: fixed, medium shot, f/5.6。
+Subject: @图片1苏焰 pulls down heavy emergency hatch at end of @图片7场景, locks it, massive impact from other side dents door inward, @图片1苏焰 slides down gasping, looks at bruised ribs。
+Narrative: climax。
+Intent: 绝境暂缓。
+Mood: tension。
+Audio SFX: hatch-lock-mechanism, massive-impact-dent
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+
+## P15 凝视血色荒原
+**时长**：8s
+**提示词**：
+Style: (Modern Chinese Cyberpunk:1.3), (dunhuang color palette:1.1), CG国漫，电影级光影。
+Duration: 8s。
+
+[0-8s] Shot 1: 伤势与窗外火星 (close-up to wide slow dolly-back)。
+Camera: fixed close-up to slow dolly-back wide, f/2.8 to f/11。
+Subject: @图片1苏焰 wipes blood from mouth, gazes at dark purple bruise covering left ribcage, then looks up toward observation window——endless red martian desert through sandstorm outside, crimson cold light washing over @图片1苏焰 backlit silhouette, @图片1苏焰 stands up, amber eyes glinting。
+Dialogue Cue: @音频1（苏焰）低哑："天玄基地那些狗日的到底在这里养了什么。"
+Narrative: climax。
+Intent: 结尾钩子。
+Mood: hope。
+Audio SFX: mars-wind-howling, blood-droplet
+End Frame: @图片1苏焰 standing silhouette against red martian horizon through observation window.
+保持 @图片1 角色面部特征、体型、服饰与参考图完全一致。
+禁止文字、字幕、LOGO、水印。
+
+✅ 分镜提示词已全部生成！15条 Seedance 2.0 提示词。@引用已确认全部在资产库中存在。SRT时长校验完成。

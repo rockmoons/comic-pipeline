@@ -37,8 +37,8 @@ def _p_sort_key(p: str) -> Tuple[int, str]:
 
 def extract_durations(text: str) -> List[int]:
     """Extract duration values only from director's **时长建议** fields (not camera specs)."""
-    matches = re.findall(r'\*\*时长建议\*\*[：:]\s*(\d+)\s*s', text)
-    return [int(m) for m in matches]
+    matches = re.findall(r'\*\*时长建议\*\*[：:]\s*(\d+(?:\.\d+)?)\s*s', text)
+    return [int(float(m)) for m in matches]
 
 
 def extract_at_images(text: str) -> List[int]:
@@ -117,7 +117,7 @@ def extract_srt_total_duration(text: str) -> Optional[float]:
     if not m:
         return None
     tc = m.group(1)
-    return timecode_to_seconds(tc)
+    return timecode_to_seconds_v4(tc)
 
 
 def extract_story_word_count(text: str) -> Optional[int]:

@@ -137,14 +137,23 @@ def check_shot_variety(director_text: str) -> CheckResult:
 
 
 def check_bgm_forbidden(director_text: str) -> CheckResult:
-    """Check 10: No BGM/music keywords in sound effects."""
-    forbidden = ['BGM', '配乐', '旋律', '背景音乐', '管弦', '钢琴', '竖笛']
-    found = [w for w in forbidden if w in director_text]
+    """Check 10: No vague music descriptions in sound effects field (v4.0).
+    
+    v4.0 allows BGM Cue field with specific musical texture terms.
+    This check only flags vague descriptions like '播放动听的音乐'."""
+    # Exclude BGM Cue field content from check
+    text_without_bgm_cue = re.sub(r'\*\*BGM Cue\*\*[：:].*', '', director_text)
+    
+    # v4.0: only flag genuinely vague music descriptions, not the BGM Cue header
+    vague_patterns = ['播放.*音乐', '响起.*音乐', '此时.*音乐', '动听的音乐']
+    found = [w for w in vague_patterns if re.search(w, text_without_bgm_cue)]
+    
     if not found:
         return CheckResult("第一层：单文件结构", 10, "音效BGM检测",
-                          Status.PASS, "0违规")
+                          Status.PASS, "0违规（v4.0: BGM Cue字段允许）")
     return CheckResult("第一层：单文件结构", 10, "音效BGM检测",
-                      Status.FAIL, f"含禁用词：{', '.join(found)}", "替换为物理音源")
+                      Status.WARN, f"含模糊音乐描述：{found}",
+                      "替换为具体物理音源或使用BGM Cue字段")
 
 
 def check_cite_start_forbidden(director_text: str) -> CheckResult:

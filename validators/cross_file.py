@@ -244,8 +244,9 @@ def check_dialogue_char_name_match(cine_text: str, art_text: str) -> CheckResult
     cues = extract_dialogue_cues(cine_text)
     missing = set()
     for cue in cues:
-        if cue['char_name'] not in voice_names:
-            missing.add(cue['char_name'])
+        char_name = cue.get('char_name', '')
+        if char_name and char_name not in voice_names:
+            missing.add(char_name)
     if not missing:
         return CheckResult("第二层：跨文件交叉", 24, "美术→分镜 DialogueCue角色",
                           Status.PASS, "全部角色名在音色库中存在")
@@ -258,7 +259,8 @@ def check_scene_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
     """Check 25: Cine scene @references exist in Art S3 scene images.
     Scene references are @图片N where N is in the scene grid range."""
     ranges = extract_image_ranges(art_text)
-    scene_lo, scene_hi = ranges['scene_start'], ranges['scene_end']
+    scene_lo = ranges.get('scene_start', 5)
+    scene_hi = ranges.get('scene_end', 20)
     
     art_scene_nums = set()
     for num, _ in extract_scene_grid_names(art_text):
@@ -290,7 +292,7 @@ def check_scene_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
 def check_prop_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
     """Check 26: Cine prop @references exist in Art S4 prop images."""
     ranges = extract_image_ranges(art_text)
-    prop_lo = ranges['prop_start']
+    prop_lo = ranges.get('prop_start', 21)
     
     prop_nums = set()
     for m in re.finditer(r'@[图圖]片(\d+)', art_text):
@@ -327,9 +329,10 @@ def check_audio_char_alignment(cine_text: str, art_text: str) -> CheckResult:
     cues = extract_dialogue_cues(cine_text)
     mismatches = []
     for cue in cues:
-        expected_role = audio_role_map.get(cue['audio_num'], '')
-        if expected_role and expected_role != cue['char_name']:
-            mismatches.append(f"@音频{cue['audio_num']}={expected_role}≠DialogueCue={cue['char_name']}")
+        expected_role = audio_role_map.get(cue.get('audio_num', ''), '')
+        char_name = cue.get('char_name', '')
+        if expected_role and char_name and expected_role != char_name:
+            mismatches.append(f"@音频{cue.get('audio_num','?')}={expected_role}≠DialogueCue={char_name}")
     if not mismatches:
         return CheckResult("第二层：跨文件交叉", 27, "美术→分镜 @音频角色对齐",
                           Status.PASS, "全部对齐")
@@ -439,11 +442,13 @@ def check_id_propagation(director_text: str, art_text: str, cine_text: str) -> C
     dir_scene_ids = set()
     if dir_json:
         for c in dir_json.get('characters', []):
-            if c.get('character_id'):
-                dir_char_ids.add(c['character_id'])
+            cid = c.get('character_id', '')
+            if cid:
+                dir_char_ids.add(cid)
         for s in dir_json.get('scenes', []):
-            if s.get('scene_id'):
-                dir_scene_ids.add(s['scene_id'])
+            sid = s.get('scene_id', '')
+            if sid:
+                dir_scene_ids.add(sid)
     
     # If no JSON, skip ID check
     if not dir_char_ids and not dir_scene_ids:

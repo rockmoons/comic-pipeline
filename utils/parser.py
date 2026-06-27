@@ -1,7 +1,18 @@
 """Parser: extract structured data from LLM-generated pipeline output text."""
 
 import re
+import uuid
 from typing import List, Dict, Optional, Set, Tuple
+
+
+def generate_session_id() -> str:
+    """Generate a unique session ID for file isolation in concurrent pipeline runs.
+    
+    Production orchestrators must use this (or equivalent) to avoid multiple users
+    overwriting each other's story.txt / director.txt / art.txt / cine.txt files.
+    All intermediate files should be stored as {session_id}_story.txt etc.
+    """
+    return uuid.uuid4().hex[:12]
 
 
 def extract_p_numbers(text: str) -> List[str]:
@@ -407,3 +418,34 @@ def timecode_to_seconds_v4(tc: str) -> float:
     s = int(parts[2])
     f = int(parts[3])
     return h * 3600 + mi * 60 + s + f / 25.0
+
+
+# --- v4.0 API retry utility (for future Orchestrator use) ---
+
+import time as _time
+
+def retry_with_backoff(func, max_retries=5, base_delay=2.0, max_delay=60.0):
+    """Exponential backoff retry wrapper for LLM API calls.
+    
+    Handles transient failures common with LLM APIs:
+    - 429 Rate Limit Exceeded
+    - 503 Service Unavailable
+    - Network timeouts / Connection errors
+    
+    Delay progression: 2s → 4s → 8s → 16s → 32s (capped at max_delay).
+    After max_retries, re-raises the last exception.
+    
+    Usage:
+        result = retry_with_backoff(lambda: openai.chat.completions.create(...))
+    """
+    last_exception = None
+    for attempt in range(max_retries + 1):
+        try:
+            return func()
+        except Exception as e:
+            last_exception = e
+            if attempt == max_retries:
+                break
+            delay = min(base_delay * (2 ** attempt), max_delay)
+            _time.sleep(delay)
+    raise last_exception

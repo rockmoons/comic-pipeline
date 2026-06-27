@@ -17,7 +17,12 @@ sys.path.insert(0, ROOT)
 
 
 def cmd_check(path: str):
-    """Validate a pipeline output directory containing story/director/art/cine.txt."""
+    """Validate a pipeline output directory containing story/director/art/cine.txt.
+    
+    ⚠️ 生产环境并发隔离：本函数读取固定文件名（story.txt 等）。在线上多用户并发场景下，
+    必须使用 UUID 隔离存储（{session_id}_story.txt），避免用户 A 的输出覆盖用户 B。
+    参见 utils/parser.py → generate_session_id()。
+    """
     from validate_pipeline import run_validation, read_file
     from utils.reporter import format_report, format_json
     

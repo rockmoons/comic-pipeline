@@ -80,26 +80,54 @@ def parse_stdin_input(text: str) -> tuple:
 
 
 def _heal_json(text: str) -> str:
-    """Attempt to auto-heal common JSON errors from LLM output.
-    
-    Handles: trailing commas, missing closing brackets/braces, markdown artifacts.
-    """
+    """Attempt to auto-heal common JSON errors from LLM output."""
     # Strip markdown code fence artifacts
     text = re.sub(r'^```json\s*', '', text)
     text = re.sub(r'\s*```$', '', text)
+    text = text.strip()
     
-    # Count bracket balance
-    open_braces = text.count('{') - text.count('}')
-    open_brackets = text.count('[') - text.count(']')
+    # Step 1: Add missing closing brackets using stack-based tracking
+    stack = []
+    in_string = False
+    escape = False
+    for ch in text:
+        if escape:
+            escape = False
+            continue
+        if ch == '\\':
+            escape = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch == '{':
+            stack.append('}')
+        elif ch == '[':
+            stack.append(']')
+        elif ch == '}':
+            if stack and stack[-1] == '}':
+                stack.pop()
+            elif '}' in stack:
+                # Interleaved close: find and remove the matching brace
+                stack.reverse()
+                stack.remove('}')
+                stack.reverse()
+        elif ch == ']':
+            if stack and stack[-1] == ']':
+                stack.pop()
+            elif ']' in stack:
+                stack.reverse()
+                stack.remove(']')
+                stack.reverse()
     
-    # Remove trailing comma before closing
-    text = text.rstrip()
-    if text.endswith(','):
-        text = text[:-1]
+    # Close in reverse order (inner brackets first)
+    text += ''.join(reversed(stack))
     
-    # Add missing closing brackets
-    text += '}' * max(0, open_braces)
-    text += ']' * max(0, open_brackets)
+    # Step 2: Strip trailing commas before closing brackets
+    text = re.sub(r',(\s*[}\]])', r'\1', text)
+    text = re.sub(r',\s*$', '', text)
     
     return text
 

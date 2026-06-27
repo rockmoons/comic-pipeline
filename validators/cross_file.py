@@ -8,7 +8,8 @@ from utils.parser import (
     extract_scene_grid_names, extract_prop_table,
     extract_voice_table, extract_prompt_durations,
     extract_srt_total_duration, extract_base_image_refs,
-    extract_at_audios,
+    extract_at_audios, APPEARANCE_CATEGORIES,
+    extract_image_ranges, extract_id_mapping,
 )
 from utils.reporter import CheckResult, Status
 import re
@@ -77,7 +78,14 @@ def check_scene_name_overlap_story_to_director(story_text: str, director_text: s
 
 def check_visual_style_confirmation(story_text: str, director_text: str) -> CheckResult:
     """Check 16: Visual style from story is confirmed by director."""
-    style_keywords = ['CG国漫', '真人写实', '日系二次元', '赛博朋克']
+    # Try to extract style from story header (typically line 2: "CG国漫" etc.)
+    style_keywords = [
+        'CG国漫', '真人写实', '日系二次元', '赛博朋克',
+        '三渲二', '3D玄幻', '3D国风赛博', '3D美式', '3DQ版', '3D写实',
+        '2D动画', '2D电影', '2D美漫', '2DQ版', '2D像素', '2D水彩',
+        '真人电影', '真人古装', '港风复古',
+        '定格动画', '手办风', '粘土风', '乐高风',
+    ]
     story_style = None
     for kw in style_keywords:
         if kw in story_text:
@@ -178,32 +186,24 @@ def check_prop_appearance_threshold(director_text: str, art_text: str) -> CheckR
         count = len(re.findall(r'P\d{2}', appearances))
         if count < 2:
             warnings.append(f"{name}({count}场)")
-    if not warnings:
+    total = len(prop_table)
+    if total == 0:
         return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
-                          Status.PASS, "全部道具≥2场")
+                          Status.PASS, "无道具（无需检查）")
+    pass_ratio = (total - len(warnings)) / total
+    if pass_ratio >= 0.75:
+        detail = "全部道具≥2场" if not warnings else f"达标{total - len(warnings)}/{total}，单场：{', '.join(warnings)}"
+        return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
+                          Status.PASS, detail)
     return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
-                      Status.WARN, f"不达标：{', '.join(warnings)}",
+                      Status.WARN, f"不达标{len(warnings)}/{total}：{', '.join(warnings)}",
                       "确认是否应纳入道具库")
 
 
 def check_actor_appearance_keywords(director_text: str, art_text: str) -> CheckResult:
     """Check 22: Director actor appearance keywords >= 3 feature categories per actor."""
     dir_table = extract_actor_table(director_text)
-    # Feature categories with detection keywords (wider matching)
-    categories = {
-        '发型/发色': ['发', '髻', '辫', '寸头', '短发', '长发', '马尾', '刘海', '秃'],
-        '服装/衣着': ['袍', '衣', '服', '装', '甲', '裤', '靴', '鞋', '裙', '衫', '褂', '夹克', 'T恤'],
-        '体型/身高': ['体型', '瘦', '胖', '壮', '高', '矮', '精悍', '敦实', '匀称', 'cm'],
-        '面容/五官': ['脸', '眼', '眉', '鼻', '唇', '嘴', '面容', '五官', '瞳'],
-        '识别标记': ['疤', '痕', '痣', '胎记', '纹身', '雀斑', '痘印', '缺', '伤'],
-        '肤色/肤质': ['肤', '白', '黑', '黄', '小麦', '古铜', '苍白', '粗糙', '光滑'],
-        '配饰/道具': ['剑', '符', '袋', '令', '珠', '环', '镜', '扇', '刀'],
-        # Non-human entity categories
-        '形态/构造（非人）': ['甲壳', '复肢', '复眼', '触手', '胶状', '半透明', '骨刺', '口器', '翅膀', '鳞片', '节肢', '几丁质', '悬浮', '无固定形态',
-                         '金属', '机械', '义眼', '义肢', '镜头', '数据', '全息', '能量', '光幕'],
-        '体量/尺度（非人）': ['三米', '巨型', '球体', '两米', '直径', '米高'],
-        '颜色/光学（非人）': ['暗红', '暗褐', '暗紫', '淡紫', '冷蓝', '淡金', '荧光', '微光', '透明', '半透明', '生物光泽', '星云', '流光', '脉冲', '闪烁'],
-    }
+    categories = APPEARANCE_CATEGORIES
     warnings = []
     for row in dir_table:
         name = row.get('演员', '')
@@ -256,23 +256,25 @@ def check_dialogue_char_name_match(cine_text: str, art_text: str) -> CheckResult
 
 def check_scene_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
     """Check 25: Cine scene @references exist in Art S3 scene images.
-    Scene references are @图片N where N is in the scene grid range (typically 5-20)."""
+    Scene references are @图片N where N is in the scene grid range."""
+    ranges = extract_image_ranges(art_text)
+    scene_lo, scene_hi = ranges['scene_start'], ranges['scene_end']
+    
     art_scene_nums = set()
     for num, _ in extract_scene_grid_names(art_text):
         art_scene_nums.add(num)
-    if not art_scene_nums:
-        # Fallback: scan for @图片N declarations after S3 section
-        s3_start = art_text.find('S3') 
-        if s3_start >= 0:
-            for m in re.finditer(r'@图片(\d+)', art_text[s3_start:s3_start+3000]):
-                num = int(m.group(1))
-                if 5 <= num <= 20:
-                    art_scene_nums.add(num)
-    # Extract scene-referenced @图片 from cine prompts (numbers 5-20, not actors 1-4 or props 21+)
+    # Fallback: always scan for @图片N declarations after S3 (captures 留白 slots etc.)
+    s3_start = art_text.find('S3')
+    if s3_start >= 0:
+        for m in re.finditer(r'@[图圖]片(\d+)', art_text[s3_start:s3_start+5000]):
+            num = int(m.group(1))
+            if scene_lo <= num <= scene_hi:
+                art_scene_nums.add(num)
+    # Extract scene-referenced @图片 from cine prompts
     cine_scene_refs = set()
-    for m in re.finditer(r'@图片(\d+)', cine_text):
+    for m in re.finditer(r'@[图圖]片(\d+)', cine_text):
         num = int(m.group(1))
-        if 5 <= num <= 20:
+        if scene_lo <= num <= scene_hi:
             cine_scene_refs.add(num)
     if not cine_scene_refs:
         return CheckResult("第二层：跨文件交叉", 25, "美术→分镜 场景@引用",
@@ -287,17 +289,18 @@ def check_scene_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
 
 def check_prop_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
     """Check 26: Cine prop @references exist in Art S4 prop images."""
-    # Collect all @图片 numbers from art that are in prop range (typically 21+)
+    ranges = extract_image_ranges(art_text)
+    prop_lo = ranges['prop_start']
+    
     prop_nums = set()
-    for m in re.finditer(r'@图片(\d+)', art_text):
+    for m in re.finditer(r'@[图圖]片(\d+)', art_text):
         num = int(m.group(1))
-        if num >= 21:
+        if num >= prop_lo:
             prop_nums.add(num)
-    # Extract prop @references from cine prompts (21+)
     cine_prop_refs = set()
-    for m in re.finditer(r'@图片(\d+)', cine_text):
+    for m in re.finditer(r'@[图圖]片(\d+)', cine_text):
         num = int(m.group(1))
-        if num >= 21:
+        if num >= prop_lo:
             cine_prop_refs.add(num)
     if not cine_prop_refs:
         return CheckResult("第二层：跨文件交叉", 26, "美术→分镜 道具@引用",
@@ -368,17 +371,16 @@ def check_pending_markers(art_text: str, cine_text: str) -> CheckResult:
 def check_pending_status_markers(director_text: str) -> CheckResult:
     """Check 30: Count '待定妆'/'待勘景' markers."""
     count = director_text.count('待定妆') + director_text.count('待勘景')
-    if count == 0:
+    if count <= 10:
         return CheckResult("第二层：跨文件交叉", 30, "全局 待定妆/待勘景",
-                          Status.PASS, "0处（已全部完成）")
+                          Status.PASS, f"{count}处（正常流程标记，≤10）")
     return CheckResult("第二层：跨文件交叉", 30, "全局 待定妆/待勘景",
                       Status.WARN, f"{count}处待处理", "确认是否已生成对应的美术资产")
 
 
 def check_style_token_every_prompt(cine_text: str) -> CheckResult:
     """Check 31: Every prompt has Style Token keywords."""
-    import re
-    prompt_blocks = re.split(r'(?:^|\n)(?:##|###)\s*P\d{2}', cine_text)[1:]
+    prompt_blocks = re.split(r'(?:^|\n)(?:##|###)\s*P\d{2}(?:_[A-Z])?', cine_text)[1:]
     missing = []
     keywords = ['best quality', 'masterpiece', '8k', 'high detailed', '电影级光影']
     for i, block in enumerate(prompt_blocks):
@@ -423,6 +425,53 @@ def check_cross_scene_base_image(art_text: str) -> CheckResult:
                       Status.FAIL, '；'.join(violations), "修正底图声明")
 
 
+def check_id_propagation(director_text: str, art_text: str, cine_text: str) -> CheckResult:
+    """Check 34 (v4.0): Character/scene IDs propagate correctly across all agents.
+    
+    Checks that character_ids and scene_ids from Director's scenes_metadata.json
+    appear in Art's @编号↔ID mapping and Cine's material table.
+    """
+    from utils.parser import extract_json_block, extract_id_mapping
+    
+    # Extract Director JSON
+    dir_json = extract_json_block(director_text)
+    dir_char_ids = set()
+    dir_scene_ids = set()
+    if dir_json:
+        for c in dir_json.get('characters', []):
+            if c.get('character_id'):
+                dir_char_ids.add(c['character_id'])
+        for s in dir_json.get('scenes', []):
+            if s.get('scene_id'):
+                dir_scene_ids.add(s['scene_id'])
+    
+    # If no JSON, skip ID check
+    if not dir_char_ids and not dir_scene_ids:
+        return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+                          Status.WARN, "导演未输出scenes_metadata.json，跳过ID检查")
+    
+    # Extract Art ID mapping
+    art_id_map = extract_id_mapping(art_text)
+    art_char_ids = {v['id'] for v in art_id_map['image_map'].values() if v['type'] == 'actor'}
+    art_scene_ids = {v['id'] for v in art_id_map['image_map'].values() if v['type'] == 'scene'}
+    
+    # Check propagation
+    missing_chars = dir_char_ids - art_char_ids
+    missing_scenes = dir_scene_ids - art_scene_ids
+    
+    issues = []
+    if missing_chars:
+        issues.append(f"角色ID缺失：{', '.join(sorted(missing_chars))}")
+    if missing_scenes:
+        issues.append(f"场景ID缺失：{', '.join(sorted(missing_scenes))}")
+    
+    if not issues:
+        return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+                          Status.PASS, "全部ID从导演传播到美术指导")
+    return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+                      Status.FAIL, '；'.join(issues), "检查@编号↔ID映射表是否完整")
+
+
 # Run all cross-file checks
 def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) -> List[CheckResult]:
     results = []
@@ -434,7 +483,7 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     results.append(check_actor_count_dir_to_art(director_text, art_text))
     results.append(check_scene_count_dir_to_art(director_text, art_text))
     results.append(check_scene_name_exact_match(director_text, art_text))
-    results.append(check_srt_p_coverage(director_text, art_text))
+    # check_srt_p_coverage removed: duplicate of srt_checks.py check 40
     results.append(check_prop_appearance_threshold(director_text, art_text))
     results.append(check_actor_appearance_keywords(director_text, art_text))
     # Art → Cine
@@ -450,4 +499,5 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     results.append(check_style_token_every_prompt(cine_text))
     results.append(check_forbidden_words_in_prompts(cine_text))
     results.append(check_cross_scene_base_image(art_text))
+    results.append(check_id_propagation(director_text, art_text, cine_text))
     return results

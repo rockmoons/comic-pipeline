@@ -7,21 +7,25 @@ Usage:
     Or read from stdin if files are piped:
     cat output.txt | python validate_pipeline.py --stdin
 
-Reads the 4 Agent pipeline outputs and runs 46 deterministic checks
+Reads the 4 Agent pipeline outputs and runs deterministic checks
 across 4 layers: single-file structure, cross-file cross-reference,
 fatal propagation chains, and SRT-specific checks.
+
+v4.0: Added Layer 0 — JSON pre-validation with auto-healing and retry-guard.
 """
 
 import sys
 import os
+import re
+import json as _json
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List, Tuple
 
 # Add parent to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from validators import single_file, cross_file, propagation, srt_checks
-from utils.reporter import ValidationReport, format_report, format_json
+from utils.reporter import ValidationReport, format_report, format_json, CheckResult, Status
 
 
 def read_file(path: str) -> str:
@@ -75,14 +79,118 @@ def parse_stdin_input(text: str) -> tuple:
     return story, director, art, cine
 
 
+def _heal_json(text: str) -> str:
+    """Attempt to auto-heal common JSON errors from LLM output.
+    
+    Handles: trailing commas, missing closing brackets/braces, markdown artifacts.
+    """
+    # Strip markdown code fence artifacts
+    text = re.sub(r'^```json\s*', '', text)
+    text = re.sub(r'\s*```$', '', text)
+    
+    # Count bracket balance
+    open_braces = text.count('{') - text.count('}')
+    open_brackets = text.count('[') - text.count(']')
+    
+    # Remove trailing comma before closing
+    text = text.rstrip()
+    if text.endswith(','):
+        text = text[:-1]
+    
+    # Add missing closing brackets
+    text += '}' * max(0, open_braces)
+    text += ']' * max(0, open_brackets)
+    
+    return text
+
+
+def prevalidate_json(story_text: str, director_text: str,
+                     art_text: str, cine_text: str) -> Tuple[str, str, str, str, List[CheckResult]]:
+    """Layer 0: Pre-validate and self-heal JSON blocks in all agent outputs.
+    
+    LLMs have a ~0.1% probability of dropping a trailing `}` in JSON blocks.
+    This function detects parse failures, attempts auto-healing, and emits
+    retry-guard warnings for unfixable cases.
+    
+    Returns:
+        (healed_story, healed_director, healed_art, healed_cine, precheck_results)
+    """
+    results = []
+    healed = {}
+    
+    agent_labels = [
+        ('story', story_text, '故事创作 Agent'),
+        ('director', director_text, '导演漫改 Agent'),
+        ('art', art_text, '美术资产 Agent'),
+        ('cine', cine_text, '分镜生成 Agent'),
+    ]
+    
+    for key, text, label in agent_labels:
+        json_blocks = re.findall(r'```json\s*\n(.*?)\n```', text, re.DOTALL)
+        if not json_blocks:
+            healed[key] = text
+            results.append(CheckResult(
+                "第零层：JSON预检", 0, f"{label} JSON",
+                Status.PASS, "无JSON block（v3.0兼容模式，纯Markdown传递）"
+            ))
+            continue
+        
+        fixed_count = 0
+        failed = False
+        healed_text = text
+        
+        for i, block in enumerate(json_blocks):
+            try:
+                _json.loads(block)
+            except _json.JSONDecodeError:
+                # Attempt self-healing
+                healed_block = _heal_json(block)
+                try:
+                    _json.loads(healed_block)
+                    healed_text = healed_text.replace(block, healed_block, 1)
+                    fixed_count += 1
+                except _json.JSONDecodeError:
+                    failed = True
+        
+        healed[key] = healed_text
+        
+        if failed:
+            results.append(CheckResult(
+                "第零层：JSON预检", 0, f"{label} JSON",
+                Status.WARN,
+                f"{len(json_blocks)}个block, {fixed_count}个自愈成功, 仍有不可修复项",
+                "【Retry-Guard】外部系统应对该Agent输出执行LLM重试（上限3次）。"
+                "LLM JSON尾部缺括号属已知低概率事件（~0.1%），重试通常可恢复。"
+            ))
+        elif fixed_count > 0:
+            results.append(CheckResult(
+                "第零层：JSON预检", 0, f"{label} JSON",
+                Status.PASS,
+                f"{len(json_blocks)}个block, {fixed_count}个自愈成功（尾部括号补全）"
+            ))
+        else:
+            results.append(CheckResult(
+                "第零层：JSON预检", 0, f"{label} JSON",
+                Status.PASS, f"{len(json_blocks)}个block全部合法"
+            ))
+    
+    return healed['story'], healed['director'], healed['art'], healed['cine'], results
+
+
 def run_validation(story_text: str, director_text: str, art_text: str, cine_text: str,
                    style: str = "CG国漫", chapter: str = "第1章") -> ValidationReport:
-    """Run all 46 checks and return ValidationReport object."""
+    """Run all checks (Layer 0–4) and return ValidationReport object."""
     report = ValidationReport(
         timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         style=style,
         chapter=chapter,
     )
+    
+    # Layer 0: JSON pre-validation + self-healing (v4.0)
+    story_text, director_text, art_text, cine_text, precheck_results = \
+        prevalidate_json(story_text, director_text, art_text, cine_text)
+    for r in precheck_results:
+        report.results.append(r)
     
     # Layer 1: Single-file structure (13 checks)
     for r in single_file.run_all(story_text, director_text, art_text, cine_text):

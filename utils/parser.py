@@ -30,15 +30,9 @@ def extract_durations(text: str) -> List[int]:
     return [int(m) for m in matches]
 
 
-def extract_all_durations(text: str) -> List[int]:
-    """Extract ALL duration values (including camera specs, for prompt checks)."""
-    matches = re.findall(r'(?:时长\S*\s*[：:]\s*)?(\d+)\s*s', text)
-    return [int(m) for m in matches]
-
-
 def extract_at_images(text: str) -> List[int]:
-    """Extract all @图片N numbers."""
-    matches = re.findall(r'@图片(\d+)', text)
+    """Extract all @图片N numbers (supports both simplified and traditional)."""
+    matches = re.findall(r'@[图圖]片(\d+)', text)
     return sorted(set(int(m) for m in matches))
 
 
@@ -88,9 +82,12 @@ def extract_art_actor_table(text: str) -> List[Dict[str, str]]:
 
 
 def extract_srt_entries(text: str) -> List[Dict]:
-    """Parse SRT entries. Returns list of {index, start, end, p_label, content}."""
-    # SRT format: number\nHH:MM:SS:FF --> HH:MM:SS:FF\n[PXX] content
-    pattern = r'(\d+)\n(\d{2}:\d{2}:\d{2}:\d{2})\s*-->\s*(\d{2}:\d{2}:\d{2}:\d{2})\n(?:\[(P\d{2}(?:_[A-Z])?)\]\s*)?(.+?)(?=\n\d+\n|\Z)'
+    """Parse SRT entries. Supports both legacy (HH:MM:SS:FF) and v4.0 (HH:MM:SS,mmm) formats."""
+    # SRT format: number\nHH:MM:SS:FF or HH:MM:SS,mmm --> HH:MM:SS:FF or HH:MM:SS,mmm\n[PXX] content
+    tc_v4 = r'\d{2}:\d{2}:\d{2},\d{3}'
+    tc_legacy = r'\d{2}:\d{2}:\d{2}:\d{2}'
+    tc_any = f'(?:{tc_v4}|{tc_legacy})'
+    pattern = rf'(\d+)\n({tc_any})\s*-->\s*({tc_any})\n(?:\[(P\d{{2}}(?:_[A-Z])?)\]\s*)?(.+?)(?=\n\d+\n|\(\s*总时长校验|\Z)'
     results = []
     for m in re.finditer(pattern, text, re.DOTALL):
         results.append({
@@ -109,7 +106,7 @@ def extract_srt_total_duration(text: str) -> Optional[float]:
     if not m:
         return None
     tc = m.group(1)
-    return _timecode_to_seconds(tc)
+    return timecode_to_seconds(tc)
 
 
 def extract_story_word_count(text: str) -> Optional[int]:
@@ -264,7 +261,7 @@ def _parse_md_table(table_text: str) -> List[Dict[str, str]]:
     return results
 
 
-def _timecode_to_seconds(tc: str) -> float:
+def timecode_to_seconds(tc: str) -> float:
     """Convert HH:MM:SS:FF to seconds (25fps)."""
     parts = tc.split(':')
     h = int(parts[0])
@@ -272,3 +269,141 @@ def _timecode_to_seconds(tc: str) -> float:
     s = int(parts[2])
     f = int(parts[3])
     return h * 3600 + m * 60 + s + f / 25.0
+
+
+def extract_image_ranges(text: str) -> dict:
+    """Extract @图片 range boundaries from @编号体系总览 table.
+    Returns dict with 'actor_end', 'scene_start', 'scene_end', 'prop_start'.
+    Defaults to (4, 5, 20, 21) if table not found."""
+    defaults = {'actor_end': 4, 'scene_start': 5, 'scene_end': 20, 'prop_start': 21}
+    section = _find_table_section(text, '@编号体系总览')
+    if not section:
+        return defaults
+    rows = _parse_md_table(section)
+    result = {}
+    for row in rows:
+        category = row.get('资产类别', '')
+        range_str = row.get('@编号范围', '')
+        nums = re.findall(r'@[图圖]片(\d+)', range_str)
+        if len(nums) >= 2:
+            lo, hi = int(nums[0]), int(nums[-1])
+        elif len(nums) == 1:
+            lo = hi = int(nums[0])
+        else:
+            continue
+        if '演员' in category:
+            result['actor_end'] = hi
+        elif '场景' in category:
+            result['scene_start'] = lo
+            result['scene_end'] = hi
+        elif '道具' in category:
+            result['prop_start'] = lo
+    # Merge with defaults for any missing keys
+    for k, v in defaults.items():
+        if k not in result:
+            result[k] = v
+    return result
+
+
+# --- Shared constants ---
+
+APPEARANCE_CATEGORIES = {
+    '发型/发色': ['发', '髻', '辫', '寸头', '短发', '长发', '马尾', '刘海', '秃'],
+    '服装/衣着': ['袍', '衣', '服', '装', '甲', '裤', '靴', '鞋', '裙', '衫', '褂', '夹克', 'T恤'],
+    '体型/身高': ['体型', '瘦', '胖', '壮', '高', '矮', '精悍', '敦实', '匀称', 'cm'],
+    '面容/五官': ['脸', '眼', '眉', '鼻', '唇', '嘴', '面容', '五官', '瞳'],
+    '识别标记': ['疤', '痕', '痣', '胎记', '纹身', '雀斑', '痘印', '缺', '伤'],
+    '肤色/肤质': ['肤', '白', '黑', '黄', '小麦', '古铜', '苍白', '粗糙', '光滑'],
+    '配饰/道具': ['剑', '符', '袋', '令', '珠', '环', '镜', '扇', '刀'],
+    '形态/构造（非人）': ['甲壳', '复肢', '复眼', '触手', '胶状', '半透明', '骨刺', '口器', '翅膀', '鳞片', '节肢', '几丁质', '悬浮', '无固定形态',
+                     '金属', '机械', '义眼', '义肢', '镜头', '数据', '全息', '能量', '光幕'],
+    '体量/尺度（非人）': ['三米', '巨型', '球体', '两米', '直径', '米高'],
+    '颜色/光学（非人）': ['暗红', '暗褐', '暗紫', '淡紫', '冷蓝', '淡金', '荧光', '微光', '透明', '半透明', '生物光泽', '星云', '流光', '脉冲', '闪烁'],
+}
+
+
+# --- v4.0 JSON parsing utilities ---
+
+import json as _json
+
+def extract_json_block(text: str, label: Optional[str] = None) -> Optional[dict]:
+    """Extract the first ```json code block from text and parse it.
+    
+    If label is provided, searches for a block preceded by that label (e.g. 'scenes_metadata').
+    Returns parsed dict on success, None on failure (missing block / parse error).
+    """
+    # Try labeled block first
+    if label:
+        pattern = rf'{re.escape(label)}.*?\n```json\s*\n(.*?)\n```'
+        m = re.search(pattern, text, re.DOTALL)
+        if m:
+            try:
+                return _json.loads(m.group(1))
+            except _json.JSONDecodeError:
+                pass
+
+    # Fallback: any ```json block
+    m = re.search(r'```json\s*\n(.*?)\n```', text, re.DOTALL)
+    if m:
+        try:
+            return _json.loads(m.group(1))
+        except _json.JSONDecodeError:
+            pass
+    return None
+
+
+def extract_id_mapping(text: str) -> dict:
+    """Extract @编号↔ID mapping table from art director output.
+    
+    Returns dict with keys:
+        'image_map': {int: {'type': str, 'id': str, 'name': str}}
+        'audio_map': {int: {'id': str, 'name': str}}
+    Empty dicts if JSON not found.
+    """
+    mapping = extract_json_block(text, label='@image_mapping')
+    result = {'image_map': {}, 'audio_map': {}}
+    
+    if mapping and '@image_mapping' in mapping:
+        for item in mapping['@image_mapping']:
+            num = int(item.get('@image', '').replace('@图片', ''))
+            result['image_map'][num] = {
+                'type': item.get('type', ''),
+                'id': item.get('id', ''),
+                'name': item.get('name', ''),
+            }
+    
+    if mapping and '@audio_mapping' in mapping:
+        for item in mapping['@audio_mapping']:
+            num = int(item.get('@audio', '').replace('@音频', ''))
+            result['audio_map'][num] = {
+                'id': item.get('id', ''),
+                'name': item.get('name', ''),
+            }
+    
+    return result
+
+
+def extract_state_snapshot(text: str) -> Optional[dict]:
+    """Extract story agent's 章末状态快照 JSON."""
+    return extract_json_block(text, label='chapter')
+
+
+def timecode_to_seconds_v4(tc: str) -> float:
+    """Convert timecode to seconds, supporting both legacy FF (25fps) and v4.0 millisecond formats.
+    
+    HH:MM:SS:FF  → legacy frame format, FF ÷ 25
+    HH:MM:SS,mmm → v4.0 millisecond format, mmm ÷ 1000
+    """
+    # Try millisecond format first (v4.0)
+    m = re.match(r'(\d{2}):(\d{2}):(\d{2}),(\d{3})', tc)
+    if m:
+        h, mi, s, ms = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+        return h * 3600 + mi * 60 + s + ms / 1000.0
+    
+    # Fallback to legacy FF format
+    parts = tc.split(':')
+    h = int(parts[0])
+    mi = int(parts[1])
+    s = int(parts[2])
+    f = int(parts[3])
+    return h * 3600 + mi * 60 + s + f / 25.0

@@ -8,19 +8,19 @@
 
 ```
 Agent 1: 故事创作
-  产出 → 小说正文（含视觉描述词、情绪节奏）
-  消费方 → Agent 2
+  产出 → 小说正文（含视觉描述词、情绪节奏）+ 角色ID/场景ID + 章末状态快照JSON
+  消费方 → Agent 2（全量，含 character_id / scene_id / emotional_arc_position）
 
 Agent 2: 导演漫改
-  产出 → P编号分场剧本 + 演员表（含外观关键词、首次出场）+ 场景表（含光线/色调）
-  消费方 → Agent 3（全量）、Agent 4（全量）
+  产出 → P编号分场剧本 + 演员表（含外观关键词、首次出场、character_id）+ 场景表（含光线/色调、scene_id）+ 章末 scenes_metadata.json
+  消费方 → Agent 3（全量，含 JSON block）、Agent 4（全量，含 JSON block）
 
 Agent 3: 美术资产
-  产出 → S1演员档案 / S2定妆方案 / S3场景宫格 / S4道具库 / S5音色库 / S6 SRT台词本
-  消费方 → Agent 4（全量）
+  产出 → S1演员档案 / S2定妆方案 / S3场景单图 / S4道具库 / S5音色库 / S6 SRT台词本 / @编号↔ID映射表JSON / S0通用兜底资产库
+  消费方 → Agent 4（全量，含映射表 JSON）
 
 Agent 4: 分镜生成
-  产出 → 素材对应表 + Seedance视频提示词 + 操作指南
+  产出 → 素材对应表（含 character_id / scene_id）+ Seedance视频提示词 + 操作指南
   消费方 → libtv / 即梦
 ```
 
@@ -29,9 +29,22 @@ Agent 4: 分镜生成
 | 改这个文件的这个字段 | Agent 3 哪里会受影响 | Agent 4 哪里会受影响 |
 |-------------------|-------------------|-------------------|
 | Agent 2 §2.3「人物」拆分规则 | S6 SRT 行数自动增减（§7 逐行分配） | 提示词条数自动增减（§3 逐场生成） |
-| Agent 2 §5「转场」类型 | SRT 不受影响（§7.4.5 场间不计时） | [起始帧图] 引用的末帧是黑屏，libtv 画布自动处理 |
-| Agent 3 §7.4 SRT 时长规则 | — | §3.2 时长基于 SRT 重算，节奏同步变化 |
+| Agent 2 §5「转场」类型 | SRT 不受影响（美术 §8.4 第6条：场间不计时） | [起始帧图] 引用的末帧是黑屏，libtv 画布自动处理 |
+| Agent 3 §8.4 SRT 时长规则 | — | Agent 4 §3.2 时长基于 SRT 重算，节奏同步变化 |
 | Agent 3 @编号分配（§二） | — | §2 素材对应表 + §3.4 @引用规则均依赖编号连续性 |
+
+### JSON 字段级依赖速查（v4.0 新增）
+
+v4.0 各 Agent 需通过 JSON block 传递结构化数据，下游优先解析 JSON，解析失败回退到 Markdown 表格提取（双轨制）。
+
+| JSON 字段 | 产出方 | 消费方 | 用途 | 降级路径 |
+|-----------|--------|--------|------|---------|
+| `character_id`（如 CHAR_01_陆沉） | Agent 1 | Agent 2/3/4 | 角色主键匹配，替代名字字符比对 | Markdown 演员表「角色ID」列 |
+| `scene_id`（如 SCENE_01_北区监狱） | Agent 1 | Agent 2/3/4 | 场景主键匹配，替代名字字符比对 | Markdown 场景表「场景ID」列 |
+| `scenes_metadata.json` | Agent 2 | Agent 3/4 | 结构化角色/场景/P编号列表 | 从 Markdown 表格逐行提取 |
+| `状态快照 JSON`（chapter/word_count/…） | Agent 1 | 用户/脚本 | 跨章续写上下文 | 用户手动粘贴前文摘要 |
+| `@编号↔ID 映射表 JSON` | Agent 3 | Agent 4 | @图片N → character_id/scene_id 双向追溯 | 从素材对应表 Markdown 推断 |
+| `本章新增资产卡片 JSON` | Agent 1 | 用户/脚本 | 原子化附录，合并入全局资产文本 | 用户手动统计新增角色 |
 
 ---
 
@@ -82,6 +95,108 @@ Agent 4: 分镜生成
 - @编号 对应 libtv 主体库节点
 - 末帧传递由 libtv 节点画布自动处理
 - Agent 4 的 C 阶段手动截帧步骤在 libtv 中不适用
+
+---
+
+## 📦 六、Agent 间数据传递规范（v4.0）
+
+### 6.1 传递总则：JSON + Markdown 双轨制
+
+所有 Agent 产出同时包含两份等效数据：
+- **JSON block**（` ```json ``` ` 代码块包裹）：机读优先路径
+- **Markdown 表格/正文**：人类阅读 + JSON 解析失败时的降级路径
+
+下游 Agent 收到上游产出后：
+1. 先尝试 `JSON.parse` 解析 JSON block
+2. 解析成功 → 直接使用 JSON 数据做后续校验和引用
+3. 解析失败 → 回退到从 Markdown 表格/正文中提取（降级路径）
+
+### 6.2 主键 ID 体系
+
+所有角色、场景使用全局唯一 ID，格式固定：
+
+| ID 类型 | 格式 | 示例 | 首次分配者 |
+|---------|------|------|-----------|
+| 角色ID | `CHAR_NN_NAME` | `CHAR_01_陆沉` | Agent 1（故事创作） |
+| 场景ID | `SCENE_NN_NAME` | `SCENE_01_北区监狱` | Agent 1（故事创作） |
+| 道具ID | `PROP_NN_NAME` | `PROP_01_火球符` | Agent 3（美术指导） |
+
+下游 Agent 沿用上游 ID，不得重新编号。新增角色/场景由当前 Agent 按格式续编（如 Agent 2 新增角色 → `CHAR_05_林若雪`）。
+
+### 6.3 名称匹配规则
+
+下游做名称匹配时：
+- **优先路径**：通过 `character_id` / `scene_id` 主键精确比对
+- **降级路径**：若 JSON 不可用，改用自然语言**包含匹配（contains）**，容差 ±5 个字符以内的标点/空格/大小写差异。禁止字符级精确匹配（exact match）
+
+### 6.4 @编号↔ID 映射表
+
+Agent 3（美术指导）在所有资产生成完毕后，末尾必须输出 `@编号↔ID` 映射表 JSON：
+
+```json
+{
+  "@image_mapping": [
+    {"@image": "@图片1", "type": "actor", "id": "CHAR_01_陆沉", "name": "陆沉"},
+    {"@image": "@图片5", "type": "scene", "id": "SCENE_01_北区监狱", "name": "北区监狱"},
+    {"@image": "@图片12", "type": "prop", "id": "PROP_01_火球符", "name": "火球符"}
+  ],
+  "@audio_mapping": [
+    {"@audio": "@音频1", "id": "CHAR_01_陆沉", "name": "陆沉"}
+  ]
+}
+```
+
+Agent 4（分镜师）直接读取此 JSON 做 @引用校验，不需自行推断。
+
+### 6.5 跨章状态传递
+
+多章处理时，上游 Agent 在每章产出末尾追加「累计状态摘要」JSON：
+
+```json
+{
+  "chapter": 3,
+  "cumulative_characters": 5,
+  "cumulative_scenes": 3,
+  "last_at_image": "@图片14",
+  "last_at_audio": "@音频5",
+  "new_in_this_chapter": {
+    "characters": ["CHAR_05_林若雪"],
+    "scenes": ["SCENE_03_暗鸦森林"]
+  }
+}
+```
+
+下游 Agent 读取上一章的累计状态作为本章起始状态，实现无状态 LLM 的「伪有状态」续写。
+
+---
+
+## 📋 七、跨章状态快照规范（v4.0）
+
+Agent 1（故事创作）每章正文输出完毕后，在 `【第X章 完】` 之前，必须输出以下 JSON 快照：
+
+```json
+{
+  "chapter": 5,
+  "word_count": 1050,
+  "cumulative_words": 5200,
+  "new_character_ids": ["CHAR_05_林若雪"],
+  "new_scene_ids": ["SCENE_03_暗鸦森林"],
+  "unresolved_threads": [
+    "暗鸦森林深处的神秘呼唤源头未揭晓",
+    "林若雪的真实身份尚未暴露"
+  ],
+  "emotional_arc_position": "中段·悬疑虐心期",
+  "last_hook_type": "双重钩子——新敌人出现 + 主线威胁升级",
+  "blueprint_progress": "第5章/20章（25%）"
+}
+```
+
+快照字段约束：
+- `unresolved_threads`：最多 3 条，超过 3 条时 Agent 须在下章主动收束至少 1 条
+- `emotional_arc_position`：三选一——「前期·轻松搞笑期」「中段·悬疑虐心期」「后期·热血燃爽期」
+- `last_hook_type`：五选一——「新敌人出现」「危机升级」「双重钩子」「主线威胁引入」「重大转折」
+- `blueprint_progress`：当前进度百分比，用于 §4.2 阶段自检判断进度是否偏离蓝图
+- 用户将此快照 + 上一章正文喂回 LLM，即可无状态续写——彻底解决上下文窗口被历史章节挤爆的问题
 
 ---
 

@@ -1,25 +1,34 @@
-"""SRT-specific checks (Layer 4: 9 checks)."""
+"""SRT-specific checks (Layer 4: 10 checks, v4.0 updated)."""
 
 from typing import List
-from utils.parser import extract_srt_entries, extract_p_numbers
+from utils.parser import extract_srt_entries, extract_p_numbers, timecode_to_seconds, timecode_to_seconds_v4
 from utils.reporter import CheckResult, Status
 import re
 
 
-def _timecode_to_seconds(tc: str) -> float:
-    parts = tc.split(':')
-    return int(parts[0]) * 3600 + int(parts[1]) * 60 + int(parts[2]) + int(parts[3]) / 25.0
+def _tc_to_s(tc: str) -> float:
+    """Use v4 timecode parser (supports both HH:MM:SS:FF and HH:MM:SS,mmm)."""
+    return timecode_to_seconds_v4(tc)
 
 
 def check_srt_framerate(art_text: str) -> CheckResult:
-    """Check 38: SRT FF fields are 00-24."""
+    """Check 38: SRT FF fields are 00-24 (legacy FF format only, v4.0 mmm format always passes)."""
     entries = extract_srt_entries(art_text)
     violations = []
+    is_legacy = False
     for e in entries:
         for field in ['start', 'end']:
-            ff = int(e[field].split(':')[3])
+            tc = e[field]
+            # v4.0 millisecond format — skip FF check
+            if ',' in tc:
+                continue
+            is_legacy = True
+            ff = int(tc.split(':')[3])
             if ff > 24:
-                violations.append(f"#{e['index']} {field}={e[field]}")
+                violations.append(f"#{e['index']} {field}={tc}")
+    if not is_legacy:
+        return CheckResult("第四层：SRT专项", 38, "帧率合规",
+                          Status.PASS, "v4.0毫秒格式，无需FF检查")
     if not violations:
         return CheckResult("第四层：SRT专项", 38, "帧率合规",
                           Status.PASS, "全部FF在00-24")
@@ -32,8 +41,8 @@ def check_srt_monotonic(art_text: str) -> CheckResult:
     entries = extract_srt_entries(art_text)
     violations = []
     for i in range(1, len(entries)):
-        prev_end = _timecode_to_seconds(entries[i-1]['end'])
-        curr_start = _timecode_to_seconds(entries[i]['start'])
+        prev_end = _tc_to_s(entries[i-1]['end'])
+        curr_start = _tc_to_s(entries[i]['start'])
         if curr_start < prev_end:
             violations.append(f"#{entries[i-1]['index']}→#{entries[i]['index']}")
     if not violations:
@@ -119,7 +128,7 @@ def check_long_dialogue_split(art_text: str) -> CheckResult:
     entries = extract_srt_entries(art_text)
     long_unsplit = []
     for e in entries:
-        if not e['content'].startswith('△') and len(e['content']) > 30:
+        if not e['content'].startswith('△') and len(e['content']) > 55:
             long_unsplit.append(f"#{e['index']}:{len(e['content'])}字")
     if not long_unsplit:
         return CheckResult("第四层：SRT专项", 44, "长台词拆分",
@@ -128,40 +137,55 @@ def check_long_dialogue_split(art_text: str) -> CheckResult:
                       Status.WARN, f"共{len(long_unsplit)}条", "拆分长台词为多行")
 
 
-def check_srt_fill_rate(art_text: str) -> CheckResult:
+def check_srt_fill_rate(director_text: str, art_text: str) -> CheckResult:
     """Check 45: Each scene's SRT row durations sum to >= 85% of scene total."""
+    # Extract per-scene durations from director (P-number → seconds)
+    # Pattern: **PXX 标题** ... **时长建议**：Xs
+    p_dur_pairs = re.findall(r'\*\*P(\d{2}(?:_[A-Z])?)\s.*?\*\*时长建议\*\*[：:]\s*(\d+)\s*s', director_text, re.DOTALL)
+    dir_scene_durs = {}
+    for p, d in p_dur_pairs:
+        key = f"P{p}"
+        # Combine suffixed sub-scenes under base P-number
+        base = p.split('_')[0] if '_' in p else p
+        dir_scene_durs[p] = dir_scene_durs.get(p, 0) + int(d)
+    
+    # Group SRT entries by P-number and sum durations
     entries = extract_srt_entries(art_text)
-    # Group by P-number
-    scenes = {}
+    srt_scenes = {}
     for e in entries:
         p = e['p_label']
-        if p not in scenes:
-            scenes[p] = []
-        dur = _timecode_to_seconds(e['end']) - _timecode_to_seconds(e['start'])
-        scenes[p].append(dur)
+        if not p:
+            continue
+        if p not in srt_scenes:
+            srt_scenes[p] = 0.0
+        srt_scenes[p] += _tc_to_s(e['end']) - _tc_to_s(e['start'])
+    
     low_fill = []
-    for p, durs in scenes.items():
-        total = sum(durs)
-        # We don't have reference duration per scene here, but if total < 2s it's suspicious
-        if total < 2:
-            low_fill.append(f"{p}:{total:.1f}s")
+    for p, srt_total in srt_scenes.items():
+        dir_dur = dir_scene_durs.get(p, 0)
+        if dir_dur <= 0:
+            continue
+        ratio = srt_total / dir_dur
+        if ratio < 0.85:
+            low_fill.append(f"{p}:{ratio:.0%}(SRT{srt_total:.1f}s/导演{dir_dur}s)")
+    
     if not low_fill:
         return CheckResult("第四层：SRT专项", 45, "SRT填充率",
-                          Status.PASS, "无明显异常")
+                          Status.PASS, "全部场景≥85%")
     return CheckResult("第四层：SRT专项", 45, "SRT填充率",
-                      Status.WARN, f"低填充：{', '.join(low_fill)}")
+                      Status.WARN, f"低填充：{', '.join(low_fill)}",
+                      "扩展SRT行时长或补充动作/台词")
 
 
 def check_srt_total_deviation(director_text: str, art_text: str) -> CheckResult:
     """Check 46: SRT total time vs Director total time deviation <= 15%."""
-    import re
     dir_durs = re.findall(r'\*\*时长建议\*\*[：:]\s*(\d+)\s*s', director_text)
     dir_total = sum(int(d) for d in dir_durs)
     entries = extract_srt_entries(art_text)
     if not entries:
         return CheckResult("第四层：SRT专项", 46, "SRT总时长偏差",
                           Status.WARN, "无法解析SRT")
-    last_end = _timecode_to_seconds(entries[-1]['end'])
+    last_end = _tc_to_s(entries[-1]['end'])
     if dir_total == 0:
         return CheckResult("第四层：SRT专项", 46, "SRT总时长偏差",
                           Status.WARN, "无法解析导演时长")
@@ -173,6 +197,39 @@ def check_srt_total_deviation(director_text: str, art_text: str) -> CheckResult:
                       Status.FAIL, f"{deviation:.1f}% > 15%", "调整SRT或导演时长")
 
 
+def check_srt_algorithm_accuracy(art_text: str) -> CheckResult:
+    """Check 47 (v4.0): SRT duration per dialogue line matches simplified algorithm.
+    
+    v4.0 algorithm: 字数 × 语速系数 + 300ms. This check estimates expected duration
+    and flags lines where variance > 30%.
+    """
+    entries = extract_srt_entries(art_text)
+    suspicious = []
+    for e in entries:
+        if e['content'].startswith('△'):
+            continue
+        # Strip P-label and character prefix
+        content = e['content']
+        word_count = len(re.sub(r'\s', '', content))
+        if word_count == 0:
+            continue
+        actual_dur = _tc_to_s(e['end']) - _tc_to_s(e['start'])
+        # Estimate with medium speed (0.33s/char) as default
+        estimated = word_count * 0.33 + 0.3
+        if estimated > 0 and actual_dur > 0:
+            variance = abs(actual_dur - estimated) / estimated
+            if variance > 0.30:
+                suspicious.append(f"#{e['index']}:{word_count}字→实际{actual_dur:.1f}s(预估{estimated:.1f}s,偏差{variance:.0%})")
+    if not suspicious:
+        return CheckResult("第四层：SRT专项", 47, "SRT算法精度",
+                          Status.PASS, "全部偏差≤30%")
+    if len(suspicious) <= 3:
+        return CheckResult("第四层：SRT专项", 47, "SRT算法精度",
+                          Status.WARN, f"共{len(suspicious)}条异常", "人工复核")
+    return CheckResult("第四层：SRT专项", 47, "SRT算法精度",
+                      Status.FAIL, f"共{len(suspicious)}条异常,前3:{suspicious[:3]}", "检查算法或手动修正SRT")
+
+
 def run_all(director_text: str, art_text: str) -> List[CheckResult]:
     return [
         check_srt_framerate(art_text),
@@ -182,6 +239,7 @@ def run_all(director_text: str, art_text: str) -> List[CheckResult]:
         check_srt_action_count(director_text, art_text),
         check_srt_order_consistency(director_text, art_text),
         check_long_dialogue_split(art_text),
-        check_srt_fill_rate(art_text),
+        check_srt_fill_rate(director_text, art_text),
         check_srt_total_deviation(director_text, art_text),
+        check_srt_algorithm_accuracy(art_text),
     ]

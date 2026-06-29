@@ -1,9 +1,9 @@
-"""Single-file structure checks (Layer 1: 13 checks)."""
+"""Single-file structure checks (Layer 1: 16 checks, v4.1)."""
 
 from typing import List
 from utils.parser import (
     extract_p_numbers, extract_durations, extract_at_images,
-    extract_story_word_count,
+    extract_story_word_count, extract_actor_table, extract_image_ranges,
 )
 from utils.reporter import CheckResult, Status
 import re
@@ -338,6 +338,123 @@ def check_p_number_explosion_risk(director_text: str) -> CheckResult:
                           "【Orchestrator】必须启用滑动窗口切片器，分批次传递")
 
 
+def check_s2b_actor_image_count(art_text: str) -> CheckResult:
+    """Check 20 (v4.1): S2a+S2b per actor — @图片 count in actor range = actors × 2."""
+    actor_table = extract_actor_table(art_text)
+    actor_count = len(actor_table)
+    if actor_count == 0:
+        return CheckResult("第一层：单文件结构", 20, "S2a+S2b演员@图片数",
+                          Status.WARN, "无法解析美术资产演员表", "确认S1演员阵容格式")
+    
+    ranges = extract_image_ranges(art_text)
+    actor_end = ranges.get('actor_end', actor_count * 2)
+    
+    all_images = extract_at_images(art_text)
+    actor_images = [n for n in all_images if n <= actor_end]
+    
+    expected = actor_count * 2
+    actual = len(actor_images)
+    
+    if actual == expected:
+        return CheckResult("第一层：单文件结构", 20, "S2a+S2b演员@图片数",
+                          Status.PASS, f"{actual}个 = {actor_count}人×2（S2a+S2b齐全）")
+    elif actual < expected:
+        missing_count = expected - actual
+        return CheckResult("第一层：单文件结构", 20, "S2a+S2b演员@图片数",
+                          Status.FAIL, f"{actual}个（缺{missing_count}个——可能漏了S2b）",
+                          "检查是否每位演员都有S2a主图+S2b辅视图")
+    else:
+        extra = actual - expected
+        return CheckResult("第一层：单文件结构", 20, "S2a+S2b演员@图片数",
+                          Status.WARN, f"{actual}个（多{extra}个——可能有多余@图片）",
+                          "检查演员@编号范围是否混杂了非演员资产")
+
+
+def check_three_block_completeness(cine_text: str) -> CheckResult:
+    """Check 21 (v4.1): Each P-number has all three output blocks."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 21, "三段式输出完整性",
+                          Status.WARN, "未检测到P编号", "确认分镜师输出格式")
+    
+    missing_blocks = []
+    # Split by P-number headers
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    
+    for p in pnums:
+        # Find the section for this P-number
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]:
+                section = s
+                break
+        if not section:
+            missing_blocks.append(f"{p}:未找到")
+            continue
+        
+        blocks_missing = []
+        if '【📋 分镜详情】' not in section:
+            blocks_missing.append("分镜详情")
+        if '【🎬 Seedance直接输入】' not in section:
+            blocks_missing.append("Seedance直接输入")
+        if '【🎬 Seedance时间线输入】' not in section:
+            blocks_missing.append("Seedance时间线")
+        if blocks_missing:
+            missing_blocks.append(f"{p}:缺{'/'.join(blocks_missing)}")
+    
+    if not missing_blocks:
+        return CheckResult("第一层：单文件结构", 21, "三段式输出完整性",
+                          Status.PASS, f"全部{len(pnums)}条P编号三段齐全")
+    return CheckResult("第一层：单文件结构", 21, "三段式输出完整性",
+                      Status.FAIL, f"共{len(missing_blocks)}条：{'; '.join(missing_blocks[:3])}",
+                      "补全缺失的输出块")
+
+
+def check_first_frame_continuity(cine_text: str) -> CheckResult:
+    """Check 22 (v4.1): P01 has scene-based first frame, P02+ has last-frame continuity."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 22, "首帧接力完整性",
+                          Status.WARN, "未检测到P编号")
+    
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]:
+                section = s
+                break
+        if not section:
+            continue
+        
+        # Only check Seedance直接输入 blocks
+        seedance_block = ''
+        m = re.search(r'【🎬 Seedance直接输入】\n(.*?)(?=\n【🎬|$)', section, re.DOTALL)
+        if m:
+            seedance_block = m.group(1)
+        
+        if not seedance_block:
+            violations.append(f"{p}:缺Seedance直接输入块")
+            continue
+        
+        base_num = int(p[1:3])
+        if base_num == 1:
+            if '首帧为' not in seedance_block and '首帧' not in seedance_block:
+                violations.append(f"{p}:缺场景首帧声明（应为'首帧为@图片X'）")
+        else:
+            if '末帧截图' not in seedance_block and '首帧' not in seedance_block:
+                violations.append(f"{p}:缺末帧接力声明（应为'以@图片(上一段视频末帧截图)为首帧'）")
+    
+    if not violations:
+        return CheckResult("第一层：单文件结构", 22, "首帧接力完整性",
+                          Status.PASS, "P01有场景首帧，P02+有末帧接力")
+    return CheckResult("第一层：单文件结构", 22, "首帧接力完整性",
+                      Status.WARN, f"共{len(violations)}条：{'; '.join(violations[:3])}",
+                      "补全首帧/末帧声明")
+
+
 # Run all single-file checks
 def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) -> List[CheckResult]:
     results = []
@@ -366,4 +483,8 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     results.append(check_camera_triple(director_text))
     results.append(check_sound_format(director_text))
     results.append(check_p_number_explosion_risk(director_text))
+    # v4.1 new checks
+    results.append(check_s2b_actor_image_count(art_text))
+    results.append(check_three_block_completeness(cine_text))
+    results.append(check_first_frame_continuity(cine_text))
     return results

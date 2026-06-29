@@ -1,0 +1,65 @@
+## 素材对应表
+| 引用编号 | 素材类型 | 角色ID/场景ID | 对应素材 | 视觉关键词 |
+|---------|---------|-------------|---------|-----------|
+| @图片1 | 演员 | CHAR_01_江晨 | 江晨 | 白宇航服透明面罩，短发深褐瞳，脸部沙尘擦伤，精悍168cm |
+| @图片2 | 演员 | CHAR_02_砂钻蝎 | 砂钻蝎 | 3米八腿钻头节肢，暗红甲壳橙色荧光，外翻倒钩颚 |
+| @图片7 | 场景 | SCENE_01_火星赤色荒原 | 火星赤色荒原 | 暗红沙原，Volumetric赤色日光，沙尘暴远景 |
+| @图片10 | 场景 | SCENE_02_岩石柱林峡谷 | 岩石柱林峡谷 | 赤铁矿岩柱，窄道裂隙，Split lighting |
+| @图片13 | 道具 | PROP_01_赤驼号运输车 | 赤驼号运输车 | 3.8吨六轮重型矿车，驾驶舱，货舱 |
+| @图片14 | 道具 | PROP_02_宇航手套 | 宇航手套 | 白宇航手套，关节深灰防护纹 |
+
+## P01 颤抖的手指
+**时长**:4s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:4s
+[0-4s] Shot1:手指颤抖(大特写→近景) Camera:fixed to slow dolly-out extreme close-up to near shot f/1.4 Subject:@图片1江晨 white-gloved @图片14宇航手套 fingers trembling uncontrollably on steering wheel inside @图片13赤驼号运输车 cabin frost condensing on transparent helmet visor deep brown pupils contracting sharply through fog Narrative:setup Intent:恐惧初现 Mood:fear Audio SFX:engine-idle-humming life-support-beeping 保持@图片1角色面部特征体型服饰与参考图完全一致禁止文字字幕LOGO水印。
+
+## P02 赤驼号起步
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:暴力起步(低角度仰拍→全远景) Camera:low-angle tilt-up to extreme wide f/11 deep focus Subject:@图片13赤驼号运输车 six massive tires simultaneously lock and launch from @图片7火星赤色荒原 sand 3.8-ton metal beast catapulted forward 30-meter red dust trail explosively rising behind Narrative:climax Intent:飙车开篇视觉奇观 Mood:anger Dialogue Cue:@音频1(江晨)嘶哑"操操操操——" Audio SFX:tires-grip-explosion engine-metal-scream 保持@图片1角色一致性保持@图片7场景风格统一禁止文字字幕LOGO水印。
+
+## P03 雷达警报
+**时长**:3s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:3s @图片(上个视频末帧截图)为首帧
+[0-3s] Shot1:雷达屏(特写) Camera:fixed close-up f/2.8 Subject:holographic radar screen inside @图片13赤驼号运输车 cabin 26 red dots rapidly spreading from wreckage area 暗蓝扫描区域内红点高频闪烁 crimson glow reflecting on @图片1江晨 helmet visor Narrative:reveal Intent:威胁量化 Mood:tension Audio SFX:radar-pulse-accelerating 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P04 第一只怪兽
+**时长**:6s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:6s @图片(上个视频末帧截图)为首帧
+[0-6s] Shot1:怪兽跃出(全景侧面跟拍→近景) Camera:tracking-side wide to near shot f/8 to f/2.8 Subject:@图片2砂钻蝎 bursts from dust cloud at @图片7火星赤色荒原 eight drill-tipped limbs piercing sand surface at high rotation each drill thread creating motion blur 暗红甲壳接缝渗出橙色生物荧光 Narrative:reveal Intent:怪兽首次登场恐惧 Mood:fear Dialogue Cue:@音频1(江晨)惊恐压低"八条腿。" Audio SFX:drill-piercing-sand-screech subsonic-howl @音频2(砂钻蝎)钻头嘶鸣+低频啸叫 保持@图片1角色一致性保持@图片2场景风格统一禁止文字字幕LOGO水印。
+
+## P05 甩尾漂移
+**时长**:6s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:6s @图片(上个视频末帧截图)为首帧
+[0-6s] Shot1:慢镜头漂移(侧面广角全景) Camera:wide-side f/11 deep focus slow-motion Subject:@图片1江晨 wrenches steering left pulling handbrake hard inside @图片13赤驼号运输车 cabin truck tilts 45 degrees sliding in massive arc on @图片7火星赤色荒原 left two wheels suspended red sand erupting behind forming 30-meter cape-like dust trail Narrative:climax Intent:视觉奇观漂移 Mood:anger Audio SFX:tire-side-screech-prolonged dust-burst-boom 保持@图片1角色一致性保持@图片7场景风格统一禁止文字字幕LOGO水印。
+
+## P06 两侧包抄
+**时长**:4s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:4s @图片(上个视频末帧截图)为首帧
+[0-4s] Shot1:面罩倒映(中景→特写) Camera:fixed to push-in medium shot to close-up f/2.8 Subject:@图片1江晨 transparent helmet visor reflecting rear monitor screen two @图片2砂钻蝎 red dots accelerating in pincer formation from both sides at @图片7火星赤色荒原 Narrative:conflict Intent:压迫感升级 Mood:tension Audio SFX:rear-monitor-alert-crescendo drill-screech-stereo-panning 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P07 老赵残骸
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:老赵遗体(近景→特写) Camera:slow pan-right near to close-up f/2.8 shallow depth Subject:@图片1江晨 gaze briefly shifts from前方 at @图片7火星赤色荒原 to副驾驶位 shattered helmet below 半面塌陷面骨暴露 dark purple blood beads suspended in low gravity Narrative:emotional beat Mood:melancholy Audio SFX:life-support-flatline blood-droplets-suspended @音频1(江晨)急促呼吸后刻意放缓 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P08 岩柱林入口
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:冲入岩柱群(全远景→中景) Camera:fixed high-angle to slow tilt-down extreme wide to medium f/11 to f/8 Subject:@图片13赤驼号运输车 shoots into @图片10岩石柱林峡谷 weaving violently between colossal hematite pillars dark red mineral dust bursting from chassis scraping rock walls Narrative:conflict Intent:空间转换压迫感 Mood:tension Audio SFX:cabin-violent-rattle metal-suspension-groan rock-scraping-chassis 保持场景风格统一禁止文字字幕LOGO水印。
+
+## P09 怪兽跳上车顶
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:跃上车顶(仰拍→车内主观) Camera:fixed low-angle to cut-subjective f/5.6 to f/2.8 Subject:@图片2砂钻蝎 launches from behind rock pillar onto @图片13赤驼号运输车 cargo roof at @图片10岩石柱林峡谷 eight drill-tipped limbs gripping guardrails drills spinning at high speed creating scraping sparks against metal Narrative:climax Intent:威胁直逼核心 Mood:fear Audio SFX:carapace-scraping-rock drills-metal-roof-screech @音频2(砂钻蝎)钻头嘶鸣+低频啸叫 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P10 急刹甩怪
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:急刹甩出(中景→全景) Camera:fixed interior to cut-exterior wide f/5.6 to f/11 Subject:@图片1江晨 slams both feet on brake pedal @图片2砂钻蝎 flies off @图片13赤驼号运输车 roof from inertia cartwheeling three full rotations mid-air before crashing into rock pillar cluster at @图片10岩石柱林峡谷 Narrative:climax Intent:绝境反击无效 Mood:anger Dialogue Cue:@音频1(江晨)咬牙"这东西摔不死。" Audio SFX:emergency-brake-shriek monster-body-airborne-thud pillar-shatter-collapse 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P11 弹射诱饵
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:弹射残骸(车尾全景→近景) Camera:fixed rear-view to cut-close f/8 to f/2.8 Subject:@图片13赤驼号运输车 cargo hatch explosively opens body and equipment debris ejected onto sand surface at @图片10岩石柱林峡谷 dragging crimson trail three @图片2砂钻蝎 simultaneously divert jumping toward ejected remains Narrative:resolution Intent:智取喘息 Mood:tension Audio SFX:cargo-hatch-hydraulic-explosion debris-impact-sand monster-feeding-ripping 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P12 峡谷穿梭
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:窄道逃逸(峡谷POV→全景) Camera:subjective-POV to cut-wide f/2.8 to f/8 Subject:@图片13赤驼号运输车 squeezes through @图片10岩石柱林峡谷 narrow fissure rock walls less than half meter clearance left side mirror shattered chassis scraping both walls dark red mineral debris like blood mist around vehicle Narrative:climax Intent:绝境中的极限操作 Mood:anger Audio SFX:side-mirror-shatter chassis-rock-grinding engine-echo-reverberating 保持场景风格统一禁止文字字幕LOGO水印。
+
+## P13 沙原尽头
+**时长**:6s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:6s @图片(上个视频末帧截图)为首帧
+[0-6s] Shot1:冲出峡谷(全远景→近景) Camera:slow dolly-in extreme wide to near f/11 to f/2.8 Subject:@图片13赤驼号运输车 bursts from @图片10岩石柱林峡谷 into open @图片7火星赤色荒原 dust forming natural arch @图片1江晨 wipes helmet visor fog with gloved hand heads-up display shows oxygen remaining 3 hours low battery navigation green dot flickering 120km ahead Narrative:emotional beat Intent:短暂喘息后新希望 Mood:hope Dialogue Cue:@音频1(江晨)低哑"一百二十公里。他们最好给老娘留了一扇没锁的门。" Audio SFX:canyon-wind-sudden-silence navigation-chime-soft low-battery-beep 保持@图片1角色一致性保持场景风格统一禁止文字字幕LOGO水印。
+
+## P14 新的追击
+**时长**:5s Style:(Modern Chinese Cyberpunk:1.3),(dunhuang color palette:1.1),CG国漫电影级光影 Duration:5s @图片(上个视频末帧截图)为首帧
+[0-5s] Shot1:地平线新威胁(全远景高帧率慢镜头→特写) Camera:slow push-in to cut-close extreme wide slow-motion to close-up f/11 to f/2.8 Subject:@图片1江晨 silhouette bathed in orange-red Martian sunlight at @图片7火星赤色荒原 white spacesuit dust glowing like burning gold powder in rim light new red dots emerging from dust storm on horizon @图片1江晨 deep brown pupils darting between green dot ahead and red dots in rear-view she does not slow down Narrative:climax Intent:结尾钩子悬念 Mood:hope Audio SFX:engine-redline-howling distant-drill-screech-fading-in End Frame:@图片1江晨 driving silhouette against red Martian horizon green dot ahead red dots behind 保持@图片1角色面部特征体型服饰与参考图完全一致保持场景风格统一禁止文字字幕LOGO水印。

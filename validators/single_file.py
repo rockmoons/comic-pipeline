@@ -455,6 +455,65 @@ def check_first_frame_continuity(cine_text: str) -> CheckResult:
                       "补全首帧/末帧声明")
 
 
+# v4.3: 美术指导外观描述禁止抽象物理数字
+def check_art_no_abstract_numbers(art_text: str) -> CheckResult:
+    """§6.0bis: 道具外观描述禁止吨/km/h/倍数等抽象物理数字"""
+    patterns = [
+        (r'\b\d+\.?\d*\s*吨\b',   '吨'),
+        (r'\b\d+\.?\d*\s*公斤\b', '公斤'),
+        (r'\b\d+\.?\d*\s*km/h\b', 'km/h'),
+        (r'\b\d+\.?\d*\s*倍\b',   '倍数'),
+        (r'\b\d+\.?\d*\s*米长\b', 'X米长'),
+        (r'\b\d+\.?\d*\s*米宽\b', 'X米宽'),
+        (r'\b\d+\.?\d*\s*米高\b', 'X米高'),
+        (r'\b时速\s*\d+',         '时速X'),
+        (r'\b\d+\.?\d*\s*%\b',    '百分比'),
+    ]
+    found = []
+    for pattern, label in patterns:
+        matches = re.findall(pattern, art_text)
+        if matches:
+            found.extend([f'"{m}"({label})' for m in matches[:3]])
+    
+    if not found:
+        return CheckResult("第一层：单文件结构", 23, "外观描述禁止抽象数字",
+                          Status.PASS, "未发现吨/km/h/倍数等抽象物理数字")
+    return CheckResult("第一层：单文件结构", 23, "外观描述禁止抽象数字",
+                      Status.FAIL, f"发现{len(found)}处：{'; '.join(found[:5])}",
+                      "改用视觉化语言替代抽象数字（见§6.0bis）")
+
+
+# v4.3: L级道具Neg Prompt防宫格
+def check_art_lprop_neg_antigrid(art_text: str) -> CheckResult:
+    """§6.4: L级大型道具Negative Prompt必须包含防宫格词"""
+    anti_grid_terms = ['split screen', 'grid layout', '宫格', '多图拼接']
+    
+    # Find all L级道具 sections (between "### 6.4" and "### 6.5" or end)
+    l_section_match = re.search(r'### 6\.4.*?(?=### 6\.5|$)', art_text, re.DOTALL)
+    if not l_section_match:
+        return CheckResult("第一层：单文件结构", 24, "L级道具Neg防宫格",
+                          Status.PASS, "未检测到L级道具区段")
+    
+    l_section = l_section_match.group()
+    
+    # Find Negative Prompt blocks within the L section
+    neg_blocks = re.findall(r'Negative Prompt:\s*(.+?)(?=\n\n|\n```|\Z)', l_section, re.DOTALL)
+    
+    violations = []
+    for i, neg in enumerate(neg_blocks):
+        neg_clean = neg.strip().replace('\n', ' ')
+        missing = [t for t in anti_grid_terms if t not in neg_clean]
+        if missing:
+            violations.append(f"Neg#{i+1}缺：{', '.join(missing)}")
+    
+    if not violations:
+        return CheckResult("第一层：单文件结构", 24, "L级道具Neg防宫格",
+                          Status.PASS, "所有L级道具Neg Prompt含防宫格词")
+    return CheckResult("第一层：单文件结构", 24, "L级道具Neg防宫格",
+                      Status.WARN, '；'.join(violations[:3]),
+                      "Neg Prompt追加split screen/grid layout/宫格/多图拼接")
+
+
 # Run all single-file checks
 def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) -> List[CheckResult]:
     results = []
@@ -487,4 +546,7 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     results.append(check_s2b_actor_image_count(art_text))
     results.append(check_three_block_completeness(cine_text))
     results.append(check_first_frame_continuity(cine_text))
+    # v4.3 new checks
+    results.append(check_art_no_abstract_numbers(art_text))
+    results.append(check_art_lprop_neg_antigrid(art_text))
     return results

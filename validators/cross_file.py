@@ -477,6 +477,84 @@ def check_id_propagation(director_text: str, art_text: str, cine_text: str) -> C
                       Status.FAIL, '；'.join(issues), "检查@编号↔ID映射表是否完整")
 
 
+# v4.3: 素材对应表道具视觉关键词含尺寸参照
+def check_visual_keywords_has_scale(cine_text: str) -> CheckResult:
+    """分镜师§2: 素材对应表中道具视觉关键词必须包含尺寸参照"""
+    scale_hints = ['S级', 'M级', 'L级', '手掌', '半臂', '三层楼', '人', '剪影',
+                   '单手提', '挂在', '覆盖', '等高', 'cm', '全长', '体长', '身高',
+                   '翼展', '四足', '双足', '节肢', '蛇型', '无定形', '悬浮', '乘',
+                   '骑乘', '载人', '背上']
+    
+    # Parse 素材对应表 rows
+    # Pattern: | @图片N | 道具 | ... | 道具名 | 视觉关键词 |
+    prop_rows = re.findall(
+        r'\|\s*@图片\d+\s*\|\s*道具\s*\|[^|]*\|[^|]*\|\s*([^|]*?)\s*\|',
+        cine_text
+    )
+    
+    if not prop_rows:
+        return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+                          Status.PASS, "未检测到道具行（无需检查）")
+    
+    missing = []
+    for i, keywords in enumerate(prop_rows):
+        kw = keywords.strip()
+        has_scale = any(h in kw for h in scale_hints)
+        if not has_scale:
+            missing.append(f"道具#{i+1}('{kw[:20]}...'）缺尺寸参照")
+    
+    if not missing:
+        return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+                          Status.PASS, f"全部{len(prop_rows)}条道具含尺寸参照")
+    return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+                      Status.WARN, '；'.join(missing[:3]),
+                      "视觉关键词补尺寸参照（见分镜师§2规则）")
+
+
+# v4.3: 生物角色体量尺度三要素完整
+def check_creature_body_scale_complete(art_text: str) -> CheckResult:
+    """美术指导§2.2□S1bis: 非人生物体量尺度字段三要素齐全"""
+    # Find creature profile blocks: each creature has its own table with 体量尺度 row
+    # Pattern: | 体量尺度 | [content] |
+    body_scale_rows = re.findall(
+        r'\|\s*体量尺度\s*\|\s*(.+?)\s*\|',
+        art_text
+    )
+    
+    if not body_scale_rows:
+        return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+                          Status.PASS, "未检测到非人生物角色（无需检查）")
+    
+    violations = []
+    for i, row in enumerate(body_scale_rows):
+        content = row.strip()
+        # Check 3 elements: number + unit (m/cm) + form type
+        has_number = bool(re.search(r'\d+', content))
+        has_unit = bool(re.search(r'[mc]m|米|厘米', content))
+        has_form = any(t in content for t in [
+            '节肢型', '蛇型', '四足型', '四足', '双足型', '双足',
+            '无定形', '悬浮体', '飞行', '水生', '陆行', '爬行',
+            '人形', '兽形', '龙形', '鸟形'
+        ])
+        
+        missing_parts = []
+        if not has_number: missing_parts.append('数值')
+        if not has_unit: missing_parts.append('单位(m/cm)')
+        if not has_form: missing_parts.append('形态类型')
+        
+        if missing_parts:
+            violations.append(
+                f"生物#{i+1}('{content[:30]}')缺：{', '.join(missing_parts)}"
+            )
+    
+    if not violations:
+        return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+                          Status.PASS, f"全部{len(body_scale_rows)}个生物体量尺度三要素齐全")
+    return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+                      Status.FAIL, '；'.join(violations[:3]),
+                      "补全体量尺度字段（数值+单位+形态类型）")
+
+
 # Run all cross-file checks
 def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) -> List[CheckResult]:
     results = []
@@ -505,4 +583,7 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     results.append(check_forbidden_words_in_prompts(cine_text))
     results.append(check_cross_scene_base_image(art_text))
     results.append(check_id_propagation(director_text, art_text, cine_text))
+    # v4.3 new checks
+    results.append(check_visual_keywords_has_scale(cine_text))
+    results.append(check_creature_body_scale_complete(art_text))
     return results

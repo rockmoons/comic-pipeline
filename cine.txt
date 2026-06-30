@@ -1,98 +1,698 @@
-# 分镜师 - 修真界奶茶店 第1章
+# 分镜师 - 食为天 第1章
 CG国漫风格。
 
-素材对应表：
-@图片1 演员 陆小满 | 24岁女，马尾辫圆脸杏仁眼，粉色围裙
-@图片2 演员 杂役阿福 | 约18岁男，灰色道袍大一号瘦小雀斑
-@图片3 演员 丹霞掌门 | 约50岁男，白发束冠红色道袍金边长须
-@图片4 场景 丹霞宗食堂-全景 | 暖黄灶火斜射阳光木桌
-@图片5 场景 丹霞宗食堂-灶台区 | 灶台近景茶叶罐牛奶壶
-@圖片21 道具 搅拌器 | 不锈钢手持搅拌器
-@圖片22 道具 聚灵散碗 | 黑色粗陶碗
-@圖片23 道具 珍珠聚灵茶杯 | 透明玻璃杯淡金灵雾奶盖
+## 🎭 素材对应表
+| @编号 | 类型 | 素材 | 视觉关键词 |
+|------|------|------|-----------|
+| @图片1 | 演员 | 姜禾 | 25岁女，单麻花辫搭左肩，杏眼明亮，右手虎口烫伤旧疤，靛蓝围裙灰棉袍 |
+| @图片2 | 演员 | 苏九 | 约22岁男，矿灰涂面黑皮肤，高挺鼻梁轮廓分明，短褐矿工装 |
+| @图片3 | 场景 | 铁炉堡·城门口-全景 | 冬日傍晚灰黄脏雪，城缝冷白体积光，冷色调荒芜 |
+| @图片4 | 场景 | 铁炉堡·城门口-墙根 | 灰石墙面矿灰沉积，碎石地面 |
+| @图片6 | 场景 | 铁炉堡·城西铁匠铺-全景灶台 | 破旧铁匠铺塌砖灶台嵌灵石，窗外冷蓝光 |
+| @图片7 | 场景 | 铁炉堡·城西铁匠铺-灶台近景 | 灶台灵石发光灵火跳跃，黑铁锅裂纹 |
+| @图片8 | 场景 | 铁炉堡·城西铁匠铺-门口夕阳 | 残阳余晖远山矿坑轮廓，暖橙暮色 |
+| @图片9 | 道具 | 黑铁锅 | 黑色铸铁直径双臂环抱，三道补焊裂纹泛暗红，锅底灵气蓝光 |
+| @图片10 | 道具 | 灵蕨与山药 | 灵蕨翠绿羽状半透明淡金叶脉，铁骨山药土黄粗糙小臂粗 |
+| @图片11 | 道具 | 陶碗 | 手工粗陶碗手掌大小，深褐旋制纹路不规整碗口 |
 
-### P01 穿越醒来
-**时长**：5s
-Style: CG国漫风格画风，电影级光影。Duration: 5s。
-[0-5s] Shot 1: 穿越醒来 (close-up→medium shot·static)。Camera: static，close-up → medium shot。
-Subject: @图片21搅拌器不锈钢表面映出@图片1陆小满茫然的脸。她睁开眼，面前是@图片4丹霞宗食堂全景——暖黄灶火在墙角跳动，斜射阳光切出明暗光柱。Mood: surprise。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+## 🎥 视频提示词
 
-### P02 聚灵散的真相
-**时长**：6s
+## P01 铁锅入城 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: desaturated-cold, normal, natural, cool-shift
+Duration: 5s
+
+[0-5s] Shot 1: 铁锅入城 (wide→medium shot·static)
+Optics: spherical, 35mm, none
+Camera: static, wide shot→medium shot, deep depth of field f/11
+Material: stone, rough, low-reflectivity, weathered
+Atmosphere: snow-flakes, medium, backlit-glowing(god-rays-through-wall-cracks)
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片1 姜禾扛着 @图片9 黑铁锅站在 @图片3 城门口全景——灰黄脏雪纷飞中她棉袍袍角磨破靛蓝围裙在冷风中微摆，城墙裂缝射入冷白体积光在脏雪地上切出明暗光影。
+Narrative: setup
+Intent: 荒城初临落魄开局
+Mood: melancholy
+Audio SFX: wind-howling-north, snow-crunching-footsteps
+
+【🎬 Seedance直接输入】
+Super-35, 16:9, desaturated-cold color grading with cool-shift in shadows. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+首帧为 @图片3（铁炉堡·城门口全景图）。
+
+@图片1 姜禾扛着 @图片9 黑铁锅站在 @图片3 铁炉堡城门口全景中。灰黄色的脏雪从铅灰色天空纷纷扬扬落下，悬浮的雪粒在冷白体积光中如碎银般闪烁。城墙裂缝中射入的冷白体积光（god-rays piercing wall cracks）在脏雪地面上切出锐利的明暗交界线，rough stone walls表面风化的粗粝质感在侧光下呈现方向性微高光。姜禾穿着灰扑扑的棉袍袍角磨破了边，腰间靛蓝色围裙是画面中唯一的暖色——在冷风中微微摆动。她右手虎口的烫伤旧疤在北风中泛白。镜头以spherical 35mm由全景缓缓推至中景，深景深f/11使城门口所有细节清晰可辨。subtle vignette自然压暗画面四角，视线聚焦画面中央孤独的入城者。北风呼啸低鸣全程伴随着，脏雪在脚下踩出咯吱声。整体氛围melancholy——荒芜落魄的冬日边城，一个被贬的厨子扛着破锅独自走入未知的命运。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, desaturated-cold grading, cool-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片1 姜禾扛 @图片9 黑铁锅站在 @图片3 城门口全景，脏雪纷飞。冷白体积光从城墙裂缝射入切出明暗光影。rough stone walls风化粗粝质感，desaturated-cold暗部压青。
+2s-3s | 音效 | 北风呼啸低鸣全程伴随，脏雪踩踏咯吱声。
+3s-5s | 镜头 | spherical 35mm由全景推至中景，f/11深景深。subtle vignette压暗四角。姜禾靛蓝围裙在冷色调中的暖色焦点。
+5s    | 收束 | melancholy lighting，冷白体积光与灰黄脏雪冷暖对撞。荒城初临，落魄开局。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: wind-howling-north, snow-crunching-footsteps
+
+
+## P02 矿工苏九 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, none
+Duration: 5s
 @图片（上个视频末帧截图）为首帧。
-[0-6s] Shot 1: 聚灵散真相 (two-shot medium shot·static)。Camera: static，two-shot medium shot。
-Subject: @图片2杂役(阿福)递过来一碗黑糊糊的@图片22聚灵散。@图片1陆小满闻了一下差点吐了。"你们每天就喝这个？"
-Dialogue Cue: @音频1（陆小满）难以置信地问："你们每天就喝这个？"
-Dialogue Cue: @音频2（杂役阿福）无奈地说："筑基之前只能喝聚灵散。我已经喝了三年了。"
-Mood: surprise。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
 
-### P03_A 发现食材
-**时长**：3s
-@图片（上个视频末帧截图）为首帧。
-[0-3s] Shot 1: 发现食材 (medium shot·follow)。Camera: follow 跟，medium shot。
-Subject: @图片1陆小满快步走到@图片5灶台前，打开油纸包闻到清冽茶香，手指划过茶叶罐牛奶壶木薯粉袋——眼睛亮了，穿越后第一次露出笑容。Mood: bright。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+[0-5s] Shot 1: 矿工苏九 (two-shot medium shot·static)
+Optics: spherical, 50mm, none
+Camera: static, two-shot medium shot, medium depth of field f/5.6
+Material: stone, rough, low-reflectivity, weathered; fabric, matte, low-reflectivity, lightly-worn
+Atmosphere: snow-flakes, light, none
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片2 苏九蹲在 @图片4 城门口墙根下抬头搭话——矿灰涂面皮肤黝黑但眼睛清澈高挺鼻梁轮廓分明，@图片1 姜禾在画右肩扛 @图片9 黑铁锅右手虎口烫伤旧疤泛白。苏九面部清晰聚焦，姜禾作为背景元素微虚化。
+Narrative: conflict→reveal
+Intent: 底层矿工好奇搭话
+Mood: bright
+Dialogue Cue: @音频2（苏九）好奇带笑地问："新来的？看你像被贬的。犯了什么事？"
+Dialogue Cue: @音频1（姜禾）平静地说："给皇帝做了一道菜。"
+Audio SFX: fabric-rustling, laughter-in-cold-air
 
-### P03_B 系紧围裙
-**时长**：2s
-@图片（上个视频末帧截图）为首帧。
-[0-2s] Shot 1: 系紧围裙 (medium shot·static)。Camera: static，medium shot。
-Subject: @图片1陆小满系紧粉色围裙，手握@图片21搅拌器。@图片2杂役(阿福)困惑退后两步。
-Dialogue Cue: @音频1（陆小满）干脆地说："让开。"
-Mood: tension。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading, normal contrast. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
 
-### P04 灵火炒茶
-**时长**：4s
-@图片（上个视频末帧截图）为首帧。
-[0-4s] Shot 1: 灵火炒茶 (close-up·static)。Camera: static，close-up detail shot。
-Subject: @图片1陆小满在@图片5灶台前手炒茶叶。灵火淡金色随她手腕节奏跳动，茶叶从暗绿变成泛金光翠绿——每片像被镀了极薄金箔。Mood: bright。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+@图片2 苏九蹲在 @图片4 城门口墙根下，矿灰涂面的黝黑皮肤下眼睛清澈明亮，高挺鼻梁轮廓分明，粗硬黑发沾满灰白矿尘。他抬头对着画右的 @图片1 姜禾搭话，姜禾肩扛 @图片9 黑铁锅站在城门口，右手虎口的烫伤旧疤在冷空气中泛白。苏九面部清晰聚焦（in sharp focus），姜禾在画面右侧作为背景元素带有柔和虚化（background bokeh）。苏九好奇带笑地问："新来的？看你像被贬的。犯了什么事？"语气带着市井矿工的直率热情。姜禾平静回答："给皇帝做了一道菜。"话音落下，苏九愣了一秒然后大笑出来——白雾在冷风中炸开一团，粗糙的石墙表面 weathered matte 质感承接了笑声的回响。镜头固定50mm双人中景，f/5.6中等景深。light snow flakes在两人之间飘落，subtle vignette将视线聚焦于这场命运的初次对话。整体氛围bright——底层矿工与落魄御厨的荒城偶遇。
 
-### P05 奶盖诞生
-**时长**：4s
-@图片（上个视频末帧截图）为首帧。
-[0-4s] Shot 1: 奶盖诞生 (close-up·static)。Camera: static，close-up detail shot。
-Subject: @图片21搅拌器在杯中高速旋转。牛奶变成绵密灵雾奶盖，乳白泡沫蒸腾淡金灵雾，暖黄灶火映照下冷暖光影交织。Mood: bright。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
 
-### P06 珍珠成型
-**时长**：4s
-@图片（上个视频末帧截图）为首帧。
-[0-4s] Shot 1: 珍珠成型 (close-up·static)。Camera: static，close-up detail shot。
-Subject: 珍珠在灵泉水里从浑浊白变半透明——每颗内部淡金灵气旋缓慢转动像微型星系。逆光下边缘泛冷白高光，中心温润暖金。Mood: bright。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+0s-2s | 视觉 | @图片2 苏九蹲在 @图片4 墙根下，矿灰涂面眼睛清澈，粗硬黑发沾矿尘。@图片1 姜禾扛 @图片9 铁锅在画右。light snow flakes飘落，weathered stone walls粗粝背景。
+2s-3s | 台词 | @音频2（苏九）好奇带笑："新来的？看你像被贬的。犯了什么事？" 苏九面部清晰聚焦。
+3s-4s | 台词 | @音频1（姜禾）平静："给皇帝做了一道菜。" 姜禾在右，虎口烫伤旧疤泛白。
+4s-5s | 视觉 | 苏九愣住后大笑，白雾在冷风中炸开。fabric-rustling 衣料摩擦声。subtle vignette聚焦。
+5s    | 收束 | bright氛围，底层矿工与落魄御厨荒城偶遇。natural grading自然色调。
 
-### P07 第一口
-**时长**：6s
-@图片（上个视频末帧截图）为首帧。
-[0-6s] Shot 1: 第一口 (two-shot medium close-up·static)。Camera: static，two-shot medium close-up。
-Subject: @图片23珍珠聚灵茶杯——三层分明像艺术品：底层泛金光茶汤，中层半透明珍珠，顶层蒸腾灵雾奶盖。@图片1陆小满推到@图片2杂役(阿福)面前。杂役闭眼喝下——眼睛瞬间瞪大，手指发光淡金灵光从指尖溢出画细小光弧。
-Dialogue Cue: @音频1（陆小满）自信地说："这叫珍珠聚灵茶。喝。"
-Mood: surprise。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: @音频2(苏九)好奇带笑 — "新来的？看你像被贬的。犯了什么事？" | @音频1(姜禾)平静 — "给皇帝做了一道菜。"
+🎵 音效: fabric-rustling, laughter-in-cold-air
 
-### P08 突破
-**时长**：5s
-@图片（上个视频末帧截图）为首帧。
-[0-5s] Shot 1: 突破 (medium→wide shot·follow→static)。Camera: follow跟→static，medium shot→wide shot。
-Subject: @图片2杂役(阿福)连滚带爬冲出食堂，盘腿坐在@图片7院子里。淡金色灵气柱冲天而起——整个丹霞宗都能看到。练气九层→筑基。周围修士惊呼围观。Mood: bright。
-(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
 
-### P09 掌门驾到
-**时长**：5s
-@图片（上个视频末帧截图）为首帧。
-[0-5s] Shot 1: 掌门驾到 (wide→medium shot·tilt-down→static)。Camera: tilt-down仰拍→平拍，wide→medium shot。
-Subject: @图片3丹霞掌门从天而降落在@图片4食堂门口，激起一阵气浪，红色道袍金边在夕阳下熠熠生辉。他看着@图片1陆小满和@图片21搅拌器沉默很久。"你这杯茶——多少灵石一杯？"
-Dialogue Cue: @音频3（丹霞掌门）沉稳地问："你这杯茶——多少灵石一杯？"
-Mood: mystery。(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+## P03 指路铁铺 (4s)
 
-### P10 定价
-**时长**：6s
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, none
+Duration: 4s
 @图片（上个视频末帧截图）为首帧。
-[0-5s] Shot 1: 定价 (medium close-up·static)。Camera: static，medium close-up chest up。
-Subject: @图片1陆小满微笑面对掌门。门外已围了几十个弟子。"开业特惠——第一杯免费。第二杯起，五枚灵石。"切：食堂外三千弟子排长队，暖黄夕阳洒在人群，每人手中@图片23珍珠聚灵茶杯在逆光中泛淡金灵雾。
-Dialogue Cue: @音频1（陆小满）微笑自信地说："开业特惠——第一杯免费。第二杯起，五枚灵石。"
-Narrative: resolution。Mood: bright。
-End Frame: 陆小满微笑特写，身后夕阳下三千弟子排队喝茶。
-禁止文字、字幕、LOGO、水印。
-(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), cinematic lighting
+
+[0-4s] Shot 1: 指路铁铺 (medium shot·static)
+Optics: spherical, 35mm, none
+Camera: static, medium shot, medium depth of field f/5.6
+Material: fabric, matte, low-reflectivity, lightly-worn
+Atmosphere: snow-flakes, light, none
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片2 苏九站起身手指画右城西方向，矿灰簌簌从短褐上掉落，@图片1 姜禾在画面中央偏右扛 @图片9 黑铁锅转身看去。苏九面部清晰聚焦。
+Narrative: reveal
+Intent: 热心矿工指路生机
+Mood: bright
+Dialogue Cue: @音频2（苏九）热心地说："我叫苏九。矿工，炼气九层卡了五年。你要是真会做饭，去城西——那儿有个废弃的铁匠铺，炉灶还能用。"
+Audio SFX: fabric-rustling, pointing-wind-whoosh
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片2 苏九从 @图片4 城门口墙根下站起身，手指向画右城西方向——动作干脆利落，矿灰簌簌从他深褐色短褐上掉落，在light snow flakes中扬起点点灰白。@图片1 姜禾在画面中央偏右，扛着 @图片9 黑铁锅，顺着苏九指的方向转身望去，右手虎口的烫伤旧疤在冷光下泛白。苏九面部清晰聚焦，热情地说："我叫苏九。矿工，炼气九层卡了五年。你要是真会做饭，去城西——那儿有个废弃的铁匠铺，炉灶还能用。"语气带着底层矿工不加修饰的热心，fabric-rustling 衣物摩擦声和pointing-wind-whoosh 挥手指向的空气破风声交织。镜头spherical 35mm固定中景，subtle vignette自然聚焦画面中央的互动。light snow flakes在两人之间飘落。整体氛围bright——一个矿工为一个厨子指了一条活路。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-1s | 视觉 | @图片2 苏九站起身，矿灰从短褐簌簌掉落。fabric-rustling 衣物摩擦。@图片1 姜禾扛 @图片9 铁锅在右。
+1s-1s | 音效 | pointing-wind-whoosh 手指破风声。苏九指向画右城西。
+1s-4s | 台词 | @音频2（苏九）热心："我叫苏九。矿工，炼气九层卡了五年。你要是真会做饭，去城西——那儿有个废弃的铁匠铺，炉灶还能用。" 苏九面部清晰聚焦，姜禾转身看去。
+4s    | 收束 | bright氛围，light snow flakes飘落。矿工为厨子指路，命运的岔口。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: @音频2(苏九)热心 — "我叫苏九。矿工，炼气九层卡了五年。你要是真会做饭，去城西——那儿有个废弃的铁匠铺，炉灶还能用。"
+🎵 音效: fabric-rustling, pointing-wind-whoosh
+
+
+## P04 铁匠铺内 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, cool-shift
+Duration: 5s
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 铁匠铺内 (wide→medium shot·follow)
+Optics: spherical, 24mm, none
+Camera: follow 跟, wide shot→medium shot, deep depth of field f/11
+Material: stone, rough, low-reflectivity, weathered; brick, porous, matte, aged-patina
+Atmosphere: dust-motes, light, backlit-glowing(god-rays-through-window)
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片1 姜禾推门进入 @图片6 铁匠铺——塌了半边的砖砌灶台嵌三块低品灵石烟囱堵灰窗外透冷蓝光，她放下 @图片9 黑铁锅走到灶台前检查炉灶。
+Narrative: setup
+Intent: 破败中见生机
+Mood: melancholy
+Audio SFX: door-creak, chimney-blocked-hum
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with cool-shift from window light. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾推开破旧的木门进入 @图片6 铁匠铺内部——door-creak 门轴吱呀声在空旷的铁匠铺里回响。塌了半边的砖砌灶台（porous brick, aged-patina锈蚀痕迹）嵌着三块低品灵石在昏暗室内泛微弱蓝光，烟囱堵了一半灰尘从缝隙漏下，light dust motes在窗外透进的冷蓝天光中缓缓飘浮形成细小的god-rays。姜禾放下肩上的 @图片9 黑铁锅，走到灶台前弯腰检查炉灶结构——她的麻花辫从左肩滑落，靛蓝围裙在冷蓝与暗灰的空间中保持那一抹暖色。镜头以spherical 24mm跟拍姜禾从门口至灶台，wide shot自然过渡至medium shot，f/11深景深展现铁匠铺破败的每个细节——rough stone地面上的裂缝、weathered brick灶台上的灰垢、烟囱上的蛛网。subtle vignette压暗四角，chimney-blocked-hum 烟囱堵灰的低频嗡鸣全程伴随。整体氛围melancholy——比城门口更破的地方，却有一口能熬出金丹的铁锅。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with cool-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片1 姜禾推门进入 @图片6 铁匠铺。door-creak 门轴响。塌砖灶台（porous brick, aged-patina），三块低品灵石泛微光。
+2s-3s | 视觉 | light dust motes在冷蓝天光中飘浮形成god-rays。烟囱堵灰，chimney-blocked-hum 低频嗡鸣。姜禾走向灶台。
+3s-5s | 镜头 | spherical 24mm跟拍，wide→medium shot，f/11深景深。姜禾放下 @图片9 铁锅检查灶台，麻花辫从左肩滑落。subtle vignette。
+5s    | 收束 | melancholy氛围。rough stone地面裂缝，weathered brick灶台灰垢。破败之地，一锅生机。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: door-creak, chimney-blocked-hum
+
+
+## P05 灵火燃起 (4s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 4s
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 灵火燃起 (close-up detail·static)
+Optics: spherical, 85mm, none
+Camera: static, close-up detail shot, shallow depth of field f/2.8
+Material: stone, rough, low-reflectivity, aged-patina; crystal, glossy, semi-reflective, pristine, emissive(pale-blue-glow)
+Atmosphere: sparks, light, backlit-glowing
+Vignette: subtle, smooth-fade
+Bokeh: circular-creamy
+Director/DP: none
+Subject: @图片7 灶台特写——嵌着的低品灵石被激活泛淡蓝微光，灵火从灶台缝隙涌出跳跃舔舐 @图片9 黑铁锅锅底，裂纹边缘暗红氧化铁泛光泽。暖黄火光打出高光窗外冷蓝天光形成冷暖光影在 @图片1 姜禾脸上交替。
+Narrative: reveal
+Intent: 灵火初燃希望之光
+Mood: bright
+Audio SFX: spirit-stone-activation-hum, spirit-fire-crackling
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift from firelight. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片7 灶台特写——嵌着的低品灵石（glossy crystal, semi-reflective）被激活瞬间泛出淡蓝色微光（self-emissive pale-blue glow），spirit-stone-activation-hum 低频嗡鸣从灵石内部涌出。紧接着，灵火从灶台缝隙中涌出——spirit-fire-crackling 噼啪声中橙黄色火焰跳跃着舔舐 @图片9 黑铁锅锅底。黑铁锅三道补焊裂纹的边缘在灵火高温下泛出暗红色氧化铁光泽（aged-patina, subtle oxidized iron sheen），裂纹深处残留的灵气泛微弱蓝光。暖黄色的火光在 @图片1 姜禾脸上打出高光——她站在灶台前，杏眼中倒映跳跃的火焰，脸上暖黄火光与窗外透进的冷蓝天光形成完整的冷暖光影交替。镜头spherical 85mm固定近景特写，f/2.8浅景深使背景虚化为creamy circular bokeh，焦点锁定在跳跃的灵火与锅底裂纹的细节上。subtle vignette压暗四角。light sparks从灶台缝隙飞溅而出，在暖黄火光中闪烁如萤火。整体氛围bright——灵火初燃，希望之光从破败灶台缝隙中涌出。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片7 灶台灵石激活泛淡蓝微光（glossy crystal, semi-reflective, emissive pale-blue）。spirit-stone-activation-hum 低频嗡鸣。
+2s-3s | 视觉 | 灵火从灶台缝隙涌出，舔舐 @图片9 铁锅锅底。裂纹暗红氧化铁光泽。spirit-fire-crackling 噼啪声。
+3s-4s | 视觉 | 暖黄火光在 @图片1 姜禾脸上打出高光，与窗外冷蓝形成冷暖光影。杏眼倒映火焰。spherical 85mm f/2.8。circular-creamy bokeh。
+4s    | 收束 | bright氛围。light sparks飞溅如萤火。subtle vignette。灵火初燃，希望之光。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: spirit-stone-activation-hum, spirit-fire-crackling
+
+
+## P06 集市换材 (4s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, none
+Duration: 4s
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 集市换材 (medium shot·static)
+Optics: spherical, 50mm, none
+Camera: static, medium shot, medium depth of field f/5.6
+Material: stone, rough, low-reflectivity, weathered
+Atmosphere: none
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片1 姜禾回到 @图片6 铁匠铺将灵蕨铁骨山药和蛮牛肉逐一放在灶台上——翠绿色灵蕨羽叶片半透明叶脉泛淡金灵光，土黄铁骨山药外皮粗糙，蛮牛肉纹理鲜红脂肪雪白。
+Narrative: setup
+Intent: 食材就绪厨心初现
+Mood: peace
+Audio SFX: ingredients-placing-thud, spirit-fern-rustling
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾从门外走进 @图片6 铁匠铺，将换来的食材逐一放在灶台上——ingredients-placing-thud 食材轻放灶台的闷响。@图片10 灵蕨：翠绿色羽状叶片半透明，叶脉泛淡金灵光（translucent green fern fronds with golden vein glow），spirit-fern-rustling 叶片轻触灶台的沙沙声。铁骨山药：土黄色粗糙外皮，形如成人小臂粗。蛮牛肉：鲜红肌理分明，脂肪雪白如霜。食材依次在灶台上排开，丰富的色彩在铁匠铺暗色调空间中形成天然的静物构图。姜禾逐一检查灵蕨的翠绿程度和蛮牛肉的纹理——这是御厨的职业习惯，杏眼中闪过一丝认真。镜头spherical 50mm固定中景，f/5.6中等景深。subtle vignette自然聚焦灶台上的食材与姜禾的手。整体氛围peace——简陋的食材，不简单的厨子。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片1 姜禾将 @图片10 灵蕨放灶台——翠绿羽状半透明，叶脉淡金灵光。spirit-fern-rustling 沙沙声。
+2s-3s | 视觉 | 铁骨山药土黄粗糙小臂粗，蛮牛肉鲜红纹理雪白脂肪。ingredients-placing-thud 放置轻响。食材在灶台排开。
+3s-4s | 视觉 | 姜禾逐一检查食材——杏眼认真。spherical 50mm f/5.6，subtle vignette。
+4s    | 收束 | peace氛围。简陋食材，不简单的厨子。natural grading。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: ingredients-placing-thud, spirit-fern-rustling
+
+
+## P07_A 蛮牛入锅 (3s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 3s
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 蛮牛入锅 (close-up·static)
+Optics: spherical, 85mm, none
+Camera: static, close-up detail shot, shallow depth of field f/2.8
+Material: metal, rough, semi-reflective, battle-damaged(cracked-weld), emissive(soft-blue-spirit-glow)
+Atmosphere: steam, light, backlit-glowing
+Vignette: subtle, smooth-fade
+Bokeh: circular-creamy
+Director/DP: none
+Subject: @图片9 黑铁锅内灵泉水冒蟹眼泡，@图片1 姜禾将蛮牛肉下锅——肉入水瞬间血沫翻涌赤红渐转灰白，她右手握勺手腕一转利落撇净浮沫，虎口烫伤旧疤在蒸汽中若隐若现。
+Narrative: conflict→reveal
+Intent: 利落厨艺撇净浮沫
+Mood: bright
+Audio SFX: water-bubbling, meat-sizzling-foam, skimming-scoop
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift from firelight. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片9 黑铁锅内的灵泉水温度刚好冒蟹眼泡——水面细密的小气泡不断上涌破裂，water-bubbling 咕嘟声持续。@图片1 姜禾将蛮牛肉下锅——肉块入水的瞬间，meat-sizzling-foam 滋滋声中血沫翻涌，赤红色血沫从肉块表面急剧翻腾而出渐转灰白。姜禾右手握勺手腕一转——这个做了几千遍的动作利落干脆——勺子贴着水面划过，将浮沫撇得干干净净。steam从锅面升腾而起，在灵火的暖黄光照下形成半透明的蒸汽帘幕（backlit steam glow），姜禾右手虎口的烫伤旧疤在蒸汽中若隐若现。镜头spherical 85mm固定特写，f/2.8浅景深使蒸汽和锅沿虚化为creamy circular bokeh，焦点锁定在撇沫的勺子和翻涌的汤面上。黑铁锅粗糙的金属表面（rough metal, semi-reflective）在灵火映照下泛暖光，三道裂纹的补焊处呈现鱼鳞纹路（battle-damaged crack-weld texture）隐约透出淡蓝灵气微光。整体氛围bright——利落厨艺，一个动作见真章。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-1s | 视觉 | @图片9 铁锅灵泉水冒蟹眼泡。water-bubbling 咕嘟声。rough metal表面暖光，裂纹补焊鱼鳞纹。
+1s-2s | 视觉 | 蛮牛肉入锅，meat-sizzling-foam 血沫翻涌赤红转灰白。steam升腾backlit glowing。
+2s-3s | 视觉 | @图片1 姜禾右手握勺撇净浮沫，虎口烫伤旧疤在蒸汽中若隐若现。spherical 85mm f/2.8，circular-creamy bokeh。
+3s    | 收束 | bright氛围。利落厨艺，一个动作见真章。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: water-bubbling, meat-sizzling-foam, skimming-scoop
+
+
+## P07_B 刀工如风 (3s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 3s
+@图片（上个视频末帧截图）为首帧。
+
+[0-3s] Shot 1: 刀工如风 (close-up·static)
+Optics: spherical, 85mm, none
+Camera: static, close-up detail shot, shallow depth of field f/2.8
+Material: organic, matte, low-reflectivity, pristine(translucent-fern)
+Atmosphere: steam, light, backlit-glowing
+Vignette: subtle, smooth-fade
+Bokeh: circular-creamy
+Director/DP: none
+Subject: @图片1 姜禾右手持刀灵蕨斜切成段舒展半透明翠绿羽片铁骨山药滚刀切均匀块状——刀起刀落间食材依次投入 @图片9 铁锅，麻花辫从肩头滑落又撩起。
+Narrative: reveal
+Intent: 御厨刀工行云流水
+Mood: bright
+Audio SFX: knife-chopping-crisp, rolling-cut-thump, ingredients-splashing
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾右手持刀——knife-chopping-crisp 清脆利落的切菜声响起——@图片10 灵蕨在她刀下斜切成段，翠绿羽状叶片在切断瞬间舒展成半透明的薄片（translucent organic material, pristine matte），叶脉的淡金灵光在断面处微微闪烁。接着是铁骨山药——rolling-cut-thump 滚刀切的咚咚闷响——土黄色粗糙外皮在刀下翻转为均匀的块状，雪白内肉质地致密切面渗出乳白汁液。刀起刀落间，切好的食材依次被投入 @图片9 黑铁锅中——ingredients-splashing 入水溅起的轻响——汤面泛起一圈圈涟漪。姜禾左手麻花辫从肩头滑落，她随手一撩——这个做了几千遍的下意识动作行云流水。steam从锅中持续升腾，backlit glowing。镜头spherical 85mm固定手部特写，f/2.8浅景深使灶台背景虚化为creamy circular bokeh。整体氛围bright——御厨刀工，行云流水见功底。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-1s | 视觉 | @图片1 姜禾切 @图片10 灵蕨——斜切翠绿羽片舒展，淡金叶脉微光。knife-chopping-crisp 清脆声。translucent organic material。
+1s-2s | 视觉 | 铁骨山药滚刀切——rolling-cut-thump 咚咚声。土黄外皮翻转，雪白内肉渗出汁液。
+2s-3s | 视觉 | 食材依次入 @图片9 铁锅，ingredients-splashing 溅起涟漪。麻花辫滑落又撩起。spherical 85mm f/2.8，circular-creamy bokeh。
+3s    | 收束 | bright氛围。御厨刀工行云流水见功底。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: knife-chopping-crisp, rolling-cut-thump, ingredients-splashing
+
+
+## P08 慢火熬汤 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 5s
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 慢火熬汤 (medium shot·static)
+Optics: spherical, 50mm, none
+Camera: static, medium shot, medium depth of field f/5.6
+Material: metal, rough, semi-reflective, battle-damaged; liquid, glossy, semi-reflective, pristine
+Atmosphere: steam, light, backlit-glowing
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片1 姜禾站在 @图片7 灶台前右手不时搅动 @图片9 铁锅汤汁——琥珀色汤汁咕嘟翻滚蒸腾极薄灵雾，暖黄灶火在她脸上打出高光，麻花辫从左肩滑落又撩起，杏眼中倒映火光。
+Narrative: setup
+Intent: 慢火熬出灵食精髓
+Mood: peace
+Audio SFX: soup-simmering-gurgle, ladle-stirring, spirit-fire-crackling
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift from firelight. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾站在 @图片7 灶台前，右手不时搅动 @图片9 铁锅中的汤汁——soup-simmering-gurgle 琥珀色汤汁咕嘟翻滚，ladle-stirring 勺子搅动的轻响有节奏地重复。汤面蒸腾出极薄的灵雾——不是普通蒸汽，而是食材中残存的灵气被慢火熬出后形成的极薄淡金雾气（ethereal spirit mist, backlit warm glow）。暖黄色的灶火（spirit-fire-crackling 灵火噼啪声）在姜禾脸上打出高光——她杏眼中倒映着跳跃的火光，表情平淡但目光专注。一个时辰过去了，左手的麻花辫从肩头滑落又被撩起——这个动作重复了很多次，像是打更的节拍。黑铁锅 rough metal surface在灵火映照下泛暖光，裂纹深处的灵气蓝光与琥珀汤色交织。镜头spherical 50mm固定中景，f/5.6中等景深，subtle vignette自然聚焦灶台前的身影。姜禾在整个画面中保持微动作——搅动汤汁的手腕转动、被蒸汽吹动的碎发——确保5秒镜头内角色不会静止。整体氛围peace——慢火熬汤，熬的是食材也是时间。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片1 姜禾站在 @图片7 灶台前搅动 @图片9 铁锅。琥珀色汤汁咕嘟翻滚，soup-simmering-gurgle。ladle-stirring 搅动声。steam极薄灵雾backlit glowing。
+2s-4s | 视觉 | 暖黄灶火在姜禾脸上打出高光，杏眼倒映火光。麻花辫滑落又撩起。spirit-fire-crackling 噼啪声。rough metal暖光。
+4s-5s | 视觉 | spherical 50mm f/5.6。subtle vignette。姜禾微动作保持呼吸感——手腕转动、碎发被蒸汽吹动。
+5s    | 收束 | peace氛围。慢火熬汤，熬的是食材也是时间。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: soup-simmering-gurgle, ladle-stirring, spirit-fire-crackling
+
+
+## P09 闻香而来 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 5s
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 闻香而来 (wide shot·static)
+Optics: spherical, 24mm, none
+Camera: static, wide shot establishing, deep depth of field f/11
+Material: stone, rough, low-reflectivity, weathered
+Atmosphere: steam, light, backlit-glowing
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片6 铁匠铺门口——@图片2 苏九和三个矿工四个散修外加一只瘸腿野狗闻着味挤在门口，矿工们扒着门框往里探头喉结滚动吸气。众人面部清晰可见，灶台在画面深处作为暖光光源。
+Narrative: reveal
+Intent: 灵食香气引众人围观
+Mood: bright
+Dialogue Cue: @音频2（苏九）喉结滚动地问："这什么味？"
+Audio SFX: footsteps-approaching, crowd-sniffing-inhale, stray-dog-bark
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift from interior firelight. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片6 铁匠铺门口——footsteps-approaching 杂乱的脚步声由远及近——@图片2 苏九和三个矿工、四个散修、外加一只瘸腿野狗闻着灵食汤的香气蜂拥而至挤在 @图片6 铁匠铺门口。矿工们扒在粗糙的石头门框上往里探头，crowd-sniffing-inhale 此起彼伏的吸气嗅香声——每个人的喉结都在上下滚动。苏九在最前面，矿灰涂面的脸上那双清澈眼睛瞪得浑圆，高挺鼻梁的鼻翼翕动。灶台在画面深处的暖黄火光作为逆光光源（backlit warm interior glow），在挤在门口的众人身上勾出暖色轮廓光，而门外冷蓝天光从外部补充冷调环境光，形成自然的冷暖光影层次。瘸腿野狗在最底下的门缝处叫了一声——stray-dog-bark 突兀的狗叫让众人回神。苏九喉结滚动，声音带着压不住的渴望："这什么味？"镜头spherical 24mm固定全景establishing shot，f/11深景深使门口到灶台的纵深全部清晰，subtle vignette引导视线从门口人群自然过渡到画面深处的灶台暖光。整体氛围bright——一锅汤的香气，把整条街的人都引来了。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片6 铁匠铺门口——@图片2 苏九和矿工散修蜂拥而至。footsteps-approaching 杂乱脚步。矿工扒门框往里探头。
+2s-3s | 视觉 | crowd-sniffing-inhale 嗅香声。喉结滚动。灶台暖光在众人身上勾出轮廓，与门外冷蓝天光冷暖对撞。野狗叫 stray-dog-bark。
+3s-5s | 台词 | @音频2（苏九）喉结滚动："这什么味？" spherical 24mm f/11深景深，门口至灶台全清晰。subtle vignette。
+5s    | 收束 | bright氛围。一锅汤的香气引来整条街的人。warm interior + cool exterior 自然冷暖光影。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: @音频2(苏九)喉结滚动 — "这什么味？"
+🎵 音效: footsteps-approaching, crowd-sniffing-inhale, stray-dog-bark
+
+
+## P10 琥珀琼浆 (4s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 4s
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 琥珀琼浆 (close-up·static)
+Optics: spherical, 85mm, none
+Camera: static, close-up detail shot, shallow depth of field f/2.8
+Material: ceramic, matte, low-reflectivity, aged-patina; liquid, glossy, semi-reflective, pristine(amber-broth)
+Atmosphere: steam, light, backlit-glowing(golden-mist-above-bowl)
+Vignette: subtle, smooth-fade
+Bokeh: circular-creamy
+Director/DP: none
+Subject: @图片1 姜禾从 @图片9 铁锅舀汤入 @图片11 陶碗——琥珀色汤汁注入粗陶碗灵蕨舒展翠绿蛮牛肉如丝缎般细腻汤面浮极薄灵雾泛淡金微光。姜禾面部在舀汤瞬间清晰，其余虚化。
+Narrative: reveal
+Intent: 灵食汤首秀惊艳
+Mood: bright
+Dialogue Cue: @音频1（姜禾）疲惫带笑地说："灵食汤。"
+Audio SFX: ladle-scooping, soup-pouring-into-bowl
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾手持汤勺从 @图片9 黑铁锅中舀起一勺琥珀色的灵食汤——ladle-scooping 舀汤的清脆声响——琥珀色汤汁注入 @图片11 手工粗陶碗中（aged-patina ceramic, matte unglazed surface）。汤入碗的瞬间，soup-pouring-into-bowl 液体注入陶碗的柔和声响。在 @图片11 陶碗中——灵蕨在琥珀色汤里舒展成半透明翠绿羽片（translucent fern fronds in amber broth），蛮牛肉的纤维纹理在灵火慢煨下变得如丝缎般细腻（silky tender meat fibers），汤面浮着一层极薄的灵雾——不是蒸汽，是食材中残存的灵气被熬出后泛着的淡金色微光（ethereal golden mist above bowl surface, backlit warm glow）。姜禾将碗递出，疲惫带笑："灵食汤。"声音不大，带着一个厨子对自己作品的笃定。镜头spherical 85mm固定特写，f/2.8浅景深——焦点锁定在陶碗中琥珀色汤的细节上，姜禾的面部在舀汤瞬间清晰（in sharp focus），递碗后虚化为background bokeh。circular-creamy bokeh将灶台背景化为柔和光斑。整体氛围bright——灵食汤首秀，琥珀琼浆惊艳登场。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-1s | 视觉 | @图片1 姜禾从 @图片9 铁锅舀汤。ladle-scooping 清脆声。琥珀色汤汁，灵蕨翠绿羽片半透明。
+1s-2s | 视觉 | 汤入 @图片11 陶碗——soup-pouring-into-bowl。灵蕨舒展，蛮牛肉丝缎纹理。汤面极薄灵雾泛淡金微光。aged-patina ceramic matte质感。
+2s-3s | 台词 | 姜禾递碗，@音频1（姜禾）疲惫带笑："灵食汤。" spherical 85mm f/2.8，汤面特写清晰，姜禾面部in sharp focus。
+3s-4s | 镜头 | circular-creamy bokeh虚化背景。steam backlit warm glow。subtle vignette。
+4s    | 收束 | bright氛围。灵食汤首秀，琥珀琼浆惊艳登场。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: @音频1(姜禾)疲惫带笑 — "灵食汤。"
+🎵 音效: ladle-scooping, soup-pouring-into-bowl
+
+
+## P11 丹田破壁 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 5s
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 丹田破壁 (medium close-up·static)
+Optics: spherical, 85mm, none
+Camera: static, medium close-up chest up, shallow depth of field f/2.8
+Material: skin, matte, subsurface-scattering(glow-from-within); fabric, matte, low-reflectivity, lightly-worn
+Atmosphere: dust-motes, light, backlit-glowing(spirit-light-particles)
+Vignette: subtle, smooth-fade
+Bokeh: circular-creamy
+Director/DP: none
+Subject: @图片2 苏九端起 @图片11 陶碗喝了一口——热汤顺喉咙滑下，丹田灵气冲破关隘沿经脉涌向全身，他从脚底开始发光淡蓝灵光从皮肤下透出，矿灰簌簌从毛孔逼出皮肤一寸寸变干净露出原本清秀面容。
+Narrative: climax
+Intent: 一口汤破五年瓶颈
+Mood: surprise
+Audio SFX: swallowing-gulp, dantian-breakthrough-rumble, mineral-dust-falling
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片2 苏九端起 @图片11 陶碗喝了一口灵食汤——swallowing-gulp 热汤顺喉咙滑下的吞咽声——紧接着，丹田炸了。不是真炸，是dantian-breakthrough-rumble 一股被堵塞了五年的灵气突然冲破关隘的低沉轰鸣从体内涌出。淡蓝色灵光从苏九脚底开始升起——subsurface-scattering 皮肤下透出的柔光像一盏被点亮的灯——灵光沿着经脉一寸寸向上蔓延，从脚踝到膝盖到大腿到丹田。灵光所到之处，矿灰从毛孔中被逼出——mineral-dust-falling 灰白矿尘簌簌掉落的声音——灰黑皮肤一寸寸变干净，露出底下原本清秀的面容：高挺的鼻梁、轮廓分明的下颌、浓黑粗眉毛下那双清澈的眼睛。light dust motes在淡蓝灵光中悬浮如星尘（spirit-light particles floating）。苏九的表情从震惊到不敢置信再到狂喜——筑基，成了。前后只用了一口汤的时间。镜头spherical 85mm固定中近景（chest up），f/2.8浅景深使背景铁匠铺虚化为creamy circular bokeh，焦点锁定在苏九面容从灰黑到清秀的渐变过程。glowing spiritual energy 灵光粒子在画面中缓慢飘浮。整体氛围surprise——一口汤破五年瓶颈，矿工变修士。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy, CG国漫。
+
+0s-1s | 视觉 | @图片2 苏九喝 @图片11 陶碗灵食汤。swallowing-gulp 吞咽声。subsurface-scattering 皮肤准备发光。
+1s-2s | 视觉 | dantian-breakthrough-rumble 灵气冲破关隘低沉轰鸣。淡蓝灵光从脚底升起，沿经脉漫延。
+2s-4s | 视觉 | 矿灰从毛孔逼出——mineral-dust-falling 簌簌声。皮肤一寸寸变干净露出清秀面容。spirit-light particles floating 灵光粒子飘浮。
+4s-5s | 视觉 | spherical 85mm f/2.8。circular-creamy bokeh虚化背景。苏九表情震惊→狂喜。glowing spiritual energy弥漫。
+5s    | 收束 | surprise氛围。一口汤破五年瓶颈，矿工变修士。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: swallowing-gulp, dantian-breakthrough-rumble, mineral-dust-falling
+
+
+## P12 筑基功成 (4s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-shift
+Duration: 4s
+@图片（上个视频末帧截图）为首帧。
+
+[0-4s] Shot 1: 筑基功成 (wide shot·static)
+Optics: spherical, 24mm, none
+Camera: static, wide shot, deep depth of field f/11
+Material: skin, matte, subsurface-scattering(glow-from-within); fabric, matte, low-reflectivity, lightly-worn
+Atmosphere: dust-motes, light, backlit-glowing(spirit-light-burst)
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片6 铁匠铺内——@图片2 苏九在画面中央被淡蓝色灵光笼罩筑基功成灵气爆发，四个散修围着苏九左看右看震惊议论。
+Narrative: climax→resolution
+Intent: 筑基功成众人震惊
+Mood: bright
+Audio SFX: breakthrough-spirit-burst, crowd-gasping-murmur
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片6 铁匠铺内——@图片2 苏九站在画面中央，整个人被淡蓝色灵光完全笼罩——breakthrough-spirit-burst 筑基功成灵气爆发的一瞬——淡蓝灵光如波浪般从苏九体内向外扩散，subsurface-scattering 皮下透出的光使他整个人像一盏人形灵灯。周围的四个散修围着苏九左看右看，crowd-gasping-murmur 此起彼伏的惊呼和议论——有人伸手指着苏九变干净的皮肤，有人揉眼睛不敢相信。炼气九层卡了五年，一口汤就筑基了——这在修真界是天方夜谭。glowing spiritual energy 灵光粒子在铁匠铺空间内缓慢飘浮，light dust motes被灵光打亮如金粉，soft volumetric fog在空间中形成朦胧的光雾。镜头spherical 24mm固定全景establishing shot，f/11深景深——铁匠铺内所有人清晰可见，苏九在中央散发蓝光形成自然的视觉重心，散修们在四周形成环形构图。subtle vignette引导视线聚焦画面中央的苏九。整体氛围bright——筑基功成，一口汤改变了命运。
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog, ethereal atmosphere, glowing spiritual energy, CG国漫。
+
+0s-2s | 视觉 | @图片6 铁匠铺内——@图片2 苏九被淡蓝灵光笼罩。breakthrough-spirit-burst 灵气爆发。subsurface-scattering 皮下透光，人形灵灯。soft volumetric fog。
+2s-3s | 视觉 | 四个散修围看震惊——crowd-gasping-murmur 惊呼议论。glowing spiritual energy灵光粒子飘浮，dust motes被灵光打亮如金粉。
+3s-4s | 镜头 | spherical 24mm f/11深景深，环形构图。subtle vignette聚焦中央苏九。
+4s    | 收束 | bright氛围。筑基功成，一口汤改变命运。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: 无
+🎵 音效: breakthrough-spirit-burst, crowd-gasping-murmur
+
+
+## P13 铁锅有灵 (5s)
+
+【📋 分镜详情】
+Style: (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting
+Format: Super-35, 16:9, none
+Film Stock: none
+Color Grade: natural, normal, natural, warm-golden
+Duration: 5s
+@图片（上个视频末帧截图）为首帧。
+
+[0-5s] Shot 1: 铁锅有灵 (medium shot→wide shot·dolly-out)
+Optics: spherical, 35mm, none
+Camera: dolly-out 缓慢后拉, medium shot→wide shot, deep depth of field f/11
+Material: metal, rough, semi-reflective, battle-damaged(cracked-weld), emissive(soft-blue-spirit-glow)
+Atmosphere: dust-motes, light, backlit-glowing(golden-hour-dust)
+Vignette: subtle, smooth-fade
+Bokeh: none
+Director/DP: none
+Subject: @图片1 姜禾手拍 @图片9 黑铁锅裂纹，疲惫微笑。Dialogue Cue: @音频1（姜禾）微笑自嘲地说："这口锅有裂纹不好看。但它能熬出金丹炼不出的东西。"画面后拉至 @图片8 铁匠铺门口——残阳照在她脸上远处矿坑升起灵矿粉尘融入铁炉堡暮色。
+End Frame: 铁匠铺门口夕阳剪影，姜禾身影渐小融入暖橙暮色。
+Narrative: resolution
+Intent: 破锅有灵点题收束
+Mood: hope
+Dialogue Cue: @音频1（姜禾）微笑自嘲地说："这口锅有裂纹不好看。但它能熬出金丹炼不出的东西。"
+Audio SFX: hand-patting-iron-pot, distant-mine-dust-rumble
+
+【🎬 Seedance直接输入】
+Super-35, 16:9. Natural color grading with warm-golden shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+以 @图片（上一段视频末帧截图）为首帧。
+
+@图片1 姜禾伸出手拍了拍 @图片9 黑铁锅的裂纹——hand-patting-iron-pot 手掌拍在粗糙金属表面的低沉回响——裂纹深处残留的灵气蓝光在她拍击下微微跳动，像被遗弃的动物幼崽的心跳。她疲惫微笑，微笑自嘲地说："这口锅有裂纹不好看。但它能熬出金丹炼不出的东西。"语气平静中带着一个厨子对自己工具的笃定——锅不好看，但它有用。镜头开始dolly-out 缓慢后拉——从medium shot到wide shot——@图片1 姜禾的身影在画面中逐渐缩小。golden-hour warm light 残阳斜照在她脸上，远处矿坑正升起新一天的灵矿粉尘（distant-mine-dust-rumble 低沉轰鸣），粉尘融入铁炉堡暖橙色的暮色中。End Frame定格——@图片8 铁匠铺门口夕阳剪影，姜禾身影渐小融入暖橙暮色，@图片9 铁锅在逆光中轮廓如墨，裂纹处一点蓝光微闪。golden-hour dust motes在夕阳中悬浮如细碎金箔，镜头spherical 35mm dolly-out深景深f/11保持远近全清晰。subtle vignette自然收束全章。禁止文字、字幕、LOGO、水印。
+(best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, soft volumetric fog
+
+【🎬 Seedance时间线输入】
+[此块非 Seedance 原生格式，为后期合成时间轴参考]
+Super-35, 16:9, natural grading with warm-golden shift. (best quality, masterpiece, 8k, high detailed:1.2), (stunning stylized 3D Chinese animation character render:1.3), (Unreal Engine 5 style:1.2), cinematic lighting, CG国漫。
+
+0s-2s | 视觉 | @图片1 姜禾拍 @图片9 铁锅裂纹——hand-patting-iron-pot 低沉回响。裂纹蓝光跳动。rough metal surface, battle-damaged crack-weld texture。
+2s-3s | 台词 | @音频1（姜禾）微笑自嘲："这口锅有裂纹不好看。但它能熬出金丹炼不出的东西。"
+3s-4s | 镜头 | dolly-out 缓慢后拉，medium→wide shot，f/11深景深。姜禾身影缩小。golden-hour残阳照脸，distant-mine-dust-rumble 矿坑粉尘升起。
+4s-5s | 视觉 | End Frame: @图片8 铁匠铺门口夕阳剪影，姜禾融入暖橙暮色。golden-hour dust motes如金箔。铁锅逆光如墨，裂纹蓝光微闪。
+5s    | 收束 | hope氛围。破锅有灵，点题收束。warm-golden grading。禁止文字/字幕/LOGO/水印。
+
+━━━━━━━━━━━━━━━━━━━━━━
+[以下为后期合成依据，不属于 Seedance 输入文本]
+🗣️ 台词: @音频1(姜禾)微笑自嘲 — "这口锅有裂纹不好看。但它能熬出金丹炼不出的东西。"
+🎵 音效: hand-patting-iron-pot, distant-mine-dust-rumble
+
+
+## ⚡ 下一步操作指南
+
+✅ 分镜提示词已全部生成！
+
+📋 产出清单：
+- 素材对应表：已为2位演员 + 4个核心场景 + 3个道具建立@引用编号。
+- 视频提示词：已生成14条 Seedance 2.0 提示词（时长已严格按照导演分场剧本推算校验，空间调度已全面翻译）。
+
+阶段A：生成参考图
+1. 用美术指导 S2a 方案生成演员**定妆主图**（单人正面肖像，16:9）。⚠️ 不要使用 S2b 辅视图组作为视频参考图——多视图合成图会导致 AI 视频模型混淆主体识别。
+2. 用美术指导 S3 方案**逐张生成**场景独立单图（非宫格）。按 @编号 逐个输入 Prompt，逐张保存。
+3. 用美术指导 S4 方案生成道具图。
+
+阶段B：拆分与命名
+4. 将宫格图裁剪为独立图片。
+5. 按素材对应表的@编号重命名所有文件（如："@图片1_姜禾.png"）。
+
+阶段C：生成视频片段
+6. 打开即梦/无线画布，上传所有参考图。
+7. 两种生成方式任选：
+
+方式一（视频延长，推荐）：
+   a. 生成首段视频 P01 → 将生成的视频上传为 @视频1
+   b. 打开 P02 提示词 → 首行改为「将@视频1延长5s」
+   c. 生成 P02 → 将新生成的完整视频上传为 @视频1
+   d. 循环 b-c 至最后一段
+
+方式二（手动截末帧）：
+   a. 生成 P01 → 手动截取视频末帧 → 上传为参考图
+   b. 打开 P02 提示词 → 首行确认「@图片（末帧截图）为首帧」
+   c. 生成 P02 → 截取末帧 → 循环至最后一段
+
+8. 完成全部片段生成。
+
+阶段D：后期合成
+9. 拼接生成的视频片段。
+10. 导入美术指导S6台词本配套的 SRT 字幕与配音文件。
+11. 完成渲染与成品输出。

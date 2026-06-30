@@ -1,7 +1,6 @@
 """Reporter: generate structured validation reports."""
 
 import json
-from typing import List, Dict, Optional
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 
@@ -58,10 +57,6 @@ class ValidationReport:
         if self.total == 0:
             return 100.0
         return (self.pass_count / self.total) * 100
-
-    def add(self, layer: str, num: int, name: str, status: Status,
-            detail: str = "", fix_hint: str = ""):
-        self.results.append(CheckResult(layer, num, name, status, detail, fix_hint))
 
 
 def format_report(report: ValidationReport) -> str:

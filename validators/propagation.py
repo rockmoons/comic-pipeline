@@ -1,11 +1,12 @@
 """Fatal propagation chain checks (Layer 3: 4 checks)."""
 
 from typing import List
+import re
 from utils.parser import (
     extract_actor_table, extract_scene_table,
     extract_p_numbers, extract_dialogue_cues,
     extract_voice_table, extract_base_image_refs,
-    extract_scene_grid_names,
+    extract_scene_grid_names, APPEARANCE_CATEGORIES,
 )
 from utils.reporter import CheckResult, Status
 
@@ -14,19 +15,7 @@ def check_chain_a_appearance_loss(story_text: str, director_text: str) -> CheckR
     """Chain A: Story actor appearance keywords < 3 → Director < 3 → FATAL."""
     story_table = extract_actor_table(story_text)
     dir_table = extract_actor_table(director_text)
-    categories = {
-        '发型/发色': ['发', '髻', '辫', '寸头', '短发', '长发', '马尾', '刘海', '秃'],
-        '服装/衣着': ['袍', '衣', '服', '装', '甲', '裤', '靴', '鞋', '裙', '衫', '褂', '夹克', 'T恤'],
-        '体型/身高': ['体型', '瘦', '胖', '壮', '高', '矮', '精悍', '敦实', '匀称', 'cm'],
-        '面容/五官': ['脸', '眼', '眉', '鼻', '唇', '嘴', '面容', '五官', '瞳'],
-        '识别标记': ['疤', '痕', '痣', '胎记', '纹身', '雀斑', '痘印', '缺', '伤'],
-        '肤色/肤质': ['肤', '白', '黑', '黄', '小麦', '古铜', '苍白', '粗糙', '光滑'],
-        # Non-human entity categories
-        '形态/构造（非人）': ['甲壳', '复肢', '复眼', '触手', '胶状', '半透明', '骨刺', '口器', '翅膀', '鳞片', '节肢', '几丁质', '悬浮', '无固定形态',
-                         '金属', '机械', '义眼', '义肢', '镜头', '数据', '全息', '能量', '光幕'],
-        '体量/尺度（非人）': ['三米', '巨型', '球体', '两米', '直径', '米高'],
-        '颜色/光学（非人）': ['暗红', '暗褐', '暗紫', '淡紫', '冷蓝', '淡金', '荧光', '微光', '透明', '半透明', '生物光泽', '星云', '流光', '脉冲', '闪烁'],
-    }
+    categories = APPEARANCE_CATEGORIES
     # Check story table
     story_weak = []
     for row in story_table:
@@ -67,7 +56,6 @@ def check_chain_b_p_number_gap(director_text: str, art_text: str) -> CheckResult
     expected = list(range(base_nums[0], base_nums[-1] + 1))
     dir_missing = [n for n in expected if n not in base_nums]
     # Check SRT coverage
-    import re
     srt_pnums = set()
     for m in re.finditer(r'\[(P\d{2}(?:_[A-Z])?)\]', art_text):
         srt_pnums.add(m.group(1))
@@ -112,7 +100,6 @@ def check_chain_d_audio_mismatch(cine_text: str, art_text: str) -> CheckResult:
     """Chain D: Dialogue Cue @音频N role ≠ S5 @音频N role → FATAL."""
     voice_table = extract_voice_table(art_text)
     audio_role_map = {}
-    import re
     for row in voice_table:
         num_str = row.get('@编号', '')
         role = row.get('角色', '').strip()

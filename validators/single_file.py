@@ -1,4 +1,4 @@
-"""Single-file structure checks (Layer 1: 16 checks, v4.1)."""
+"""Single-file structure checks (Layer 1: 24 checks, v5.0)."""
 
 from typing import List
 from utils.parser import (
@@ -168,6 +168,7 @@ def check_cite_start_forbidden(director_text: str) -> CheckResult:
 def check_at_image_continuity(art_text: str) -> CheckResult:
     """Check 12: @图片 numbers are continuous from 1."""
     nums = extract_at_images(art_text)
+    nums = [n for n in nums if n < 994]
     if not nums:
         return CheckResult("第一层：单文件结构", 12, "@图片连续性",
                           Status.WARN, "未检测到@图片引用", "确认美术指导输出")

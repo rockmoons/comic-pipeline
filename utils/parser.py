@@ -148,6 +148,15 @@ def extract_scene_grid_names(text: str) -> List[Tuple[int, str]]:
             break
     search_text = text[s3_start:] if s3_start >= 0 else text
     
+    # v5.0: Markdown table format (| 格N | Name | @图片N |)
+    tp = r"\|" + r"\s*" + "格" + r"\d+\s*\|\s*([^|]+?)\s*\|\s*@[图圖]片(\d+)\s*\|"
+    for m in re.finditer(tp, search_text):
+        n = m.group(1).strip()
+        if len(n) >= 3:
+            results.append((int(m.group(2)), n))
+    if results:
+        return results
+    # Legacy: 格N——[@图片N SceneName-RegionSuffix] format
     # Match: 格N——[@图片N SceneName-RegionSuffix] format
     # The bracket content may have spaces: [@图片5 雷暴天空-云层深处]
     pattern = r'格\d+——\s*\[@图片(\d+)\s+([^\]]+)\]'
@@ -289,6 +298,11 @@ def extract_image_ranges(text: str) -> dict:
     defaults = {'actor_end': 6, 'scene_start': 7, 'scene_end': 22, 'prop_start': 23}
     section = _find_table_section(text, '@编号体系总览')
     if not section:
+        all_imgs = extract_at_images(text)
+        if all_imgs:
+            real_imgs = [n for n in all_imgs if n < 994]
+            if real_imgs:
+                defaults['prop_start'] = max(real_imgs) + 1
         return defaults
     rows = _parse_md_table(section)
     result = {}

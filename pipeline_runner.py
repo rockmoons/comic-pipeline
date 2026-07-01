@@ -61,7 +61,7 @@ def cmd_check(path: str):
 def cmd_status():
     """Show project status."""
     prompt_files = glob.glob(os.path.join(ROOT, '0*_v3.0.md'))
-    test_dirs = glob.glob(os.path.join(ROOT, 'test_fixtures', '*', ''))
+    test_dirs = glob.glob(os.path.join(ROOT, 'tests/test_fixtures', '*', ''))
     
     print("=" * 50)
     print("  Comic Pipeline - 项目状态")
@@ -95,9 +95,9 @@ def cmd_quick():
     """Quick smoke test on sample data."""
     from validate_pipeline import run_validation, read_file
     
-    sample = os.path.join(ROOT, 'test_fixtures', 'prison_story')
+    sample = os.path.join(ROOT, 'tests/test_fixtures', 'prison_story')
     if not os.path.exists(sample):
-        sample = os.path.join(ROOT, 'test_fixtures', 'sample_run')
+        sample = os.path.join(ROOT, 'tests/test_fixtures', 'sample_run')
     
     try:
         story = read_file(os.path.join(sample, 'story.txt'))
@@ -119,6 +119,33 @@ def cmd_help():
     print("  check <dir>     Validate pipeline output directory")
     print("  status          Show project status + quick smoke test")
     print("  quick           Quick smoke test on sample data")
+    print("  run             Run full 4-Agent pipeline via orchestrator")
+
+
+def cmd_run():
+    """Run the full 4-Agent pipeline via orchestrator."""
+    from orchestrator import AgentChainRunner, OrchestratorConfig
+    args = sys.argv[2:]
+    concept = None; style = "CG国漫"; output = None; chapters = 1
+    i = 0
+    while i < len(args):
+        if args[i] == "--concept" and i + 1 < len(args):
+            concept = args[i + 1]; i += 2
+        elif args[i] == "--style" and i + 1 < len(args):
+            style = args[i + 1]; i += 2
+        elif args[i] == "--output" and i + 1 < len(args):
+            output = args[i + 1]; i += 2
+        elif args[i] == "--chapters" and i + 1 < len(args):
+            chapters = int(args[i + 1]); i += 2
+        else:
+            i += 1
+    if not concept:
+        print("ERROR: --concept is required"); sys.exit(1)
+    config = OrchestratorConfig()
+    if not config.api_key:
+        print("ERROR: OPENAI_API_KEY not set"); sys.exit(1)
+    runner = AgentChainRunner(config)
+    runner.run_full_pipeline(concept=concept, style=style, output_dir=output, max_chapters=chapters)
 
 
 if __name__ == '__main__':
@@ -132,5 +159,7 @@ if __name__ == '__main__':
             cmd_status()
         elif cmd == 'quick':
             cmd_quick()
+        elif cmd == 'run':
+            cmd_run()
         else:
             cmd_help()

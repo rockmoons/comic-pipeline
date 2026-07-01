@@ -78,7 +78,7 @@ python validate_pipeline.py --json story.txt director.txt art.txt cine.txt
 python pipeline_runner.py
 
 # 校验指定目录
-python pipeline_runner.py check test_fixtures/prison_story/
+python pipeline_runner.py check tests/test_fixtures/prison_story/
 ```
 
 ## 校验体系
@@ -112,7 +112,7 @@ mutil_agent_all/
 ├── utils/
 │   ├── parser.py            # 输出解析器（v4.0: JSON/毫秒SRT/ID映射）
 │   └── reporter.py          # 报告生成（终端+JSON）
-└── test_fixtures/
+└── tests/test_fixtures/
     ├── sample_run/          # 修真界网约车测试数据
     ├── prison_story/        # 星际监狱心理医生测试数据
     ├── edge_short/          # 边界短测试

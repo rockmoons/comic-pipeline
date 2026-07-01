@@ -7,13 +7,14 @@ on:
       - 'validate_pipeline.py'
       - 'validators/**'
       - 'utils/**'
-      - 'test_fixtures/**'
+      - 'tests/test_fixtures/**'
   pull_request:
     paths:
       - '0*_v3.0.md'
       - 'validate_pipeline.py'
       - 'validators/**'
       - 'utils/**'
+      - 'tests/test_fixtures/**'
 
 jobs:
   validate:
@@ -29,14 +30,28 @@ jobs:
       - name: Validate sample stories
         run: |
           echo "=== 修真界网约车 ==="
-          python validate_pipeline.py test_fixtures/sample_run/story.txt test_fixtures/sample_run/director.txt test_fixtures/sample_run/art.txt test_fixtures/sample_run/cine.txt
+          python validate_pipeline.py tests/test_fixtures/sample_run/story.txt tests/test_fixtures/sample_run/director.txt tests/test_fixtures/sample_run/art.txt tests/test_fixtures/sample_run/cine.txt
           echo ""
           echo "=== 星际监狱心理医生 ==="
-          python validate_pipeline.py test_fixtures/prison_story/story.txt test_fixtures/prison_story/director.txt test_fixtures/prison_story/art.txt test_fixtures/prison_story/cine.txt
+          python validate_pipeline.py tests/test_fixtures/prison_story/story.txt tests/test_fixtures/prison_story/director.txt tests/test_fixtures/prison_story/art.txt tests/test_fixtures/prison_story/cine.txt
+
+      - name: Validate additional fixtures
+        run: |
+          echo "=== 火星逃生 ==="
+          python validate_pipeline.py tests/test_fixtures/mars_escape/story.txt tests/test_fixtures/mars_escape/director.txt tests/test_fixtures/mars_escape/art.txt tests/test_fixtures/mars_escape/cine.txt
+          echo ""
+          echo "=== 火星飙车 ==="
+          python validate_pipeline.py tests/test_fixtures/mars_drive/story.txt tests/test_fixtures/mars_drive/director.txt tests/test_fixtures/mars_drive/art.txt tests/test_fixtures/mars_drive/cine.txt
+          echo ""
+          echo "=== 边界短测试 ==="
+          python validate_pipeline.py tests/test_fixtures/edge_short/story.txt tests/test_fixtures/edge_short/director.txt tests/test_fixtures/edge_short/art.txt tests/test_fixtures/edge_short/cine.txt
+          echo ""
+          echo "=== 风格边界 ==="
+          python validate_pipeline.py tests/test_fixtures/edge_style/story.txt tests/test_fixtures/edge_style/director.txt tests/test_fixtures/edge_style/art.txt tests/test_fixtures/edge_style/cine.txt
 
       - name: JSON output check
         run: |
-          python validate_pipeline.py --json test_fixtures/prison_story/story.txt test_fixtures/prison_story/director.txt test_fixtures/prison_story/art.txt test_fixtures/prison_story/cine.txt > report.json
+          python validate_pipeline.py --json tests/test_fixtures/prison_story/story.txt tests/test_fixtures/prison_story/director.txt tests/test_fixtures/prison_story/art.txt tests/test_fixtures/prison_story/cine.txt > report.json
           python -c "import json; d=json.load(open('report.json')); assert d['summary']['fatal']==0, f'Fatal: {d[\"summary\"][\"fatal\"]}'; print(f'JSON OK: {d[\"summary\"][\"pass_rate\"]}%')"
 
       - name: Prompt file integrity

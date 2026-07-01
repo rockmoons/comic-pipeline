@@ -14,3 +14,13 @@ Thumbs.db
 # Archive
 *.7z
 *.zip
+
+# Orchestrator
+pipeline_state.db
+output/
+
+# Node
+node_modules/
+
+# Old backups
+_archive/

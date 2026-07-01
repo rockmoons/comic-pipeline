@@ -1,0 +1,56 @@
+# 分镜师 - 星尘拾荒者 第1章
+三渲二风格。
+
+## 🎭 素材对应表
+| @编号 | 类型 | 素材 | 视觉关键词 |
+|------|------|------|-----------|
+| @图片1 | 演员 | 小七 | 24岁男，磁力靴太空服头灯，等离子切割枪 |
+| @图片2 | 演员 | 海妖(7791) | 约16岁，银白长发淡蓝皮肤，太阳穴鳞片淡金瞳孔 |
+| @图片3 | 场景 | 星坟·废弃巡洋舰-外壳全景 | 巡洋舰外壳柯伊伯带星光 |
+| @图片6 | 场景 | 星坟·废弃巡洋舰-绝密舱门 | UNRE-7791绝密封印 |
+| @图片7 | 场景 | 星坟·废弃巡洋舰-生物舱 | 培养罐全景 |
+| @图片9 | 道具 | 等离子切割枪 | 手持等离子蓝色电弧 |
+| @图片10 | 道具 | 导航芯片 | 集成电路淡绿荧光 |
+
+### P01 星坟拾荒
+**时长**：5s
+Style: 三渲二风格画风，电影级光影。Duration: 5s。
+[0-5s] Shot 1: 星坟拾荒 (wide shot·static)。Camera: static，wide shot。
+Subject: @图片1小七踩@图片3巡洋舰外壳，体积冷蓝光从弹孔穿出在失重空间拉光柱如漂浮哥特教堂。Mood: mystery。
+(best quality, masterpiece, 8k, high detailed:1.2), (Genshin Impact style:1.3), cel shaded 3D, cinematic lighting
+
+### P02 发现芯片
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 发现芯片 (close-up·dolly-in)。Camera: dolly-in，close-up detail。
+Subject: @图片1小七掌中@图片10导航芯片泛淡绿荧光，@图片9切割枪打开舱门露出太空真菌淡蓝生物光。Mood: bright。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_A 听到心跳
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 听到心跳 (medium close-up·static)。Camera: static，medium close-up。
+Subject: @图片1小七僵住手悬停@图片9切割枪扳机上——低沉脉冲像心跳从@图片6绝密舱门后传来。Mood: fear。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03_B 绝密舱门
+**时长**：3s
+@图片（上个视频末帧截图）为首帧。
+[0-3s] Shot 1: 绝密舱门 (medium shot·static)。Camera: static，medium shot。
+Subject: @图片1小七面对@图片6绝密舱门，冷暖光影在面罩交替——头灯冷白vs恒星暖橙。Mood: tension。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P04 培养罐
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 培养罐 (wide→medium shot·dolly-out)。Camera: dolly-out，wide→medium shot。
+Subject: @图片7生物舱内培养罐漂浮@图片2海妖——银白长发如海藻飘荡淡蓝皮肤太阳穴鳞片淡金瞳孔正盯小七。Mood: mystery。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P05 释放与抉择
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 释放与抉择 (close-up→medium shot·static)。Camera: static，close-up→medium shot。
+Subject: @图片1小七犹豫后按释放键，@图片2海妖跌入怀中轻如羽毛。Dialogue Cue: @音频2（海妖）轻声问："我的族人……还在吗？"小七不知如何回答。Mood: sadness。
+End Frame: 小七抱海妖特写，身后培养罐排空。
+(best quality, masterpiece, 8k, high detailed:1.2), (Genshin Impact style:1.3), cel shaded 3D, cinematic lighting

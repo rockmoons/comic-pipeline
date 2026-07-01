@@ -1,4 +1,4 @@
-"""Cross-file validation checks (Layer 2: 20 checks)."""
+"""Cross-file validation checks (Layer 2: 22 checks (14-35))."""
 
 from typing import List
 from utils.parser import (
@@ -188,14 +188,14 @@ def check_prop_appearance_threshold(director_text: str, art_text: str) -> CheckR
             warnings.append(f"{name}({count}场)")
     total = len(prop_table)
     if total == 0:
-        return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
+        return CheckResult("第二层：跨文件交叉", 20, "导演→美术 S4门槛",
                           Status.PASS, "无道具（无需检查）")
     pass_ratio = (total - len(warnings)) / total
     if pass_ratio >= 0.75:
         detail = "全部道具≥2场" if not warnings else f"达标{total - len(warnings)}/{total}，单场：{', '.join(warnings)}"
-        return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
+        return CheckResult("第二层：跨文件交叉", 20, "导演→美术 S4门槛",
                           Status.PASS, detail)
-    return CheckResult("第二层：跨文件交叉", 21, "导演→美术 S4门槛",
+    return CheckResult("第二层：跨文件交叉", 20, "导演→美术 S4门槛",
                       Status.WARN, f"不达标{len(warnings)}/{total}：{', '.join(warnings)}",
                       "确认是否应纳入道具库")
 
@@ -215,9 +215,9 @@ def check_actor_appearance_keywords(director_text: str, art_text: str) -> CheckR
         if len(matched_cats) < 3:
             warnings.append(f"{name}({len(matched_cats)}类:{','.join(matched_cats)})")
     if not warnings:
-        return CheckResult("第二层：跨文件交叉", 22, "导演→美术 外观关键词",
+        return CheckResult("第二层：跨文件交叉", 20, "导演→美术 外观关键词",
                           Status.PASS, "全部角色≥3类特征")
-    return CheckResult("第二层：跨文件交叉", 22, "导演→美术 外观关键词",
+    return CheckResult("第二层：跨文件交叉", 20, "导演→美术 外观关键词",
                       Status.WARN, f"不足3类：{', '.join(warnings)}",
                       "美术指导S1定妆将依赖推断")
 
@@ -231,9 +231,9 @@ def check_at_image_count_match(art_text: str, cine_text: str) -> CheckResult:
     cine_nums = set(extract_at_images(cine_text))
     invalid = cine_nums - art_nums
     if not invalid:
-        return CheckResult("第二层：跨文件交叉", 23, "美术→分镜 @图片数",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 @图片数",
                           Status.PASS, f"分镜{len(cine_nums)}个 ⊆ 美术{len(art_nums)}个")
-    return CheckResult("第二层：跨文件交叉", 23, "美术→分镜 @图片数",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 @图片数",
                       Status.FAIL, f"分镜引用了不存在的 @图片{invalid}", "修正@编号")
 
 
@@ -248,9 +248,9 @@ def check_dialogue_char_name_match(cine_text: str, art_text: str) -> CheckResult
         if char_name and char_name not in voice_names:
             missing.add(char_name)
     if not missing:
-        return CheckResult("第二层：跨文件交叉", 24, "美术→分镜 DialogueCue角色",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 DialogueCue角色",
                           Status.PASS, "全部角色名在音色库中存在")
-    return CheckResult("第二层：跨文件交叉", 24, "美术→分镜 DialogueCue角色",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 DialogueCue角色",
                       Status.FAIL, f"不存在：{', '.join(missing)}",
                       "检查角色名是否与S5音色库一致")
 
@@ -279,13 +279,13 @@ def check_scene_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
         if scene_lo <= num <= scene_hi:
             cine_scene_refs.add(num)
     if not cine_scene_refs:
-        return CheckResult("第二层：跨文件交叉", 25, "美术→分镜 场景@引用",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 场景@引用",
                           Status.WARN, "未检测到场景@引用", "检查提示词中是否含@图片5-20引用")
     invalid = cine_scene_refs - art_scene_nums
     if not invalid:
-        return CheckResult("第二层：跨文件交叉", 25, "美术→分镜 场景@引用",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 场景@引用",
                           Status.PASS, f"全部{len(cine_scene_refs)}个有效")
-    return CheckResult("第二层：跨文件交叉", 25, "美术→分镜 场景@引用",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 场景@引用",
                       Status.FAIL, f"无效引用 @图片{invalid}", "修正@编号")
 
 
@@ -305,13 +305,13 @@ def check_prop_refs_in_range(cine_text: str, art_text: str) -> CheckResult:
         if num >= prop_lo:
             cine_prop_refs.add(num)
     if not cine_prop_refs:
-        return CheckResult("第二层：跨文件交叉", 26, "美术→分镜 道具@引用",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 道具@引用",
                           Status.WARN, "未检测到道具@引用", "检查提示词是否含@图片21+引用")
     invalid = cine_prop_refs - prop_nums
     if not invalid:
-        return CheckResult("第二层：跨文件交叉", 26, "美术→分镜 道具@引用",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 道具@引用",
                           Status.PASS, f"全部{len(cine_prop_refs)}个有效")
-    return CheckResult("第二层：跨文件交叉", 26, "美术→分镜 道具@引用",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 道具@引用",
                       Status.FAIL, f"无效引用 @图片{invalid}", "修正@编号")
 
 
@@ -334,9 +334,9 @@ def check_audio_char_alignment(cine_text: str, art_text: str) -> CheckResult:
         if expected_role and char_name and expected_role != char_name:
             mismatches.append(f"@音频{cue.get('audio_num','?')}={expected_role}≠DialogueCue={char_name}")
     if not mismatches:
-        return CheckResult("第二层：跨文件交叉", 27, "美术→分镜 @音频角色对齐",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 @音频角色对齐",
                           Status.PASS, "全部对齐")
-    return CheckResult("第二层：跨文件交叉", 27, "美术→分镜 @音频角色对齐",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 @音频角色对齐",
                       Status.FAIL, '；'.join(mismatches), "修正Dialogue Cue的@音频编号")
 
 
@@ -347,16 +347,16 @@ def check_duration_deviation(director_text: str, art_text: str, cine_text: str) 
     prompt_durs = extract_prompt_durations(cine_text)
     cine_total = sum(d for _, d in prompt_durs)
     if srt_dur is None:
-        return CheckResult("第二层：跨文件交叉", 28, "美术→分镜 时长偏差",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 时长偏差",
                           Status.WARN, "无法解析SRT总时长")
     if cine_total == 0:
-        return CheckResult("第二层：跨文件交叉", 28, "美术→分镜 时长偏差",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 时长偏差",
                           Status.WARN, "无法解析提示词时长")
     deviation = abs(cine_total - srt_dur) / srt_dur * 100
     if deviation <= 10:
-        return CheckResult("第二层：跨文件交叉", 28, "美术→分镜 时长偏差",
+        return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 时长偏差",
                           Status.PASS, f"{deviation:.1f}% <= 10%")
-    return CheckResult("第二层：跨文件交叉", 28, "美术→分镜 时长偏差",
+    return CheckResult("第二层：跨文件交叉", 20, "美术→分镜 时长偏差",
                       Status.FAIL, f"{deviation:.1f}% > 10%",
                       "提示词时长与SRT不一致")
 
@@ -365,9 +365,9 @@ def check_pending_markers(art_text: str, cine_text: str) -> CheckResult:
     """Check 29: Count all '待补充' markers across art and cine."""
     count = art_text.count('待补充') + cine_text.count('待补充')
     if count == 0:
-        return CheckResult("第二层：跨文件交叉", 29, "全局 待补充标记",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 待补充标记",
                           Status.PASS, "0处")
-    return CheckResult("第二层：跨文件交叉", 29, "全局 待补充标记",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 待补充标记",
                       Status.WARN, f"{count}处待补充", "补全或确认降级")
 
 
@@ -375,9 +375,9 @@ def check_pending_status_markers(director_text: str) -> CheckResult:
     """Check 30: Count '待定妆'/'待勘景' markers."""
     count = director_text.count('待定妆') + director_text.count('待勘景')
     if count <= 10:
-        return CheckResult("第二层：跨文件交叉", 30, "全局 待定妆/待勘景",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 待定妆/待勘景",
                           Status.PASS, f"{count}处（正常流程标记，≤10）")
-    return CheckResult("第二层：跨文件交叉", 30, "全局 待定妆/待勘景",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 待定妆/待勘景",
                       Status.WARN, f"{count}处待处理", "确认是否已生成对应的美术资产")
 
 
@@ -390,9 +390,9 @@ def check_style_token_every_prompt(cine_text: str) -> CheckResult:
         if not any(kw.lower() in block.lower() for kw in keywords):
             missing.append(f"P{i+1:02d}")
     if not missing:
-        return CheckResult("第二层：跨文件交叉", 31, "全局 Style Token",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 Style Token",
                           Status.PASS, "全部提示词含Style Token")
-    return CheckResult("第二层：跨文件交叉", 31, "全局 Style Token",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 Style Token",
                       Status.FAIL, f"缺失：{', '.join(missing)}", "补全Style Token")
 
 
@@ -401,9 +401,9 @@ def check_forbidden_words_in_prompts(cine_text: str) -> CheckResult:
     from utils.parser import extract_forbidden_words
     found = extract_forbidden_words(cine_text)
     if not found:
-        return CheckResult("第二层：跨文件交叉", 32, "全局 画质禁用词",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 画质禁用词",
                           Status.PASS, "0违规")
-    return CheckResult("第二层：跨文件交叉", 32, "全局 画质禁用词",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 画质禁用词",
                       Status.FAIL, f"含禁用词：{', '.join(found)}", "替换为替代词")
 
 
@@ -422,9 +422,9 @@ def check_cross_scene_base_image(art_text: str) -> CheckResult:
         if grid_scene != base_scene and base_scene != '?':
             violations.append(f"格{grid_num}({grid_scene})→@图片{base_num}({base_scene})")
     if not violations:
-        return CheckResult("第二层：跨文件交叉", 33, "全局 跨场景底图",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 跨场景底图",
                           Status.PASS, "无跨场景底图")
-    return CheckResult("第二层：跨文件交叉", 33, "全局 跨场景底图",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 跨场景底图",
                       Status.FAIL, '；'.join(violations), "修正底图声明")
 
 
@@ -452,7 +452,7 @@ def check_id_propagation(director_text: str, art_text: str, cine_text: str) -> C
     
     # If no JSON, skip ID check
     if not dir_char_ids and not dir_scene_ids:
-        return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 ID传播",
                           Status.WARN, "导演未输出scenes_metadata.json，跳过ID检查")
     
     # Extract Art ID mapping
@@ -471,9 +471,9 @@ def check_id_propagation(director_text: str, art_text: str, cine_text: str) -> C
         issues.append(f"场景ID缺失：{', '.join(sorted(missing_scenes))}")
     
     if not issues:
-        return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+        return CheckResult("第二层：跨文件交叉", 20, "全局 ID传播",
                           Status.PASS, "全部ID从导演传播到美术指导")
-    return CheckResult("第二层：跨文件交叉", 34, "全局 ID传播",
+    return CheckResult("第二层：跨文件交叉", 20, "全局 ID传播",
                       Status.FAIL, '；'.join(issues), "检查@编号↔ID映射表是否完整")
 
 
@@ -493,7 +493,7 @@ def check_visual_keywords_has_scale(cine_text: str) -> CheckResult:
     )
     
     if not prop_rows:
-        return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+        return CheckResult("第二层：跨文件交叉", 20, "道具视觉关键词尺寸参照",
                           Status.PASS, "未检测到道具行（无需检查）")
     
     missing = []
@@ -504,9 +504,9 @@ def check_visual_keywords_has_scale(cine_text: str) -> CheckResult:
             missing.append(f"道具#{i+1}('{kw[:20]}...'）缺尺寸参照")
     
     if not missing:
-        return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+        return CheckResult("第二层：跨文件交叉", 20, "道具视觉关键词尺寸参照",
                           Status.PASS, f"全部{len(prop_rows)}条道具含尺寸参照")
-    return CheckResult("第二层：跨文件交叉", 35, "道具视觉关键词尺寸参照",
+    return CheckResult("第二层：跨文件交叉", 20, "道具视觉关键词尺寸参照",
                       Status.WARN, '；'.join(missing[:3]),
                       "视觉关键词补尺寸参照（见分镜师§2规则）")
 
@@ -522,7 +522,7 @@ def check_creature_body_scale_complete(art_text: str) -> CheckResult:
     )
     
     if not body_scale_rows:
-        return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+        return CheckResult("第二层：跨文件交叉", 20, "生物体量尺度完整",
                           Status.PASS, "未检测到非人生物角色（无需检查）")
     
     violations = []
@@ -548,9 +548,9 @@ def check_creature_body_scale_complete(art_text: str) -> CheckResult:
             )
     
     if not violations:
-        return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+        return CheckResult("第二层：跨文件交叉", 20, "生物体量尺度完整",
                           Status.PASS, f"全部{len(body_scale_rows)}个生物体量尺度三要素齐全")
-    return CheckResult("第二层：跨文件交叉", 36, "生物体量尺度完整",
+    return CheckResult("第二层：跨文件交叉", 20, "生物体量尺度完整",
                       Status.FAIL, '；'.join(violations[:3]),
                       "补全体量尺度字段（数值+单位+形态类型）")
 

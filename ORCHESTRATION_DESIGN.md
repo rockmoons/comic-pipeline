@@ -182,3 +182,15 @@ class GlobalIDRegistry:
 | P1 | 全局 ID 注册表（Orchestrator） | 2-3 天 | 需要数据库 |
 | P2 | 快照裁剪工具（Orchestrator） | 1-2 天 | 依赖 ID 注册表 |
 | P3 | 全自动 Headless Pipeline | 1-2 周 | 以上全部就绪后 |
+
+
+## v5.0 Status (2026-07-01)
+
+All orchestration components implemented in orchestrator.py:
+- AgentChainRunner: Calls LLM API for 4 agents sequentially
+- SlidingWindowSlicer: Batches P-numbers > 30
+- SnapshotPruner: Trims state snapshots for long series
+- GlobalIDRegistry: SQLite-based cross-chapter ID registry
+
+Usage:
+  python pipeline_runner.py run --concept "..." --style "CG国漫"

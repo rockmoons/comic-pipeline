@@ -1,0 +1,47 @@
+# 分镜师 - 孤岛灯塔 第1章
+三渲二风格。
+
+## 🎭 素材对应表
+| @编号 | 类型 | 素材 | 视觉关键词 |
+|------|------|------|-----------|
+| @图片1 | 演员 | 老陈 | 62岁男，黝黑皮肤粗糙手指深皱纹亮眼，旧工作服 |
+| @图片2 | 演员 | 技术员 | 约25岁男，灰色制服手提工具箱，年轻面容拘谨 |
+| @图片3 | 场景 | 孤岛灯塔-顶层控制室 | 灯塔顶层全景，弧形石墙 |
+| @图片7 | 道具 | 铜质控制台 | 黄铜开关手柄玻璃灯泡 |
+| @图片8 | 道具 | 工具箱 | 灰色金属箱传感器自动控制器 |
+
+### P01 灯塔晨醒
+**时长**：5s
+Style: 三渲二风格画风，电影级光影。Duration: 5s。
+[0-5s] Shot 1: 灯塔晨醒 (medium shot·static)。Camera: static，medium shot。
+Subject: @图片1老陈在@图片3灯塔顶层醒来，窗外铅灰海天一线，体积光从窄窗射入把影子投射石墙。Mood: melancholy。
+(best quality, masterpiece, 8k, high detailed:1.2), (Genshin Impact style:1.3), cel shaded 3D, cinematic lighting
+
+### P02 操作台
+**时长**：6s
+@图片（上个视频末帧截图）为首帧。
+[0-6s] Shot 1: 操作台 (close-up·follow)。Camera: follow，close-up detail。
+Subject: @图片1老陈走到@图片7铜质控制台前，粗糙手指拨动黄铜开关，玻璃灯泡逐一变亮暖黄光在晨雾晕开。Mood: peace。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P03 技术员到来
+**时长**：4s
+@图片（上个视频末帧截图）为首帧。
+[0-4s] Shot 1: 技术员到来 (medium shot·static)。Camera: static，medium shot。
+Subject: @图片2技术员穿灰制服提@图片8工具箱站门口。Dialogue Cue: @音频2（技术员）拘谨地说："老师傅，您今天就退休了。我来检查一下设备。"Mood: tension。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P04 旧与新的对话
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 旧与新的对话 (medium close-up·static)。Camera: static，medium close-up。
+Subject: @图片1老陈转身面对镜头，黝黑脸上刻四十年海风痕迹。Dialogue Cue: @音频1（老陈）沉静地说："能用。比你那些电子玩意儿可靠得多。这座灯塔没灭过一秒钟，因为它的心脏是人。"Mood: hope。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting
+
+### P05 最后的守望
+**时长**：5s
+@图片（上个视频末帧截图）为首帧。
+[0-5s] Shot 1: 最后的守望 (wide shot·dolly-out)。Camera: dolly-out，wide shot。
+Subject: @图片1老陈站@图片3窗口边望海，远处晨光初露铅灰天空裂开金色缝隙，背影融入灯塔灯光。Mood: hope。
+End Frame: 灯塔全景，老陈身影在塔顶灯光中。
+(best quality, masterpiece, 8k, high detailed:1.2), cinematic lighting

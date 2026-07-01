@@ -1,6 +1,7 @@
 """Reporter: generate structured validation reports."""
 
 import json
+from typing import List, Union
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 
@@ -18,7 +19,7 @@ class Status(Enum):
 @dataclass
 class CheckResult:
     layer: str
-    num: int
+    num: Union[int, str]
     name: str
     status: Status
     detail: str = ""
@@ -82,7 +83,7 @@ def format_report(report: ValidationReport) -> str:
         lines.append("─" * 56)
         for r in items:
             status_str = r.status.value
-            num_str = f"{r.num:02d}"
+            num_str = "{:02d}".format(r.num) if isinstance(r.num, int) else str(r.num)
             line = f"{status_str} {num_str} {r.name:<30s}"
             if r.detail:
                 line += f" {r.detail}"

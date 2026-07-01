@@ -1,4 +1,4 @@
-"""Fatal propagation chain checks (Layer 3: 4 checks)."""
+"""Fatal propagation chain checks (Layer 3: 4 checks (36-39))."""
 
 from typing import List
 import re
@@ -33,7 +33,7 @@ def check_chain_a_appearance_loss(story_text: str, director_text: str) -> CheckR
         if matched < 3:
             dir_weak.append(f"{name}({matched}类)")
     if not story_weak and not dir_weak:
-        return CheckResult("第三层：传播链检测", 34, "链A:外观丢失",
+        return CheckResult("第三层：传播链检测", 38, "链A:外观丢失",
                           Status.PASS, "外观信息充足")
     msgs = []
     if story_weak:
@@ -41,10 +41,10 @@ def check_chain_a_appearance_loss(story_text: str, director_text: str) -> CheckR
     if dir_weak:
         msgs.append(f"导演外观不足：{', '.join(dir_weak)}")
     if story_weak and dir_weak:
-        return CheckResult("第三层：传播链检测", 34, "链A:外观丢失",
+        return CheckResult("第三层：传播链检测", 38, "链A:外观丢失",
                           Status.FATAL, '；'.join(msgs),
                           "角色外观信息从故事创作到导演持续不足，S1定妆将严重依赖推断")
-    return CheckResult("第三层：传播链检测", 34, "链A:外观丢失",
+    return CheckResult("第三层：传播链检测", 38, "链A:外观丢失",
                       Status.WARN, '；'.join(msgs))
 
 
@@ -63,14 +63,14 @@ def check_chain_b_p_number_gap(director_text: str, art_text: str) -> CheckResult
     srt_expected = list(range(srt_base[0], srt_base[-1] + 1)) if srt_base else []
     srt_missing = [n for n in srt_expected if n not in srt_base]
     if not dir_missing and not srt_missing:
-        return CheckResult("第三层：传播链检测", 35, "链B:P编号跳跃",
+        return CheckResult("第三层：传播链检测", 39, "链B:P编号跳跃",
                           Status.PASS, "P编号连续，SRT覆盖完整")
     msgs = []
     if dir_missing:
         msgs.append(f"导演P编号跳跃：缺P{dir_missing}")
     if srt_missing:
         msgs.append(f"SRT未覆盖：缺P{srt_missing}")
-    return CheckResult("第三层：传播链检测", 35, "链B:P编号跳跃",
+    return CheckResult("第三层：传播链检测", 39, "链B:P编号跳跃",
                       Status.FATAL, '；'.join(msgs),
                       "缺失场景已永久丢失！补全P编号并重新生成下游")
 
@@ -89,9 +89,9 @@ def check_chain_c_cross_scene_base(art_text: str) -> CheckResult:
         if grid_scene != base_scene and base_scene != '?' and grid_scene != '?':
             fatal_violations.append(f"格{grid_num}({grid_scene})垫图@图片{base_num}({base_scene})")
     if not fatal_violations:
-        return CheckResult("第三层：传播链检测", 36, "链C:底图跨场景",
+        return CheckResult("第三层：传播链检测", 38, "链C:底图跨场景",
                           Status.PASS, "无跨场景底图")
-    return CheckResult("第三层：传播链检测", 36, "链C:底图跨场景",
+    return CheckResult("第三层：传播链检测", 38, "链C:底图跨场景",
                       Status.FATAL, '；'.join(fatal_violations),
                       "跨场景垫图导致视觉风格污染！修正底图声明为独立冷启动或更换同场景底图")
 
@@ -115,9 +115,9 @@ def check_chain_d_audio_mismatch(cine_text: str, art_text: str) -> CheckResult:
                 f"DialogueCue @音频{cue['audio_num']}({expected_role})标为({cue['char_name']})"
             )
     if not mismatches:
-        return CheckResult("第三层：传播链检测", 37, "链D:@音频错配",
+        return CheckResult("第三层：传播链检测", 39, "链D:@音频错配",
                           Status.PASS, "@音频全部正确")
-    return CheckResult("第三层：传播链检测", 37, "链D:@音频错配",
+    return CheckResult("第三层：传播链检测", 39, "链D:@音频错配",
                       Status.FATAL, '；'.join(mismatches),
                       "配音将张冠李戴！修正Dialogue Cue的@音频编号")
 

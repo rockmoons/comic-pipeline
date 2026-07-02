@@ -7,13 +7,13 @@ from enum import Enum
 
 
 class Status(Enum):
-    PASS = "✅"
-    FAIL = "❌"
-    WARN = "⚠️"
-    FATAL = "🔴"
+    PASS = "[PASS]"
+    FAIL = "[FAIL]"
+    WARN = "[WARN]"
+    FATAL = "[FATAL]"
 
     def to_json(self) -> str:
-        return self.name.lower()
+        m={"[PASS]":"pass","[FAIL]":"fail","[WARN]":"warn","[FATAL]":"fatal"};return m.get(self.value,self.name.lower())
 
 
 @dataclass

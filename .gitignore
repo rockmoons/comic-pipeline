@@ -18,6 +18,7 @@ Thumbs.db
 # Orchestrator
 pipeline_state.db
 output/
+*.log
 
 # Node
 node_modules/

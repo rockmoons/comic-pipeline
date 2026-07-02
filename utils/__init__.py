@@ -1,1 +1,0 @@
-# Comic Pipeline Validator - Utilities

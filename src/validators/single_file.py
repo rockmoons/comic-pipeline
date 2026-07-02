@@ -515,6 +515,133 @@ def check_art_lprop_neg_antigrid(art_text: str) -> CheckResult:
                       "Neg Prompt追加split screen/grid layout/宫格/多图拼接")
 
 
+def check_firstlast_frame_count(cine_text: str) -> CheckResult:
+    """v4.8: Check 26 - Each P-number has correct 首尾帧 block count."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 26, "首尾帧块数", Status.WARN, "未检测到P编号")
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]: section = s; break
+        if not section: continue
+        is_b2 = '_B2' in section
+        frame_blocks = len(re.findall(r'【🖼️ 首帧合成图·|【🖼️ 尾帧合成图·', section))
+        expected = 2 if is_b2 else 4
+        if frame_blocks != expected:
+            violations.append(f"{p}:{frame_blocks}块·期望{expected}块")
+    if not violations:
+        return CheckResult("第一层：单文件结构", 26, "首尾帧块数", Status.PASS, f"全部正确")
+    return CheckResult("第一层：单文件结构", 26, "首尾帧块数", Status.FAIL, f"{len(violations)}条：{'; '.join(violations[:5])}")
+
+
+def check_lite_version_exists(cine_text: str) -> CheckResult:
+    """v4.8: Check 27 - 精简版 exists for every P-number with tail frames."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 27, "精简版存在", Status.WARN, "未检测到P编号")
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]: section = s; break
+        if not section: continue
+        is_b2 = '_B2' in section
+        has_lite_first = '精简版' in section and '首帧合成图' in section
+        has_lite_tail = '精简版' in section and '尾帧合成图' in section
+        if not has_lite_first: violations.append(f"{p}:缺精简版首帧")
+        if not is_b2 and not has_lite_tail: violations.append(f"{p}:缺精简版尾帧")
+    if not violations:
+        return CheckResult("第一层：单文件结构", 27, "精简版存在", Status.PASS, "全部含精简版")
+    return CheckResult("第一层：单文件结构", 27, "精简版存在", Status.FAIL, f"{len(violations)}条：{'; '.join(violations[:5])}")
+
+
+def check_firstlast_frame_integrity(cine_text: str) -> CheckResult:
+    """v4.8: Check 28 - 首尾帧 3-field integrity."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 28, "首尾帧三字段", Status.WARN, "未检测到P编号")
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]: section = s; break
+        if not section: continue
+        frames = re.findall(r'【🖼️ (?:首帧|尾帧)合成图[^】]*】', section)
+        for f in frames:
+            idx = section.find(f)
+            next_idx = section.find('【🖼️', idx + len(f))
+            block = section[idx:next_idx if next_idx != -1 else len(section)]
+            missing = []
+            if '@图片引用：' not in block: missing.append('@图片引用')
+            if '保存为：' not in block: missing.append('保存为')
+            if '合成提示词：' not in block: missing.append('合成提示词')
+            if missing: violations.append(f"{p}{f}:缺{'/'.join(missing)}")
+    if not violations:
+        return CheckResult("第一层：单文件结构", 28, "首尾帧三字段", Status.PASS, "全部完整")
+    return CheckResult("第一层：单文件结构", 28, "首尾帧三字段", Status.FAIL, f"{len(violations)}条：{'; '.join(violations[:5])}")
+
+
+def check_at_embed_in_synthesis(cine_text: str) -> CheckResult:
+    """v4.8: Check 29 - @图片 embedded in synthesis prompts."""
+    blocks = re.findall(r'合成提示词：[^\n]+(?:\n(?!【|保存为：|@图片引用：)[^\n]+)*', cine_text)
+    violations = [f"#{i+1}" for i, b in enumerate(blocks) if '@图片' not in b]
+    if not violations:
+        return CheckResult("第一层：单文件结构", 29, "@标记嵌入", Status.PASS, f"全部{len(blocks)}条含@标记")
+    return CheckResult("第一层：单文件结构", 29, "@标记嵌入", Status.FAIL, f"{len(violations)}条缺失", "补全@图片N")
+
+
+def check_branch_label(cine_text: str) -> CheckResult:
+    """v4.8: Check 30 - Branch labels _A/_B1/_B2 in save names."""
+    save_names = re.findall(r'保存为：(\S+)', cine_text)
+    violations = [n for n in save_names if not re.search(r'_(A|B1|B2)$', n.rsplit('_', 1)[-1] if '_' in n else '')]
+    if not violations:
+        return CheckResult("第一层：单文件结构", 30, "分支标签", Status.PASS, f"全部{len(save_names)}处含标签")
+    return CheckResult("第一层：单文件结构", 30, "分支标签", Status.FAIL, f"{len(violations)}处缺失：{'; '.join(violations[:5])}")
+
+
+def check_b2_no_tail_frame(cine_text: str) -> CheckResult:
+    """v4.8: Check 31 - B-2 scenes have no tail frames."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 31, "B-2无尾帧", Status.WARN, "未检测到P编号")
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]: section = s; break
+        if not section: continue
+        if '_B2' in section and '尾帧合成图' in section:
+            violations.append(p)
+    if not violations:
+        return CheckResult("第一层：单文件结构", 31, "B-2无尾帧", Status.PASS, "全部B-2无尾帧")
+    return CheckResult("第一层：单文件结构", 31, "B-2无尾帧", Status.FAIL, f"{len(violations)}条违规：{'; '.join(violations)}")
+
+
+def check_time_segmented_block(cine_text: str) -> CheckResult:
+    """v4.8: Check 32 - Time-segmented block exists per P-number."""
+    pnums = extract_p_numbers(cine_text)
+    if not pnums:
+        return CheckResult("第一层：单文件结构", 32, "时间分段块", Status.WARN, "未检测到P编号")
+    sections = re.split(r'(?=\n## P\d{2}(?:_[A-Z])?)', cine_text)
+    violations = []
+    for p in pnums:
+        section = ''
+        for s in sections:
+            if f'## {p}' in s[:20]: section = s; break
+        if not section: continue
+        if '【🎬 Seedance时间分段输入】' not in section:
+            violations.append(p)
+    if not violations:
+        return CheckResult("第一层：单文件结构", 32, "时间分段块", Status.PASS, "全部含时间分段块")
+    return CheckResult("第一层：单文件结构", 32, "时间分段块", Status.FAIL, f"{len(violations)}条缺失：{'; '.join(violations[:5])}")
+
+
 # Run all single-file checks
 def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) -> List[CheckResult]:
     results = []
@@ -550,4 +677,12 @@ def run_all(story_text: str, director_text: str, art_text: str, cine_text: str) 
     # v4.3 new checks
     results.append(check_art_no_abstract_numbers(art_text))
     results.append(check_art_lprop_neg_antigrid(art_text))
+    # v4.8 new checks
+    results.append(check_firstlast_frame_count(cine_text))
+    results.append(check_lite_version_exists(cine_text))
+    results.append(check_firstlast_frame_integrity(cine_text))
+    results.append(check_at_embed_in_synthesis(cine_text))
+    results.append(check_branch_label(cine_text))
+    results.append(check_b2_no_tail_frame(cine_text))
+    results.append(check_time_segmented_block(cine_text))
     return results

@@ -12,7 +12,8 @@ import os
 import glob
 from datetime import datetime
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "src"))
 sys.path.insert(0, ROOT)
 
 
@@ -35,7 +36,7 @@ def cmd_check(path: str):
     
     missing = [k for k, v in files.items() if not os.path.exists(v)]
     if missing:
-        print(f"❌ 缺少文件: {', '.join(missing)}")
+        print(f"FAIL 缺少文件: {', '.join(missing)}")
         sys.exit(1)
     
     story = read_file(files['story'])
@@ -49,7 +50,10 @@ def cmd_check(path: str):
     if json_mode:
         print(format_json(report))
     else:
-        print(format_report(report))
+        try:
+            print(format_report(report))
+        except UnicodeEncodeError:
+            print(format_report(report).encode("ascii", errors="replace").decode())
     
     # Exit code based on results
     if report.fatal_count > 0:
@@ -108,9 +112,9 @@ def cmd_quick():
         
         icon = "✅" if report.fatal_count == 0 else "🔴"
         print(f"  {icon} 通过率: {report.pass_rate:.1f}% | "
-              f"{report.pass_count}✅ {report.fail_count}❌ {report.warn_count}⚠️ {report.fatal_count}🔴")
+              f"{report.pass_count}PASS {report.fail_count}FAIL {report.warn_count}WARN {report.fatal_count}FATAL")
     except Exception as e:
-        print(f"  ❌ 冒烟测试失败: {e}")
+        print(f"  FAIL 冒烟测试失败: {e}")
 
 
 def cmd_help():
